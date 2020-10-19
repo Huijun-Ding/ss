@@ -44,10 +44,8 @@ public class Paiement {
         return dateP;
     }
 
-    public int getMontantP() {
+    public float getMontantP() {
         return montantP;
     }
 
-
->>>>>>> 887412ffc4672885e3e6a78fae52bc9a2f98d5b1
 }

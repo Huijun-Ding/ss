@@ -51,8 +51,8 @@ public class TacheSimple extends Tache {
         return dateDeb;
     }
 
-    public String getDateFin() {
-        return dateFin;
-    }
+   // public String getDateFin() {
+   //     return dateFin;
+   // }
     
 }

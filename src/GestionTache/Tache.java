@@ -9,7 +9,7 @@ package GestionTache;
  *
  * @author Mathi
  */
-<<<<<<<<< Temporary merge branch 1
+
 public abstract class Tache {
     protected String nomTache;
     protected String description;
@@ -114,11 +114,9 @@ public abstract class Tache {
         this.dateFin = dateFin;
     }
 public abstract void finaliser();
-public void modifier(){
 
-}
 
->>>>>>>>> Temporary merge branch 2
+
     
             
 }

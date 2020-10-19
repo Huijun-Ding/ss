@@ -18,8 +18,9 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
-
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
+    protected String password;
+    
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -27,6 +28,7 @@ public class Client {
         this.codePostalC = codePostalC;
         this.carteBancaire = carteBancaire;
         this.noteC = noteC;
+        this.password=password;
     }
 
     public int getNumClient() {
@@ -57,6 +59,10 @@ public class Client {
         return noteC;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setNumClient(int numClient) {
         this.numClient = numClient;
     }
@@ -83,6 +89,10 @@ public class Client {
 
     public void setNoteC(String noteC) {
         this.noteC = noteC;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 }

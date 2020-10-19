@@ -1,4 +1,5 @@
 
+import GestionDonnes.Client;
 import static GestionDonnes.Client.connexion;
 import static GestionDonnes.Client.inscription;
 import java.util.Scanner;
@@ -12,10 +13,9 @@ public class Main {
         
         
         // TODO code application logic here
-        
+        Client c1=new Client("liuyue","2222");
        Scanner scanner = new Scanner(System.in);
-         while(true){
-             
+         while(true){  
             System.out.println("Veuillez sélectionner la fonction A (inscription) B (connexion)");
             String option = scanner.next();
             if("a".equalsIgnoreCase(option)){
@@ -25,7 +25,10 @@ public class Main {
             }else{
                 System.out.println("L'entrée est incorrecte, veuillez saisir à nouveau");
             }
+            break;
         }
+         
+         
     }
     
 }

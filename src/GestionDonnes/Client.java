@@ -36,11 +36,12 @@ public class Client {
         this.noteC = noteC;
         this.password=password;
         this.email=email;
-       
+       ArrayList<Client> lstusers = new ArrayList<Client>();
     }
     public Client(String email,String password){
      this.password=password;
         this.email=email;
+        ArrayList<Client> lstusers = new ArrayList<Client>();
     }
 
   
@@ -61,7 +62,7 @@ public class Client {
        Client user = null;
         while(true){
             System.out.println("Saisez votre nom d'utilisateur");
-            int id = scanner.nextInt();
+            String email = scanner.nextLine();
              user = new Client(email,null);
             if(lstusers.contains(user)){
                 System.out.println("Le compte existe déjà");
@@ -103,9 +104,11 @@ public class Client {
         int i;
         i=lstusers.indexOf(client);
         return "numero:"+lstusers.get(i).getNumClient()+"telephone"+lstusers.get(i).getTelClient()+"email:"+lstusers.get(i).getEmail()
-                +"codepostale:"+lstusers.get(i).getCodePostalC();
-        
+                +"codepostale:"+lstusers.get(i).getCodePostalC()+"ville:"+lstusers.get(i).getVilleClient()+"cartebancaire:"+lstusers.get(i).getCarteBancaire()
+        +"rue client:"+lstusers.get(i).getRurClient();
     }
+    
+    
    /*public void connecter(){
     System.out.println("Entrez votre nom d'utilisateur：");
     Scanner sc=new Scanner(System.in);

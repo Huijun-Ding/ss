@@ -12,5 +12,5 @@ package GestionPaiement;
 public class RecuPaiement {
     protected String nomP;
     protected String dateP;
-    //protected float montantP;
+    protected float montantP;
 }

@@ -6,6 +6,8 @@
  */
 package GestionDonnes;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.Scanner;
 /**
  *
@@ -14,15 +16,16 @@ import java.util.Scanner;
 public class Client {
     protected int numClient; 
     protected String telClient; 
-    protected String email;
+    protected  static String email;
     protected String rurClient;
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
     protected String password;
-    ArrayList<Client> lstusers = new ArrayList<Client>();
-    
+    static ArrayList<Client> lstusers = new ArrayList<Client>();
+    static Scanner scanner = new Scanner(System.in);
+   
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password,String email) {
         this.numClient = numClient;
         this.telClient = telClient;
@@ -33,11 +36,88 @@ public class Client {
         this.noteC = noteC;
         this.password=password;
         this.email=email;
-        this.lstusers = new ArrayList<>();
+       
+    }
+    public Client(String email,String password){
+     this.password=password;
+        this.email=email;
     }
 
   
+
+    @Override
+    public boolean equals(Object obj) {
+       Client client =(Client) obj;
+        return this.email==client.email;
+    }
+
+    @Override
+    public String toString() {
+        return "account:" + email + "password=" + password + '}';
+    }
     
+ 
+     public static void inscription(){
+       Client user = null;
+        while(true){
+            System.out.println("Saisez votre nom d'utilisateur");
+            int id = scanner.nextInt();
+             user = new Client(email,null);
+            if(lstusers.contains(user)){
+                System.out.println("Le compte existe déjà");
+            }else{
+                break;
+            }
+        }
+        System.out.println("Entrerez le mot de passe");
+        String password = scanner.next();
+        user.setPassword(password);
+        lstusers.add(user);
+        System.out.println("Inscription réussie");
+        System.out.println("当前注册的人员" + lstusers);
+        
+    }
+
+    public static void connexion(){
+        
+        System.out.println("Saisez votre nom d'utilisateur");
+        String email = scanner.nextLine();
+        System.out.println("Entrerez le mot de passe");
+        String password = scanner.nextLine();
+        boolean Login = false;
+        Iterator it = lstusers.iterator();
+        while(it.hasNext()){
+            Client user = (Client) it.next();
+            if(user.email.equals(email) && user.password.equals(password)){
+                Login = true;
+                System.out.println("Connexion réussie！");
+            }else{
+                System.out.println("Échec de la connexion!");
+            }
+        }
+        
+        
+    }
+    
+    public void  
+   /*public void connecter(){
+    System.out.println("Entrez votre nom d'utilisateur：");
+    Scanner sc=new Scanner(System.in);
+    String userName=sc.nextLine();
+    System.out.println("Entrez votre mot de passe d'utilisateur：");
+    String pwd=sc.nextLine();
+    
+    for (int i=0;i<lstusers.size();i++){
+    if(userName.equals(lstusers.get(i).getEmail())&&userName.equals(lstusers.get(i).getPassword())){
+    System.out.println("connexion réussie");
+    break;}
+    else{
+        System.out.println("Le nom d'utilisateur ou le mot de passe est incorrect, veuillez le saisir à nouveau");	
+} 
+    }
+    } */  
+   
+   
     public int getNumClient() {
         return numClient;
     }

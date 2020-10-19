@@ -16,5 +16,8 @@ public void modifier(){
 
 }
 
-    
+    public abstract void finaliser();
+    public void modifier(){
+
+    }
 }

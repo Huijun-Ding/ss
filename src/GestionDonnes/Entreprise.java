@@ -15,14 +15,16 @@ public class Entreprise extends Client{
     protected String nomCorrespondant;
     protected String  prenomCorrespondant;
     protected String domaine;
-    protected String password;
-    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
-        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC);
+  
+    
+    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password) {
+        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC,password);
         this.raisonSocial = raisonSocial;
         this.noSiret = noSiret;
         this.nomCorrespondant = nomCorrespondant;
         this.prenomCorrespondant = prenomCorrespondant;
         this.domaine = domaine;
+ 
     }
 
     public String getRaisonSocial() {
@@ -44,6 +46,9 @@ public class Entreprise extends Client{
     public String getDomaine() {
         return domaine;
     }
+     public String getPassword() {
+        return password;
+    }
 
     public void setRaisonSocial(String raisonSocial) {
         this.raisonSocial = raisonSocial;
@@ -64,5 +69,11 @@ public class Entreprise extends Client{
     public void setDomaine(String domaine) {
         this.domaine = domaine;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+   
     
 }

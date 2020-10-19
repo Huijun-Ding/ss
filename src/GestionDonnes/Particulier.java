@@ -9,12 +9,13 @@ package GestionDonnes;
  *
  * @author Mathi
  */
-public class Particulier {
+public class Particulier extends Client{
     protected String nomPart;
     protected String  prenomPart;
     protected String civilité;
 
-    public Particulier(String nomPart, String prenomPart, String civilité) {
+    public Particulier(String nomPart, String prenomPart, String civilité, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC, String password) {
+        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC, password);
         this.nomPart = nomPart;
         this.prenomPart = prenomPart;
         this.civilité = civilité;

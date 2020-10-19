@@ -10,5 +10,12 @@ package GestionDonnes;
  * @author Mathi
  */
 public class Intervenant {
+    protected int numInterv; 
+    protected String telInterv; 
+    protected String rurInterv;
+    protected String villeInterv;
+    protected String codePostalIn;
+    protected String carteBancaireIn; 
+    protected String noteIn;
     
 }

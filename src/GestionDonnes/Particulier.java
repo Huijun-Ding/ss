@@ -9,6 +9,8 @@ package GestionDonnes;
  *
  * @author Mathi
  */
-public class Particulier {
-    
+public class Particulier extends Client {
+    protected String nomPart;
+    protected String  prenomPart;
+    protected String civilité;
 }

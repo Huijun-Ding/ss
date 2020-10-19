@@ -10,5 +10,7 @@ package GestionPaiement;
  * @author Mathi
  */
 public class Paiement {
-    
+    protected String nomP;
+    protected String dateP;
+    protected float montantP;
 }

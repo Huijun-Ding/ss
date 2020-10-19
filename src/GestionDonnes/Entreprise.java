@@ -10,5 +10,9 @@ package GestionDonnes;
  * @author Mathi
  */
 public class Entreprise extends Client{
-    
+    protected String raisonSocial;
+    protected String noSiret;
+    protected String nomCorrespondant;
+    protected String  prenomCorrespondant;
+    protected String domaine;
 }

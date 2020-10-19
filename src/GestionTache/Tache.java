@@ -112,6 +112,20 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
+  
+   
     
-            
+    public void consulter(int numTache){
+    }
+      
+   public void modifier(int numTache){
+   }
+   
+   public void ajouteCompetence(String competence){
+   }
+   
+   public void ajouterInter(int nombreintervenant){
+   }
+   
+   
 }

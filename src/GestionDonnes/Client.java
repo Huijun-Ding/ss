@@ -99,7 +99,13 @@ public class Client {
         
     }
     
-    public void  
+    public String consulter (Client client){
+        int i;
+        i=lstusers.indexOf(client);
+        return "numero:"+lstusers.get(i).getNumClient()+"telephone"+lstusers.get(i).getTelClient()+"email:"+lstusers.get(i).getEmail()
+                +"codepostale:"+lstusers.get(i).getCodePostalC();
+        
+    }
    /*public void connecter(){
     System.out.println("Entrez votre nom d'utilisateur：");
     Scanner sc=new Scanner(System.in);

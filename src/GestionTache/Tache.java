@@ -12,6 +12,9 @@ package GestionTache;
 public abstract class Tache {
 
 public abstract void finaliser();
+public void modifier(){
+
+}
 
     
 }

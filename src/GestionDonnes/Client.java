@@ -10,5 +10,7 @@ package GestionDonnes;
  * @author Mathi
  */
 public class Client {
-    
+    protected int numClient; 
+    protected String telClient; 
+
 }

@@ -9,6 +9,9 @@ package GestionTache;
  *
  * @author Mathi
  */
-public class Tache {
+public abstract class Tache {
+
+
+
     
 }

@@ -9,7 +9,8 @@ package GestionTache;
  *
  * @author Mathi
  */
-public class Tache {
+<<<<<<<<< Temporary merge branch 1
+public abstract class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
@@ -20,7 +21,7 @@ public class Tache {
     protected String etat;
     protected String dateDeb;
     protected String dateFin;
-
+   
 
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
@@ -112,12 +113,12 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-
+public abstract void finaliser();
+public void modifier(){
 
 }
 
-    public abstract void finaliser();
-    public void modifier(){
-
-    }
+>>>>>>>>> Temporary merge branch 2
+    
+            
 }

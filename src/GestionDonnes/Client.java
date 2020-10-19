@@ -36,15 +36,7 @@ public class Client {
         this.lstusers = new ArrayList<>();
     }
 
-    public void connecter(){
-    System.out.println("Entrez votre nom d'utilisateur：");
-    Scanner sc=new Scanner(System.in);
-    String userName=sc.nextLine();
-    System.out.println("Entrez votre mot de passe d'utilisateur：");
-    String pwd=sc.nextLine();
-    for (int i=0;i<lstusers.size;i++){
-    if(lstusers.get(i).get)} 
-    }
+  
     
     public int getNumClient() {
         return numClient;

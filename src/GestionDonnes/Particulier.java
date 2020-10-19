@@ -14,12 +14,14 @@ public class Particulier extends Client{
     protected String  prenomPart;
     protected String civilité;
 
-    public Particulier(String nomPart, String prenomPart, String civilité, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC, String password) {
-        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC, password);
+    public Particulier(String nomPart, String prenomPart, String civilité, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC, String password, String email) {
+        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC, password, email);
         this.nomPart = nomPart;
         this.prenomPart = prenomPart;
         this.civilité = civilité;
     }
+
+ 
 
     public String getNomPart() {
         return nomPart;

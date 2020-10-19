@@ -15,17 +15,17 @@ public class Entreprise extends Client{
     protected String nomCorrespondant;
     protected String  prenomCorrespondant;
     protected String domaine;
-  
-    
-    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password) {
-        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC,password);
+
+    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC, String password, String email) {
+        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC, password, email);
         this.raisonSocial = raisonSocial;
         this.noSiret = noSiret;
         this.nomCorrespondant = nomCorrespondant;
         this.prenomCorrespondant = prenomCorrespondant;
         this.domaine = domaine;
- 
     }
+  
+  
 
     public String getRaisonSocial() {
         return raisonSocial;

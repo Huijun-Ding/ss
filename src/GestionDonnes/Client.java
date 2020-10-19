@@ -5,7 +5,8 @@
  * and open the template in the editor.
  */
 package GestionDonnes;
-
+import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author Mathi
@@ -13,14 +14,16 @@ package GestionDonnes;
 public class Client {
     protected int numClient; 
     protected String telClient; 
+    protected String email;
     protected String rurClient;
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
     protected String password;
+    ArrayList<Client> lstusers = new ArrayList<Client>();
     
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password) {
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password,String email) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -29,8 +32,20 @@ public class Client {
         this.carteBancaire = carteBancaire;
         this.noteC = noteC;
         this.password=password;
+        this.email=email;
+        this.lstusers = new ArrayList<>();
     }
 
+    public void connecter(){
+    System.out.println("Entrez votre nom d'utilisateur：");
+    Scanner sc=new Scanner(System.in);
+    String userName=sc.nextLine();
+    System.out.println("Entrez votre mot de passe d'utilisateur：");
+    String pwd=sc.nextLine();
+    for (int i=0;i<lstusers.size;i++){
+    if(lstusers.get(i).get)} 
+    }
+    
     public int getNumClient() {
         return numClient;
     }
@@ -63,6 +78,14 @@ public class Client {
         return password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public ArrayList<Client> getLstusers() {
+        return lstusers;
+    }
+
     public void setNumClient(int numClient) {
         this.numClient = numClient;
     }
@@ -93,6 +116,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLstusers(ArrayList<Client> lstusers) {
+        this.lstusers = lstusers;
     }
     
 }

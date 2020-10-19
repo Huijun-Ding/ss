@@ -12,5 +12,11 @@ package GestionDonnes;
 public class Client {
     protected int numClient; 
     protected String telClient; 
-
+    protected String rurClient;
+    protected String villeClient;
+    protected String codePostalC;
+    protected String carteBancaire; 
+    protected String noteC;
+   
+    
 }

@@ -9,7 +9,8 @@ package GestionTache;
  *
  * @author Mathi
  */
-public class Tache {
+
+public  class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
@@ -112,6 +113,6 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-    
+
             
 }

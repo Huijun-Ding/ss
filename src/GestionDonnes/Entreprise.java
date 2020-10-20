@@ -10,6 +10,7 @@ package GestionDonnes;
  *
  * @author Mathi
  */
+
 public class Entreprise extends Client{
     protected String raisonSocial;
     protected String noSiret;
@@ -25,6 +26,49 @@ public class Entreprise extends Client{
         this.prenomCorrespondant = prenomCorrespondant;
         this.domaine = domaine;
     }
+<<<<<<< HEAD
+=======
+
+    public String getRaisonSocial() {
+        return raisonSocial;
+    }
+
+    public String getNoSiret() {
+        return noSiret;
+    }
+
+    public String getNomCorrespondant() {
+        return nomCorrespondant;
+    }
+
+    public String getPrenomCorrespondant() {
+        return prenomCorrespondant;
+    }
+
+    public String getDomaine() {
+        return domaine;
+    }
+
+    public void setRaisonSocial(String raisonSocial) {
+        this.raisonSocial = raisonSocial;
+    }
+
+    public void setNoSiret(String noSiret) {
+        this.noSiret = noSiret;
+    }
+
+    public void setNomCorrespondant(String nomCorrespondant) {
+        this.nomCorrespondant = nomCorrespondant;
+    }
+
+    public void setPrenomCorrespondant(String prenomCorrespondant) {
+        this.prenomCorrespondant = prenomCorrespondant;
+    }
+
+    public void setDomaine(String domaine) {
+        this.domaine = domaine;
+    }
+>>>>>>> develop
     
 }
 

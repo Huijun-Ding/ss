@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,8 +10,7 @@ package GestionTache;
  *
  * @author Mathi
  */
-
-public  class Tache {
+public class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
@@ -113,6 +113,8 @@ public  class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-
-            
+  
+   
+          
 }
+

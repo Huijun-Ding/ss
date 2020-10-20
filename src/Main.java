@@ -22,13 +22,13 @@ public class Main {
             if("a".equalsIgnoreCase(option)){
                 inscription();
             }else if("b".equalsIgnoreCase(option)){
-                connexion();
+               connexion();
             }else{
                 System.out.println("L'entrée est incorrecte, veuillez saisir à nouveau");
             }
             break;
         }
-         
+         /*
                while(true){  
                System.out.println("Choissez ce que vous voulez changer A(Password) B(Adresse) C（telephone）D(ville and Codepostale) E(rien change)" );
                String option2 = scanner.next();
@@ -57,7 +57,7 @@ public class Main {
                break;
                }
                
-         
+        */ 
     }
     
 }

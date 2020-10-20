@@ -26,9 +26,9 @@ public class Tache {
     protected String dateDeb;
     protected String dateFin;
     private Client client;
+    private Paiement paiement;  
     private ArrayList<Intervenant> listInters;
     private ArrayList<RecuPaiement> listRecus;
-    private ArrayList<Paiement> listPaiements;
    
 
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
@@ -122,7 +122,9 @@ public class Tache {
         this.dateFin = dateFin;
     }
   
-   
+    public void setPaiement(Paiement p) {
+        this.paiement = p;
+    }
           
 }
 

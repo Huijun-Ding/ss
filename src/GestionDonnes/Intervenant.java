@@ -21,7 +21,6 @@ public class Intervenant {
     protected String carteBancaireIn; 
     protected String noteIn;
     private ArrayList<Tache> listTaches;
-    private ArrayList<RecuPaiement> listRecus;
 
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, String noteIn) {
         this.numInterv = numInterv;

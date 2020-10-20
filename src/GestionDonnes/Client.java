@@ -22,7 +22,6 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
-    
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
 

@@ -11,13 +11,11 @@ public class Paiement {
     private int numP;
     private Date dateP;
     private float montantP;
-    private Client client;
-    private Tache tache;
 
-    public Paiement(int numP, Date dateP, int montantP) {
-        this.numP = numP;
-        this.dateP = dateP;
-        this.montantP = montantP;
+    public Paiement(int num, Date date, int montant) {
+        this.numP = num;
+        this.dateP = date;
+        this.montantP = montant;
     }
 
     public int getNumP() {

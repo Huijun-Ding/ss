@@ -12,7 +12,8 @@ public class Intervenant {
     protected String carteBancaireIn; 
     protected int noteIn;
     private ArrayList<Tache> listTaches;
-    private ArrayList<RecuPaiement> listRecus;
+    private ArrayList<RecuPaiement> Recus;
+    private ArrayList<Competence> mesCompetences;
 
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, int noteIn) {
         this.numInterv = numInterv;
@@ -80,5 +81,8 @@ public class Intervenant {
         this.noteIn = noteIn;
     }
     
+    public void setRecuPaiement(RecuPaiement rp) {
+        this.Recus.add(rp);
+    } 
 }
 

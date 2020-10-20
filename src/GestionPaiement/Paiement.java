@@ -4,6 +4,7 @@ import GestionDonnes.Client;
 import GestionTache.Tache;
 
 public class Paiement {
+
     private int numP;
     private Date dateP;
     private float montantP;

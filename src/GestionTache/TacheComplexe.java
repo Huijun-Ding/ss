@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class TacheComplexe extends Tache {
        private ArrayList<Integer> numeros = new ArrayList<Integer>();
+       private ArrayList<Tache> listTaches;
        
     public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin);

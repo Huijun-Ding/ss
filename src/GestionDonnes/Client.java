@@ -75,9 +75,33 @@ public class Client {
         user.setPassword(password);
         lstusers.add(user);
         System.out.println("Inscription réussie");
-        System.out.println("当前注册的人员" + lstusers);
+        
+         System.out.println("Veuillez saisir les informations suivantes");
+        
+        System.out.println("Numéro de téléphone");
+        String tel = scanner.nextLine();
+        user.setTelClient(tel);
+        
+        System.out.println("Carte bancaire");
+        String cb  = scanner.nextLine();
+        user.setCarteBancaire(cb);
+        
+        System.out.println("Adresse");
+        String rue  = scanner.nextLine();
+        user.setRurClient(rue);
+        
+        System.out.println("Ville");
+        String ville  = scanner.nextLine();
+        user.setVilleClient(ville);
+        
+        System.out.println("Code postale");
+        String cp  = scanner.nextLine();
+        user.setVilleClient(cp);
+        user.setNumClient(lstusers.indexOf(user)); 
+        System.out.println("Liste des personnes inscrites" + lstusers);
         
     }
+    
 
     public static void connexion(){
         

@@ -104,7 +104,7 @@ public class Client {
     }
     
 
-    public static void connexion(){
+    public static boolean connexion(){
         
         System.out.println("Saisez votre nom d'utilisateur");
         String email = scanner.nextLine();
@@ -113,17 +113,20 @@ public class Client {
         boolean Login = false;
         Iterator it = lstusers.iterator();
         while(it.hasNext()){
-            Client user = (Client) it.next();
-            if(user.email.equals(email) && user.password.equals(password)){
-                Login = true;
-                System.out.println("Connexion réussie！");
-            }else{
-                System.out.println("Échec de la connexion!");
+        Client user = (Client) it.next();
+        if(user.email.equals(email) && user.password.equals(password)){
+         Login = true;
+        System.out.println("Connexion réussie！");
+         }else{
+         System.out.println("Échec de la connexion!");
+         Login=false;
             }
-        }
-        
-        
-    }
+        }    
+        if ( Login = true){
+            return true;}
+        else {
+            return false; }
+          }
     
     public String consulter (Client client){
         int i;

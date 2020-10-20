@@ -29,7 +29,7 @@ public class Main {
             break;
         }
          
-                   while(true){  
+               while(true){  
                System.out.println("Choissez ce que vous voulez changer A(Password) B(Adresse) C（telephone）D(ville and Codepostale) E(rien change)");
                String option2 = scanner.next();
                if("a".equalsIgnoreCase(option2)){
@@ -50,11 +50,7 @@ public class Main {
                c1.setVilleClient(newville);
                String newcp = scanner.nextLine();
                c1.setCodePostalC(newcp);
-               
-               
-               
-               }
-               
+               }    
                }
                
          

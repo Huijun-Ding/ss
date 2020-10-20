@@ -1,4 +1,4 @@
-package GestionDonnes;
+package Model;
 
 public class Competence {
     protected String nomP;

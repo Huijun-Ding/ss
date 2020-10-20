@@ -1,7 +1,7 @@
-package GestionPaiement;
+package Model;
 import java.util.Date;
-import GestionDonnes.Client;
-import GestionTache.Tache;
+import Model.Client;
+import Model.Tache;
 
 public class Paiement {
 

@@ -1,4 +1,5 @@
-package GestionTache;
+package Model;
+import Model.Tache;
 import java.util.ArrayList;
 import java.util.Scanner;
 

@@ -38,6 +38,7 @@ public class Client {
         this.email=email;
        ArrayList<Client> lstusers = new ArrayList<Client>();
     }
+    
     public Client(String email,String password){
      this.password=password;
         this.email=email;

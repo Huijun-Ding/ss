@@ -25,7 +25,6 @@ public class Tache {
     protected String etat;
     protected String dateDeb;
     protected String dateFin;
-    private ArrayList<Tache> listTaches;
     private Client client;
     private ArrayList<Intervenant> listInters;
     private ArrayList<RecuPaiement> listRecus;

@@ -111,7 +111,7 @@ public class Client {
                 TacheMassive tacheMassive=(TacheMassive)tache;
                 ArrayList<String> nomSousTache= new ArrayList();
                 nomSousTache.add(tacheMassive.getNomTache());
-                for(Tache ta: this.tachMassive.getListTaches()){
+                for(Tache ta: tacheMassive.getListTaches()){
                     if(ta instanceof TacheSimple){
                         TacheSimple tacheSimple=(TacheSimple)ta;
                         nomSousTache.add(tacheSimple.getNomTache());

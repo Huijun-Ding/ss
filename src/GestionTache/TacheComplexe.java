@@ -106,6 +106,10 @@ public class TacheComplexe extends Tache {
         this.dateFin = dateFin;
     }
 
+    public ArrayList<Tache> getListTaches() {
+        return listTaches;
+    }
+
  
     
         

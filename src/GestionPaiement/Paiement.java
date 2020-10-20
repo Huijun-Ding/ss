@@ -30,9 +30,5 @@ public class Paiement {
     public float getMontantP() {
         return montantP;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 89d7dc9e9c2e6696a309e03012478bc7cef1ce70
 }
 

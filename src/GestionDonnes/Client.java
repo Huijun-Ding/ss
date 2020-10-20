@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 package GestionDonnes;
+import BD.DB;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
@@ -23,9 +24,11 @@ public class Client {
     protected String carteBancaire; 
     protected String noteC;
     protected String password;
+    Client clientconnect;
     static ArrayList<Client> lstusers = new ArrayList<Client>();
     static Scanner scanner = new Scanner(System.in);
-   
+ 
+    
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC,String password,String email) {
         this.numClient = numClient;
         this.telClient = telClient;
@@ -36,21 +39,19 @@ public class Client {
         this.noteC = noteC;
         this.password=password;
         this.email=email;
-       ArrayList<Client> lstusers = new ArrayList<Client>();
+        ArrayList<Client> lstusers = new ArrayList<Client>();
     }
     
     public Client(String email,String password){
      this.password=password;
-        this.email=email;
-        ArrayList<Client> lstusers = new ArrayList<Client>();
+     this.email=email;
+     ArrayList<Client> lstusers = new ArrayList<Client>();
     }
-
-  
 
     @Override
     public boolean equals(Object obj) {
-       Client client =(Client) obj;
-        return this.email==client.email;
+     Client client =(Client) obj;
+     return this.email==client.email;
     }
 
     @Override
@@ -58,7 +59,6 @@ public class Client {
         return "account:" + email + "password=" + password + '}';
     }
     
- 
      public static void inscription(){
        Client user = null;
         while(true){
@@ -75,9 +75,9 @@ public class Client {
         String password = scanner.next();
         user.setPassword(password);
         lstusers.add(user);
-        System.out.println("Inscription réussie");
         
-         System.out.println("Veuillez saisir les informations suivantes");
+        System.out.println("Inscription réussie");
+        System.out.println("Veuillez saisir les informations suivantes");
         
         System.out.println("Numéro de téléphone");
         String tel = scanner.nextLine();
@@ -99,36 +99,39 @@ public class Client {
         String cp  = scanner.nextLine();
         user.setVilleClient(cp);
         user.setNumClient(lstusers.indexOf(user)); 
+        
         System.out.println("Liste des personnes inscrites" + lstusers);  
     }
     
 
-    public static boolean connexion(){
-        System.out.println("Saisez votre nom d'utilisateur");
-        String email = scanner.nextLine();
-        System.out.println("Entrerez le mot de passe");
-        String password = scanner.nextLine();
-        boolean Login = false;
-        Iterator it = lstusers.iterator();
-        while(it.hasNext()){
-        Client user = (Client) it.next();
-        if(user.email.equals(email) && user.password.equals(password)){
-         Login = true;
-        System.out.println("Connexion réussie！");
-         }else{
-         System.out.println("Échec de la connexion!");
-         Login=false;
+        public static boolean connexion(){
+            System.out.println("Saisez votre nom d'utilisateur");
+            String email = scanner.nextLine();
+
+            System.out.println("Entrerez le mot de passe");
+            String password = scanner.nextLine();
+            boolean Login = false;
+           
+            for(Client clientconnect:lstusers){
+            if(clientconnect.email.equals(email) && clientconnect.password.equals(password)){
+             Login = true;
+             System.out.println("Connexion réussie！");
+             }else{
+             System.out.println("Échec de la connexion!");
+             Login=false;
+             }
+            }    
+            if ( Login = true){
+            return true;
             }
-        }    
-        if ( Login = true){
-            return true;}
-        else {
-            return false; }
-          }
+            else {
+                return false; }
+              }
     
-    public String consulter (Client client){
+    public String consulter (){
+        connexion();
         int i;
-        i=lstusers.indexOf(client);
+        i=lstusers.indexOf(clientconnect);
         return "numero:"+lstusers.get(i).getNumClient()+"telephone"+lstusers.get(i).getTelClient()+"email:"+lstusers.get(i).getEmail()
                 +"codepostale:"+lstusers.get(i).getCodePostalC()+"ville:"+lstusers.get(i).getVilleClient()+"cartebancaire:"+lstusers.get(i).getCarteBancaire()
         +"rue client:"+lstusers.get(i).getRurClient();

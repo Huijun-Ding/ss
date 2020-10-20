@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GestionTache;
 import java.util.ArrayList;
 import java.util.Scanner;
-/**
- *
- * @author Mathi
- */
+
 public class TacheComplexe extends Tache {
-       private ArrayList<Integer> numeros = new ArrayList<Integer>();
        private ArrayList<Tache> listTaches;
        
     public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
@@ -105,8 +96,8 @@ public class TacheComplexe extends Tache {
         this.dateFin = dateFin;
     }
 
- 
-    
-        
-        
+    public ArrayList<Tache> getListTaches() {
+        return listTaches;
+    }
+     
 }

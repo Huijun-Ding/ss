@@ -1,13 +1,10 @@
-
 package GestionPaiement;
 import java.util.Date;
 import GestionDonnes.Client;
 import GestionTache.Tache;
-/**
- *
- * @author Mathi
- */
+
 public class Paiement {
+
     private int numP;
     private Date dateP;
     private float montantP;

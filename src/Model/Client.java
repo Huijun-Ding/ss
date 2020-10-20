@@ -12,9 +12,11 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire;
     protected float noteC;
+    protected String email;
+    protected String password;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC, String email, String password) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -22,7 +24,23 @@ public class Client {
         this.codePostalC = codePostalC;
         this.carteBancaire = carteBancaire;
         this.noteC = noteC;
+        this.email = email;
+        this.password = password;
     }
+
+    public Client() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+  
 
     public int getNumClient() {
         return numClient;
@@ -79,6 +97,16 @@ public class Client {
     public void setNoteC(float noteC) {
         this.noteC = noteC;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 
     public ArrayList<Object> getListNomTaches() {
         ArrayList<Object> historiques = new ArrayList();

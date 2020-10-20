@@ -1,32 +1,18 @@
 
-import GestionDonnes.Client;
-import static GestionDonnes.Client.connexion;
-import static GestionDonnes.Client.inscription;
+
 import java.util.Scanner;
 import BD.DB;
+import java.sql.*;
 public class Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DB db = new DB("bd_dolt", "jdbc:mysql://localhost:3306/", "root", "");
-        db.connexion();
-        
+       
         // TODO code application logic here
-        Client c1=new Client("liuyue","2222");
-       Scanner scanner = new Scanner(System.in);
-         while(true){  
-            System.out.println("Veuillez sélectionner la fonction A (inscription) B (connexion)");
-            String option = scanner.next();
-            if("a".equalsIgnoreCase(option)){
-                inscription();
-            }else if("b".equalsIgnoreCase(option)){
-               connexion();
-            }else{
-                System.out.println("L'entrée est incorrecte, veuillez saisir à nouveau");
-            }
-            break;
+       
+        
         }
          /*
                while(true){  
@@ -60,7 +46,7 @@ public class Main {
         */ 
     }
     
-}
+
 
 
 

@@ -6,6 +6,10 @@
  */
 package GestionDonnes;
 
+import GestionTache.Tache;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Mathi
@@ -18,6 +22,8 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
+    protected ArrayList<Tache> taches = new ArrayList<Tache>();
+
 
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
         this.numClient = numClient;

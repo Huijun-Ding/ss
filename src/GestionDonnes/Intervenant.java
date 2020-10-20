@@ -10,11 +10,11 @@ public class Intervenant {
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
-    protected String noteIn;
+    protected int noteIn;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> listRecus;
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, String noteIn) {
+    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, int noteIn) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -48,7 +48,7 @@ public class Intervenant {
         return carteBancaireIn;
     }
 
-    public String getNoteIn() {
+    public int getNoteIn() {
         return noteIn;
     }
 
@@ -76,7 +76,7 @@ public class Intervenant {
         this.carteBancaireIn = carteBancaireIn;
     }
 
-    public void setNoteIn(String noteIn) {
+    public void setNoteIn(int noteIn) {
         this.noteIn = noteIn;
     }
     

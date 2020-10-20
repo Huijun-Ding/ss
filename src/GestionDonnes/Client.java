@@ -15,10 +15,10 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
-    protected String noteC;
+    protected int noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, int noteC) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -52,7 +52,7 @@ public class Client {
         return carteBancaire;
     }
 
-    public String getNoteC() {
+    public int getNoteC() {
         return noteC;
     }
 
@@ -80,7 +80,7 @@ public class Client {
         this.carteBancaire = carteBancaire;
     }
 
-    public void setNoteC(String noteC) {
+    public void setNoteC(int noteC) {
         this.noteC = noteC;
     }
 
@@ -120,4 +120,5 @@ public class Client {
     public void consulterTache(String nomTache) {
 
     }
+    
 }

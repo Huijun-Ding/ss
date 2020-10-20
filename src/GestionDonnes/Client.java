@@ -99,13 +99,11 @@ public class Client {
         String cp  = scanner.nextLine();
         user.setVilleClient(cp);
         user.setNumClient(lstusers.indexOf(user)); 
-        System.out.println("Liste des personnes inscrites" + lstusers);
-        
+        System.out.println("Liste des personnes inscrites" + lstusers);  
     }
     
 
     public static boolean connexion(){
-        
         System.out.println("Saisez votre nom d'utilisateur");
         String email = scanner.nextLine();
         System.out.println("Entrerez le mot de passe");

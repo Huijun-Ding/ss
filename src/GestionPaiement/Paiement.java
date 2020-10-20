@@ -1,6 +1,8 @@
 
 package GestionPaiement;
 import java.util.Date;
+import GestionDonnes.Client;
+import GestionTache.Tache;
 /**
  *
  * @author Mathi
@@ -11,25 +13,10 @@ public class Paiement {
     private Date dateP;
     private float montantP;
 
-    public Paiement() {
-    }
-
-    public Paiement(int numP, Date dateP, int montantP) {
-        this.numP = numP;
-        this.dateP = dateP;
-        this.montantP = montantP;
-    }
-
-    public void setNumP(int numP) {
-        this.numP = numP;
-    }
-
-    public void setDateP(Date dateP) {
-        this.dateP = dateP;
-    }
-
-    public void setMontantP(int montantP) {
-        this.montantP = montantP;
+    public Paiement(int num, Date date, int montant) {
+        this.numP = num;
+        this.dateP = date;
+        this.montantP = montant;
     }
 
     public int getNumP() {
@@ -43,6 +30,9 @@ public class Paiement {
     public float getMontantP() {
         return montantP;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 89d7dc9e9c2e6696a309e03012478bc7cef1ce70
 }
 

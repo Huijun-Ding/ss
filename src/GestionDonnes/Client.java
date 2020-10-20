@@ -1,4 +1,6 @@
 
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +12,7 @@ import GestionTache.Tache;
 import GestionTache.TacheComplexe;
 import GestionTache.TacheMassive;
 import GestionTache.TacheSimple;
+
 import java.util.ArrayList;
 
 /**
@@ -24,7 +27,8 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
-    private ArrayList<Tache> taches;
+    protected ArrayList<Tache> taches = new ArrayList<Tache>();
+
 
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
         this.numClient = numClient;
@@ -91,8 +95,6 @@ public class Client {
     public void setNoteC(String noteC) {
         this.noteC = noteC;
     }
-    
-    
     public ArrayList<Object> getListNomTaches(){
         ArrayList<Object> historiques= new ArrayList();
         for(Tache tache: this.taches){

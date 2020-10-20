@@ -6,6 +6,10 @@
  */
 package GestionTache;
 
+import GestionPaiement.*;
+import GestionDonnes.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mathi
@@ -22,6 +26,10 @@ public class Tache {
     protected String dateDeb;
     protected String dateFin;
     protected ClientEvaluation clientEvaluation;
+    private Client client;
+    private Paiement paiement;  
+    private ArrayList<Intervenant> listInters;
+    private ArrayList<RecuPaiement> listRecus;
    
     class ClientEvaluation{
         private int nbEtoileQualite;
@@ -154,6 +162,7 @@ public class Tache {
         this.dateFin = dateFin;
     }
   
+<<<<<<< HEAD
     // annuler une tâche s'il la tâche n'est pas encore distribué
    public void annuler(){
        if(this.etat=="en cours"){
@@ -174,6 +183,12 @@ public class Tache {
     }
     
    
+    
+
+    public void setPaiement(Paiement p) {
+        this.paiement = p;
+    }
+          
     
 }
 

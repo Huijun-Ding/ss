@@ -9,6 +9,7 @@ public class Paiement {
     private int numP;
     private Date dateP;
     private float montantP;
+    private Intervenant I;
 
     public Paiement() {
     }

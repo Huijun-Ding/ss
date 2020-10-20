@@ -38,4 +38,8 @@ public class DB {
         
     }
     
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

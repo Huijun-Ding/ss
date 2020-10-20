@@ -1,37 +1,11 @@
+package Model;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GestionTache;
+import Model.Tache;
 
-/**
- *
- * @author Mathi
- */
-public class Tache {
-    protected String nomTache;
-    protected String description;
-    protected int nbPersonne;
-    protected int delais; // nombre de jours
-    protected int numTache;
-    protected float prix;
-    protected String domanineTache;
-    protected String etat;
-    protected String dateDeb;
-    protected String dateFin;
-   
-
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
-        this.nomTache = nomTache;
-        this.description = description;
-        this.nbPersonne = nbPersonne;
-        this.prix = prix;
-        this.domanineTache = domanineTache;
-        this.etat = etat;
-        this.dateDeb = dateDeb;
-        this.dateFin = dateFin;
+public class TacheMassive extends Tache {
+    
+    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
     }
 
     public String getNomTache() {
@@ -113,8 +87,5 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-  
-   
-          
 }
 

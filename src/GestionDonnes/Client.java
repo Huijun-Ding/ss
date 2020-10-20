@@ -116,6 +116,14 @@ public class Client {
             if(clientconnect.email.equals(email) && clientconnect.password.equals(password)){
              Login = true;
              System.out.println("Connexion réussie！");
+             int i;
+             i=lstusers.indexOf(clientconnect);
+           
+     System.out.println("numero:"+lstusers.get(i).getNumClient()+"telephone"+lstusers.get(i).getTelClient()+"email:"+lstusers.get(i).getEmail()
+                +"codepostale:"+lstusers.get(i).getCodePostalC()+"ville:"+lstusers.get(i).getVilleClient()+"cartebancaire:"+lstusers.get(i).getCarteBancaire()
+         +"rueclient:"+lstusers.get(i).getRurClient());
+         
+             
              }else{
              System.out.println("Échec de la connexion!");
              Login=false;
@@ -127,34 +135,6 @@ public class Client {
             else {
                 return false; }
               }
-    
-    public String consulter (){
-        connexion();
-        int i;
-        i=lstusers.indexOf(clientconnect);
-        return "numero:"+lstusers.get(i).getNumClient()+"telephone"+lstusers.get(i).getTelClient()+"email:"+lstusers.get(i).getEmail()
-                +"codepostale:"+lstusers.get(i).getCodePostalC()+"ville:"+lstusers.get(i).getVilleClient()+"cartebancaire:"+lstusers.get(i).getCarteBancaire()
-        +"rue client:"+lstusers.get(i).getRurClient();
-    }
-    
-    
-   /*public void connecter(){
-    System.out.println("Entrez votre nom d'utilisateur：");
-    Scanner sc=new Scanner(System.in);
-    String userName=sc.nextLine();
-    System.out.println("Entrez votre mot de passe d'utilisateur：");
-    String pwd=sc.nextLine();
-    
-    for (int i=0;i<lstusers.size();i++){
-    if(userName.equals(lstusers.get(i).getEmail())&&userName.equals(lstusers.get(i).getPassword())){
-    System.out.println("connexion réussie");
-    break;}
-    else{
-        System.out.println("Le nom d'utilisateur ou le mot de passe est incorrect, veuillez le saisir à nouveau");	
-} 
-    }
-    } */  
-   
    
     public int getNumClient() {
         return numClient;

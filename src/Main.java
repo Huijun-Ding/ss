@@ -30,7 +30,7 @@ public class Main {
         }
          
                while(true){  
-               System.out.println("Choissez ce que vous voulez changer A(Password) B(Adresse) C（telephone）D(ville and Codepostale) E(rien change)");
+               System.out.println("Choissez ce que vous voulez changer A(Password) B(Adresse) C（telephone）D(ville and Codepostale) E(rien change)" );
                String option2 = scanner.next();
                if("a".equalsIgnoreCase(option2)){
                System.out.println("Entrerez le nouvel mot de passe");  
@@ -51,6 +51,10 @@ public class Main {
                String newcp = scanner.nextLine();
                c1.setCodePostalC(newcp);
                }    
+              else if("e".equalsIgnoreCase(option2)){
+                  break;
+              }
+               break;
                }
                
          

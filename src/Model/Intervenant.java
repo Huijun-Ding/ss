@@ -1,7 +1,5 @@
-package GestionDonnes;
+package Model;
 import java.util.ArrayList;
-import GestionTache.Tache;
-import GestionPaiement.RecuPaiement;
 
 public class Intervenant {
     protected int numInterv; 
@@ -10,12 +8,12 @@ public class Intervenant {
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
-    protected int noteIn;
+    protected float noteIn;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
     private ArrayList<Competence> mesCompetences;
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, int noteIn) {
+    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -23,6 +21,10 @@ public class Intervenant {
         this.codePostalIn = codePostalIn;
         this.carteBancaireIn = carteBancaireIn;
         this.noteIn = noteIn;
+    }
+    
+    public ArrayList<Competence> getMesCompetences() {
+        return this.mesCompetences;
     }
 
     public int getNumInterv() {
@@ -49,7 +51,7 @@ public class Intervenant {
         return carteBancaireIn;
     }
 
-    public int getNoteIn() {
+    public float getNoteIn() {
         return noteIn;
     }
 
@@ -77,7 +79,7 @@ public class Intervenant {
         this.carteBancaireIn = carteBancaireIn;
     }
 
-    public void setNoteIn(int noteIn) {
+    public void setNoteIn(float noteIn) {
         this.noteIn = noteIn;
     }
     

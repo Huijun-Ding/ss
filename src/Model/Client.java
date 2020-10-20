@@ -1,10 +1,6 @@
 
-package GestionDonnes;
+package Model;
 
-import GestionTache.TacheSimple;
-import GestionTache.TacheMassive;
-import GestionTache.TacheComplexe;
-import GestionTache.Tache;
 import java.util.ArrayList;
 
 public class Client {
@@ -15,10 +11,10 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
-    protected int noteC;
+    protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, int noteC) {
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -52,7 +48,7 @@ public class Client {
         return carteBancaire;
     }
 
-    public int getNoteC() {
+    public float getNoteC() {
         return noteC;
     }
 
@@ -80,7 +76,7 @@ public class Client {
         this.carteBancaire = carteBancaire;
     }
 
-    public void setNoteC(int noteC) {
+    public void setNoteC(float noteC) {
         this.noteC = noteC;
     }
     // annuler une tâche s'il la tâche n'est pas encore distribué

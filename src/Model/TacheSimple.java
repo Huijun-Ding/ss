@@ -1,4 +1,6 @@
-package GestionTache;
+package Model;
+
+import Model.Tache;
 
 public class TacheSimple extends Tache {
 

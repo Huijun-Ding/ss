@@ -1,4 +1,4 @@
-package GestionDonnes;
+package Model;
 
 public class Particulier {
     protected String nomPart;

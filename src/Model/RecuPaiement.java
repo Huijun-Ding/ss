@@ -1,4 +1,4 @@
-package GestionPaiement;
+package Model;
 
 public class RecuPaiement {
     protected String nomRP;

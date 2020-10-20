@@ -6,6 +6,10 @@
  */
 package GestionTache;
 
+import GestionPaiement.*;
+import GestionDonnes.*;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mathi
@@ -21,6 +25,11 @@ public class Tache {
     protected String etat;
     protected String dateDeb;
     protected String dateFin;
+    private ArrayList<Tache> listTaches;
+    private Client client;
+    private ArrayList<Intervenant> listInters;
+    private ArrayList<RecuPaiement> listRecus;
+    private ArrayList<Paiement> listPaiements;
    
 
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {

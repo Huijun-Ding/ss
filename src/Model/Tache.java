@@ -179,6 +179,13 @@ public class Tache {
     //evaluation tache
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
        this.clientEvaluation=new ClientEvaluation(nbEtoileQualite,nbEtoileDelai,commentaire);
+       float originNote = this.client.getNoteC();
+       int note=(nbEtoileQualite+nbEtoileDelai)/2;
+       if(commentaire.matches(".*bien.*")
+               ||commentaire.matches(".*bravo.*")){
+           note++;
+       }
+       this.client.setNoteC(note+originNote);
     }
 
     public void setPaiement(Paiement p) {

@@ -1,4 +1,4 @@
-package GestionDonnes;
+package Model;
 
 public class Entreprise extends Client{
     protected String raisonSocial;
@@ -7,7 +7,7 @@ public class Entreprise extends Client{
     protected String  prenomCorrespondant;
     protected String domaine;
 
-    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
+    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
         super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC);
         this.raisonSocial = raisonSocial;
         this.noSiret = noSiret;

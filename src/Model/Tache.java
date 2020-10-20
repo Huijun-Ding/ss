@@ -1,7 +1,8 @@
-package GestionTache;
+package Model;
 
-import GestionPaiement.*;
-import GestionDonnes.*;
+import Model.Competence;
+import Model.Client;
+import Model.Intervenant;
 import java.util.ArrayList;
 
 public class Tache {
@@ -18,8 +19,8 @@ public class Tache {
     protected ClientEvaluation clientEvaluation;
     private Client client;
     private Paiement paiement;  
-    private ArrayList<Intervenant> listInters;
     private ArrayList<RecuPaiement> listRecus;
+    private ArrayList<Competence> competences;
     
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
@@ -32,6 +33,10 @@ public class Tache {
         this.dateFin = dateFin;
     }
    
+    public ArrayList<Competence> getCompetences() {
+        return this.competences;
+    }
+    
     class ClientEvaluation{
         private int nbEtoileQualite;
         private int nbEtoileDelai;
@@ -71,6 +76,10 @@ public class Tache {
 
     public String getNomTache() {
         return nomTache;
+    }
+    
+    public Client getClient() {
+        return this.client;
     }
 
     public String getDescription() {
@@ -170,6 +179,13 @@ public class Tache {
     //evaluation tache
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
        this.clientEvaluation=new ClientEvaluation(nbEtoileQualite,nbEtoileDelai,commentaire);
+       float originNote = this.client.getNoteC();
+       int note=(nbEtoileQualite+nbEtoileDelai)/2;
+       if(commentaire.matches(".*bien.*")
+               ||commentaire.matches(".*bravo.*")){
+           note++;
+       }
+       this.client.setNoteC(note+originNote);
     }
 
     public void setPaiement(Paiement p) {
@@ -180,4 +196,13 @@ public class Tache {
         this.listRecus.add(rp);
     }   
 
+    public void affecterTache() { 
+    // lister les interveant qui ont les compétences nécissaire de tâche, classer de l'ordre décroissante de la note de 
+                                       
+    }
+    
+    public void ajouterCompetence(Competence c){
+        this.competences.add(c);
+    }
 }
+

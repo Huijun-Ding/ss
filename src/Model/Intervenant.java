@@ -1,7 +1,5 @@
-package GestionDonnes;
+package Model;
 import java.util.ArrayList;
-import GestionTache.Tache;
-import GestionPaiement.RecuPaiement;
 
 public class Intervenant {
     protected int numInterv; 
@@ -10,11 +8,33 @@ public class Intervenant {
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
-    protected String noteIn;
+    protected float noteIn;
+    //待分配的任务？
+    private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
-    private ArrayList<RecuPaiement> listRecus;
+    private ArrayList<RecuPaiement> Recus;
+    private ArrayList<Competence> mesCompetences;
+    
+    
+    public void etreAffecte(Tache t){
+        this.listTachesRecevoir.add(t);
+    }
+    
+     public void supprimerAffecte(Tache t){
+        this.listTachesRecevoir.remove(t);
+    }
+    
+    public boolean accepterTache(Tache t){
+        this.listTaches.add(t);
+        this.listTachesRecevoir.remove(t);
+        return true;
+    }
+    public boolean  refuserTache(Tache t){
+        this.listTachesRecevoir.remove(t);
+        return false;
+    }
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, String noteIn) {
+    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -22,6 +42,10 @@ public class Intervenant {
         this.codePostalIn = codePostalIn;
         this.carteBancaireIn = carteBancaireIn;
         this.noteIn = noteIn;
+    }
+    
+    public ArrayList<Competence> getMesCompetences() {
+        return this.mesCompetences;
     }
 
     public int getNumInterv() {
@@ -48,7 +72,7 @@ public class Intervenant {
         return carteBancaireIn;
     }
 
-    public String getNoteIn() {
+    public float getNoteIn() {
         return noteIn;
     }
 
@@ -76,9 +100,11 @@ public class Intervenant {
         this.carteBancaireIn = carteBancaireIn;
     }
 
-    public void setNoteIn(String noteIn) {
+    public void setNoteIn(float noteIn) {
         this.noteIn = noteIn;
     }
     
+    public void setRecuPaiement(RecuPaiement rp) {
+        this.Recus.add(rp);
+    } 
 }
-

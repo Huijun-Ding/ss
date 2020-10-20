@@ -1,19 +1,9 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GestionTache;
 
 import GestionPaiement.*;
 import GestionDonnes.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author Mathi
- */
 public class Tache {
     protected String nomTache;
     protected String description;
@@ -30,6 +20,17 @@ public class Tache {
     private Paiement paiement;  
     private ArrayList<Intervenant> listInters;
     private ArrayList<RecuPaiement> listRecus;
+    
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+        this.nomTache = nomTache;
+        this.description = description;
+        this.nbPersonne = nbPersonne;
+        this.prix = prix;
+        this.domanineTache = domanineTache;
+        this.etat = etat;
+        this.dateDeb = dateDeb;
+        this.dateFin = dateFin;
+    }
    
     class ClientEvaluation{
         private int nbEtoileQualite;
@@ -66,16 +67,6 @@ public class Tache {
             this.commentaire = commentaire;
         }
         
-    }
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
-        this.nomTache = nomTache;
-        this.description = description;
-        this.nbPersonne = nbPersonne;
-        this.prix = prix;
-        this.domanineTache = domanineTache;
-        this.etat = etat;
-        this.dateDeb = dateDeb;
-        this.dateFin = dateFin;
     }
 
     public String getNomTache() {
@@ -180,14 +171,14 @@ public class Tache {
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
        this.clientEvaluation=new ClientEvaluation(nbEtoileQualite,nbEtoileDelai,commentaire);
     }
-    
-   
-    
 
     public void setPaiement(Paiement p) {
         this.paiement = p;
     }
-          
-    
+
+    public void setRecuPaiement(RecuPaiement rp) {
+        this.listRecus.add(rp);
+    }   
+
 }
 

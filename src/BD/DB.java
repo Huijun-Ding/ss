@@ -9,10 +9,6 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**
- *
- * @author mamad
- */
 public class DB {
     
     private String BDD;

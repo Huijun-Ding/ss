@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GestionDonnes;
 
-import GestionTache.Tache;
-import GestionTache.TacheComplexe;
-import GestionTache.TacheMassive;
 import GestionTache.TacheSimple;
-
+import GestionTache.TacheMassive;
+import GestionTache.TacheComplexe;
+import GestionTache.Tache;
 import java.util.ArrayList;
 
-/**
- *
- * @author Mathi
- */
 public class Client {
 
     protected int numClient;

@@ -45,26 +45,7 @@ public class Client {
         this.email=email;
         ArrayList<Client> lstusers = new ArrayList<Client>();
     }
-    public Client(){
-        try { 
-        DB db = new DB("bd_dolt", "jdbc:mysql://localhost:3306/", "root", "");
-        db.connexion();
-        Statement st = null;
-        ResultSet srs = st.executeQuery("SELECT * FROM client");
-        
-        while (srs.next()) {
-                Client newclient = new Client();
-                
-                newclient.(srs.getString("name"));
-                newclient.setJobtitle(srs.getString("jobtitle"));
-                newclient.setFrequentflyer(srs.getInt("frequentflyer"));
-                lstusers.add(newclient);
-            }
-        }catch (Exception e) {
-            System.err.println("Got an exception! ");
-            System.err.println(e.getMessage());
-        }
-    }
+   
     
     public Client(String email,String password){
      this.password=password;
@@ -84,7 +65,6 @@ public class Client {
     }
     
      public static void inscription(){
-       
          Client clientconnect = null;
           while(true){
           System.out.println("Saisez votre nom d'utilisateur");

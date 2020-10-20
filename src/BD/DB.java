@@ -38,8 +38,25 @@ public class DB {
         
     }
     
-<<<<<<< HEAD
+     public Client(){
+        try { 
+        DB db = new DB("bd_dolt", "jdbc:mysql://localhost:3306/", "root", "");
+        db.connexion();
+        Statement st = null;
+        ResultSet srs = st.executeQuery("SELECT * FROM client");
+        
+        while (srs.next()) {
+                Client newclient = new Client();
+                
+                newclient.(srs.getString("name"));
+                newclient.setJobtitle(srs.getString("jobtitle"));
+                newclient.setFrequentflyer(srs.getInt("frequentflyer"));
+                lstusers.add(newclient);
+            }
+        }catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+    }
 }
-=======
-}
->>>>>>> origin/develop
+

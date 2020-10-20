@@ -26,8 +26,6 @@ public class Entreprise extends Client{
         this.prenomCorrespondant = prenomCorrespondant;
         this.domaine = domaine;
     }
-<<<<<<< HEAD
-=======
 
     public String getRaisonSocial() {
         return raisonSocial;
@@ -68,7 +66,6 @@ public class Entreprise extends Client{
     public void setDomaine(String domaine) {
         this.domaine = domaine;
     }
->>>>>>> develop
     
 }
 

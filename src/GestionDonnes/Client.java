@@ -6,6 +6,12 @@
  */
 package GestionDonnes;
 
+import GestionTache.Tache;
+import GestionTache.TacheComplexe;
+import GestionTache.TacheMassive;
+import GestionTache.TacheSimple;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mathi
@@ -18,6 +24,7 @@ public class Client {
     protected String codePostalC;
     protected String carteBancaire; 
     protected String noteC;
+    private ArrayList<Tache> taches;
 
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
         this.numClient = numClient;
@@ -85,5 +92,42 @@ public class Client {
         this.noteC = noteC;
     }
     
+    
+    public ArrayList<Object> getListNomTaches(){
+        ArrayList<Object> historiques= new ArrayList();
+        for(Tache tache: this.taches){
+            if(tache instanceof TacheSimple){
+                TacheSimple tacheSimple=(TacheSimple)tache;
+                historiques.add(tacheSimple.getNomTache());
+            }
+            if(tache instanceof TacheComplexe){
+                TacheComplexe tacheComplexe=(TacheComplexe)tache;
+                historiques.add(tacheComplexe.getNomTache());
+                
+            }
+            if(tache instanceof TacheMassive){
+                TacheMassive tacheMassive=(TacheMassive)tache;
+                ArrayList<String> nomSousTache= new ArrayList();
+                nomSousTache.add(tacheMassive.getNomTache());
+                for(Tache ta: this.tachMassive.getListTaches()){
+                    if(ta instanceof TacheSimple){
+                        TacheSimple tacheSimple=(TacheSimple)ta;
+                        nomSousTache.add(tacheSimple.getNomTache());
+                    }
+                    if(ta instanceof TacheComplexe){
+                        TacheComplexe tacheComplexe=(TacheComplexe)ta;
+                        nomSousTache.add(tacheComplexe.getNomTache());
+                    }
+                }
+                 historiques.add(tacheMassive.getNomTache());
+            }
+        }
+        return historiques;
+    }
+    
+    
+    public void consulterTache(String nomTache){
+        
+    }
 }
 

@@ -162,7 +162,6 @@ public class Tache {
         this.dateFin = dateFin;
     }
   
-<<<<<<< HEAD
     // annuler une tâche s'il la tâche n'est pas encore distribué
    public void annuler(){
        if(this.etat=="en cours"){

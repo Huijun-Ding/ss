@@ -9,11 +9,13 @@ public class Intervenant {
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected float noteIn;
+    protected String email;
+    protected String password;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
     private ArrayList<Competence> mesCompetences;
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
+    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn, String email, String password, ArrayList<Tache> listTaches, ArrayList<RecuPaiement> Recus, ArrayList<Competence> mesCompetences) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -21,10 +23,30 @@ public class Intervenant {
         this.codePostalIn = codePostalIn;
         this.carteBancaireIn = carteBancaireIn;
         this.noteIn = noteIn;
+        this.email = email;
+        this.password = password;
+        this.listTaches = listTaches;
+        this.Recus = Recus;
+        this.mesCompetences = mesCompetences;
     }
+
+    public Intervenant() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
+  
     
     public ArrayList<Competence> getMesCompetences() {
         return this.mesCompetences;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public int getNumInterv() {
@@ -86,5 +108,15 @@ public class Intervenant {
     public void setRecuPaiement(RecuPaiement rp) {
         this.Recus.add(rp);
     } 
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 }
 

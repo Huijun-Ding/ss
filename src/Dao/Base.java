@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class Base {
     public Connection con = new DB().getCon();
+    
 	public void closeDao(){
 		try {
 			con.close();

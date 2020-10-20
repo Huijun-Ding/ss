@@ -17,8 +17,7 @@ public class DB {
 	private String dbUserName="root";
 	private String dbPassword="";
 	private String jdbcName="com.mysql.jdbc.Driver";
-
-        
+    
                 public Connection getCon(){
 		try {
 			Class.forName(jdbcName);

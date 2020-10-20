@@ -83,7 +83,20 @@ public class Client {
     public void setNoteC(int noteC) {
         this.noteC = noteC;
     }
+    // annuler une tâche s'il la tâche n'est pas encore distribué
+   public void annuler(Tache tache){
+       if(tache.getEtat()=="en cours"){
+           tache.setEtat("anuler");
+       }
+   }
+   
+   //validation tache
+    public void valider(Tache tache){
+        if(tache.getEtat()=="termine"){
+            tache.setEtat("valide");
+        }
 
+   }
     public ArrayList<Object> getListNomTaches() {
         ArrayList<Object> historiques = new ArrayList();
         for (Tache tache : this.taches) {

@@ -1,18 +1,8 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GestionDonnes;
-
 import java.util.ArrayList;
 import GestionTache.Tache;
 import GestionPaiement.RecuPaiement;
-/**
- *
- * @author Mathi
- */
+
 public class Intervenant {
     protected int numInterv; 
     protected String telInterv; 
@@ -22,6 +12,7 @@ public class Intervenant {
     protected String carteBancaireIn; 
     protected String noteIn;
     private ArrayList<Tache> listTaches;
+    private ArrayList<RecuPaiement> listRecus;
 
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, String noteIn) {
         this.numInterv = numInterv;
@@ -88,8 +79,6 @@ public class Intervenant {
     public void setNoteIn(String noteIn) {
         this.noteIn = noteIn;
     }
-    
-    
     
 }
 

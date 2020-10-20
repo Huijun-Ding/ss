@@ -8,7 +8,7 @@ import java.util.Date;
 public class Paiement {
     private int numP;
     private Date dateP;
-    private int montantP;
+    private float montantP;
 
     public Paiement() {
     }
@@ -39,7 +39,7 @@ public class Paiement {
         return dateP;
     }
 
-    public int getMontantP() {
+    public float getMontantP() {
         return montantP;
     }
 

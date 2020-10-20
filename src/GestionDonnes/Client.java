@@ -25,6 +25,9 @@ public class Client {
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
 
+
+
+
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
         this.numClient = numClient;
         this.telClient = telClient;

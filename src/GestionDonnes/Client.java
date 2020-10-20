@@ -1,19 +1,8 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GestionDonnes;
 
 import GestionTache.Tache;
-
 import java.util.ArrayList;
 
-/**
- *
- * @author Mathi
- */
 public class Client {
     protected int numClient; 
     protected String telClient; 
@@ -23,7 +12,6 @@ public class Client {
     protected String carteBancaire; 
     protected String noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
-
 
     public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String noteC) {
         this.numClient = numClient;

@@ -27,6 +27,7 @@ public class ClientDao {
             String sqlclient = "select * from client where EmailC=? and Password=? ";
             Client clientres = null;
             Query go = new Query();
+            
             go.parameter.add(email);
             go.parameter.add(mdp);
            

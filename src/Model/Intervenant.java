@@ -8,6 +8,7 @@ public class Intervenant {
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
+    protected String motdepasseI;
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
@@ -121,5 +122,12 @@ public class Intervenant {
             mesTaches = mesTaches + " - " + this.listTaches.get(i);
         }
         return mesTaches;
+    }
+
+    public void setMotdepasseI(String motdepasseI) {
+        this.motdepasseI = motdepasseI;
+    }
+    public String getMotdepasseI(){
+        return this.motdepasseI;
     }
 }

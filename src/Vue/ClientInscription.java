@@ -59,8 +59,8 @@ public class ClientInscription extends JFrame {
         //创建两个按钮
         btnRegC = new JButton("OK");
         btnCancelC = new JButton("Reset");
-        btnRegC.addActionListener(new ActionListener() {
 
+        btnRegC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //设置信息标签为空 清楚原来的历史信息

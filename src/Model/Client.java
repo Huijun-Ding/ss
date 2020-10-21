@@ -28,12 +28,11 @@ public class Client {
         this.password = password;
     }
 
-    public Client() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     public Client(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          this.email = email;
+        this.password = password;  //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getEmail() {

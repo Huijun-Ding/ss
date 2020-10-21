@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DB {
-         private String dbUrl="jdbc:mysql://localhost:3306/bd_dolt";
+         private String dbUrl="jdbc:mysql://localhost:8081/bd_dolt";
 	private String dbUserName="root";
 	private String dbPassword="";
 	private String jdbcName="com.mysql.jdbc.Driver";

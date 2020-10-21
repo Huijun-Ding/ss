@@ -7,7 +7,7 @@ package Dao;
 import BD.DB;
 import Model.Client;
 import java.util.Scanner;
-import Dao.ClientConnect;
+
 /**
  *
  * @author 92930
@@ -28,34 +28,34 @@ public class Test {
 		default:
 			System.out.println("Le format d'entrée est incorrect, veuillez le saisir à nouveau");
 		}
-    
+                 }
     /**
      *
      */
                  public void login() {
-		DB dbUtil = new DB();
+		DatabaseUtil dbUtil = new DatabaseUtil();
 		Scanner s = new Scanner(System.in);
 		System.out.println("Saisez votre nom d'utilisateur");
 		String email = s.next().trim();
 		System.out.println("Entrerez le mot de passe:");
 		String password = s.next().trim();
 		Client user = new  Client(email, password );
-
-		if (ClientConnect.isLogin(user)) {
-			System.out.println("connexion réussie");
+                 if (dbUtil.isLogin(user)) {
+			System.out.println("登录成功...");
 		} else {
-			System.out.println("Échec de la connexion");
-		}}
+			System.out.println("登陆失败...");
+		}
+                 }
     
-                public void register() {
-		DB dbUtil = new DB();
+                 public void register() {
+	        DatabaseUtil dbUtil = new DatabaseUtil();
 		Scanner s = new Scanner(System.in);
 		System.out.println("Saisez votre nom d'utilisateur");
 		String uname = s.next().trim();
 		System.out.println("Entrerez le mot de passe:");
 		String upwd = s.next().trim();
-		ClientConnect.register(uname, upwd);
+		dbUtil.register(uname, upwd);
 	}
-	}
-    
+	
+}
     

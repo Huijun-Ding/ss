@@ -9,7 +9,6 @@ public class Intervenant {
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected float noteIn;
-    //待分配的任务？
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;

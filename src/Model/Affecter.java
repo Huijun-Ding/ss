@@ -46,7 +46,7 @@ public class Affecter {
         }
     }
 
-    public void affecterTache() {
+    public void affecterTache() {//人工定期激活，或者等待时间自动激活分配函数
         Timer timer = new Timer();
         if (nbAccept < nb) {
             timer.schedule(new TimerTask() {
@@ -59,7 +59,7 @@ public class Affecter {
                     }
 
                     for (int i = 0; i < listAttende.size(); i++) {
-                        if (listCandidats.get(i).accepterTache(tache)) {
+                        if (listCandidats.get(i).getReponse()) {
                             intervenants.add(listCandidats.get(i));
                             nbAccept += 1;
                         }

@@ -160,7 +160,7 @@ public class Connecter {
                         case 1:
                             if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
                                 jFrame.setVisible(false);
-                                RecommanderTache re = new RecommanderTache();
+                                RecommanderTache re = new RecommanderTache(contoler.seekIntervenant(strE));
                                 re.getjFrame().setVisible(true);
                             } else {
                                 lbIMsgI.setText("password is wrong");

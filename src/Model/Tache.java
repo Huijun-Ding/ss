@@ -13,7 +13,7 @@ public class Tache {
     protected int numTache;
     protected float prix;
     protected String domanineTache;
-    protected String etat;
+    protected EnumEtat etat;
     protected String dateDeb;
     protected String dateFin;
     protected ClientEvaluation clientEvaluation;
@@ -22,7 +22,7 @@ public class Tache {
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
     
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
         this.description = description;
         this.nbPersonne = nbPersonne;
@@ -106,7 +106,7 @@ public class Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 
@@ -150,7 +150,7 @@ public class Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EnumEtat etat) {
         this.etat = etat;
     }
 
@@ -161,8 +161,6 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
- 
-    
     
     //evaluation tache
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
@@ -184,11 +182,6 @@ public class Tache {
         this.listRecus.add(rp);
     }   
 
-    public void affecterTache() { 
-    // lister les interveant qui ont les compétences nécissaire de tâche, classer de l'ordre décroissante de la note de 
-                                       
-    }
-    
     public void ajouterCompetence(Competence c){
         this.competences.add(c);
     }

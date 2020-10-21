@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TacheComplexe extends Tache {
        private ArrayList<Tache> listTaches;
        
-    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin);
     }
 
@@ -45,7 +45,7 @@ public class TacheComplexe extends Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 
@@ -85,7 +85,7 @@ public class TacheComplexe extends Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EnumEtat etat) {
         this.etat = etat;
     }
 

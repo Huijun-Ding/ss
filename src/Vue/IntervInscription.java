@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class IntervInscription extends JFrame {
+
     //声明组件
     private JPanel p;
-    private JLabel lbNameI,lbNumI,lbTelI,lbEmailI,lbCompetenceI,lbRueI,lbVilleI,lbCPI, lblPwdI, lbRePwdI, lbAddressI, lbIMsgI;
+    private JLabel lbNameI, lbNumI, lbTelI, lbEmailI, lbCompetenceI, lbRueI, lbVilleI, lbCPI, lblPwdI, lbRePwdI, lbAddressI, lbIMsgI;
 
     //声明文本框
-    private JTextField txtNameI,txtNumI,txtTelI,txtCompetenceI,txtEmailI,txtRueI,txtVilleI,txtCPI;
+    private JTextField txtNameI, txtNumI, txtTelI, txtCompetenceI, txtEmailI, txtRueI, txtVilleI, txtCPI;
     //声明两个密码框
     private JPasswordField txtPwdI, txtRePwdI;
     //声明一个文本域
@@ -19,23 +22,41 @@ public class IntervInscription extends JFrame {
     private JButton btnRegI, btnCancelI;
 
 
+    String[] listData = new String[]{"Java", "Php", "C++", "Python"};
+
+    // 创建一个下拉列表框
+    final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
     public IntervInscription() {
 
         super("IntervInscription");
         //创建面板，面板布局为NULL
         p = new JPanel(null);
+
+        // 添加条目选中状态改变的监听器
+        comboBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // 只处理选中的状态
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    System.out.println("选中: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
+                }
+            }
+        });
+
+        // 设置默认选中的条目
+        comboBox.setSelectedIndex(2);
         //实例化5个标签
         lbNameI = new JLabel("Nom");
         lbNumI = new JLabel("Prenom");
-        lbTelI=new JLabel("Tele");
-        lbEmailI=new JLabel("Email");
-        lbRueI=new JLabel("Rue");
-        lbVilleI=new JLabel("Ville");
-        lbCPI=new JLabel("CodePostal");
+        lbTelI = new JLabel("Tele");
+        lbEmailI = new JLabel("Email");
+        lbRueI = new JLabel("Rue");
+        lbVilleI = new JLabel("Ville");
+        lbCPI = new JLabel("CodePostal");
         lblPwdI = new JLabel("password");
         lbRePwdI = new JLabel("check password");
-        lbAddressI = new JLabel("addresse");
+        lbCompetenceI = new JLabel("competence");
         //显示信息的标签
         lbIMsgI = new JLabel();
         //设置标签的文字是红色
@@ -55,7 +76,7 @@ public class IntervInscription extends JFrame {
         txtPwdI.setEchoChar('*');
         txtRePwdI.setEchoChar('*');
         //创建一个文本域  20,2
-        txtAddressI = new JTextArea(20, 2);
+
         //创建两个按钮
         btnRegI = new JButton("OK");
         btnCancelI = new JButton("Reset");
@@ -121,7 +142,6 @@ public class IntervInscription extends JFrame {
                 txtCPI.setText("");
                 txtPwdI.setText("");
                 txtRePwdI.setText("");
-                txtAddressI.setText("");
                 //设置信息标签为空
                 lbIMsgI.setText("");
 
@@ -145,15 +165,18 @@ public class IntervInscription extends JFrame {
         txtPwdI.setBounds(95, 240, 120, 25);
         lbRePwdI.setBounds(30, 270, 60, 25);
         txtRePwdI.setBounds(95, 270, 120, 25);
-        lbAddressI.setBounds(30, 300, 60, 25);
-        txtAddressI.setBounds(95, 300, 120, 25);
+        lbCompetenceI.setBounds(30, 300, 60, 25);
+        //txtAddressI.setBounds(95, 300, 120, 25);
         lbIMsgI.setBounds(60, 185, 180, 25);
         btnRegI.setBounds(60, 350, 100, 25);
         btnCancelI.setBounds(170, 350, 100, 25);
+        comboBox.setBounds(95,300,60,25);
 
 
 
 
+        // 添加到内容面板
+        p.add(comboBox);
 
 
         //添加所有组件
@@ -175,17 +198,18 @@ public class IntervInscription extends JFrame {
         p.add(lblPwdI);
         p.add(txtRePwdI);
         p.add(lbRePwdI);
-        p.add(txtAddressI);
-        p.add(lbAddressI);
+      //  p.add(txtAddressI);
+        p.add(lbCompetenceI);
         p.add(lbIMsgI);
         p.add(btnRegI);
         p.add(btnCancelI);
 
 
         this.add(p);
-        this.setSize(350, 450);
-        this.setLocation(200, 100);
+        this.setSize(350, 500);
+        this.setLocationRelativeTo(null);//setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(p);
         this.setVisible(true);
     }
 }

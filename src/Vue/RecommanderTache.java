@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class RecommanderTache {
 
-    private JFrame jFrame = new JFrame("Mes taches recommandees");
+    private JFrame jFrame = new JFrame("Creation de Tache");
     private Container c = jFrame.getContentPane();
     private JLabel lbNom = new JLabel("Nom de Tache");
     private JLabel lbNomTache = new JLabel("...");
@@ -73,6 +73,8 @@ public class RecommanderTache {
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
         c.add(buttonPanel, "South");
+
+        jFrame.setLocationRelativeTo(null);
     }
 }
 

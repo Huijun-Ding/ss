@@ -1,4 +1,3 @@
-
 package Model;
 
 import java.util.ArrayList;
@@ -92,20 +91,21 @@ public class Client {
     public void setNoteC(float noteC) {
         this.noteC = noteC;
     }
-    // annuler une tâche s'il la tâche n'est pas encore distribué
-   public void annuler(Tache tache){
-       if(tache.getEtat()=="en cours"){
-           tache.setEtat("anuler");
-       }
-   }
-   
-   //validation tache
-    public void valider(Tache tache){
-        if(tache.getEtat()=="termine"){
-            tache.setEtat("valide");
-        }
 
-   }
+    // annuler une tâche s'il la tâche n'est pas encore distribué
+    public void annuler(Tache tache) {
+        if (tache.getEtat() == EnumEtat.EN_COURS) {
+            tache.setEtat(EnumEtat.ANNULEE);
+        }
+    }
+
+    //validation tache
+    public void valider(Tache tache) {
+        if (tache.getEtat() == EnumEtat.FINALISEE_INTER) {
+            tache.setEtat(EnumEtat.VALIDEE_CLIENT);
+        }
+    }
+
     public ArrayList<Object> getListNomTaches() {
         ArrayList<Object> historiques = new ArrayList();
         for (Tache tache : this.taches) {
@@ -142,6 +142,7 @@ public class Client {
     public void consulterTache(String nomTache) {
 
     }
+<<<<<<< HEAD
     
     public void addTache(Tache tache){
         this.taches.add(tache);
@@ -156,4 +157,7 @@ public class Client {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
+=======
+
+>>>>>>> 9e96e5c6363e89187af5a6f0e60c2744f0a61152
 }

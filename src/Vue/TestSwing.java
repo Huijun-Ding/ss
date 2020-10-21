@@ -1,6 +1,5 @@
 package Vue;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -28,7 +27,7 @@ public class TestSwing {
 
         // 设置界面可见
         frame.setVisible(true);*/
-        new LoginDemo();
+        new IntervInscription();
     }
 
     private static void placeComponents(JPanel panel) {

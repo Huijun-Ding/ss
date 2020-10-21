@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class  LoginDemo extends JFrame {
+public class ClientInscription extends JFrame {
 
     //声明组件
     private JPanel p;
@@ -20,7 +20,7 @@ public class  LoginDemo extends JFrame {
     private JTextArea txtAddressC;
     private JButton btnRegC, btnCancelC;
 
-    public LoginDemo() {
+    public ClientInscription() {
 
         super("Inscription-Client");
         //创建面板，面板布局为NULL

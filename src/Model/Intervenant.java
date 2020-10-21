@@ -9,7 +9,6 @@ public class Intervenant {
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected float noteIn;
-    //待分配的任务？
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
@@ -105,6 +104,22 @@ public class Intervenant {
     }
     
     public void setRecuPaiement(RecuPaiement rp) {
-        this.Recus.add(rp);
+        if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
+            this.Recus.add(rp);
+        }
     } 
+    
+    public void finaliser(Tache tache) {
+        if (tache.getEtat() == EnumEtat.PAYEE) {
+            tache.setEtat(EnumEtat.FINALISEE_INTER);
+        }
+    }
+    
+    public String consulterTache() {
+        String mesTaches = "";
+        for (int i=0; i<this.listTaches.size(); i++) {
+            mesTaches = mesTaches + " - " + this.listTaches.get(i);
+        }
+        return mesTaches;
+    }
 }

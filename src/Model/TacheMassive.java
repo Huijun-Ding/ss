@@ -4,7 +4,7 @@ import Model.Tache;
 
 public class TacheMassive extends Tache {
     
-    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
     }
 
@@ -36,7 +36,7 @@ public class TacheMassive extends Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 
@@ -76,7 +76,7 @@ public class TacheMassive extends Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EnumEtat etat) {
         this.etat = etat;
     }
 

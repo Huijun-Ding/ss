@@ -6,7 +6,7 @@ public class TacheSimple extends Tache {
     
     Intervenant intervenant;
 
-    public TacheSimple(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+    public TacheSimple(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
     }
 
@@ -47,7 +47,7 @@ public class TacheSimple extends Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 

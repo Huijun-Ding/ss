@@ -182,8 +182,6 @@ public class IntervInscription extends JFrame {
         p.add(btnCancelI);
 
 
-
-
         this.add(p);
         this.setSize(350, 450);
         this.setLocation(200, 100);

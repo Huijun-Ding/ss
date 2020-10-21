@@ -1,9 +1,14 @@
 package Vue;
 
+import Controler.ControlerInterface;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RecommanderTache {
+    private ControlerInterface controler;
 
     private JFrame jFrame = new JFrame("Recommande");
     private Container c = jFrame.getContentPane();
@@ -77,6 +82,30 @@ public class RecommanderTache {
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
         c.add(buttonPanel, "South");
+
+
+
+        okbtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == okbtn) {
+
+                }
+            }
+        });
+
+
+        cancelbtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == cancelbtn) {
+
+                }
+            }
+        });
+
 
         jFrame.setLocationRelativeTo(null);
     }

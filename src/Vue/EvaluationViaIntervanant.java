@@ -2,11 +2,18 @@ package Vue;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
 
 public class EvaluationViaIntervanant {
 
     private JFrame jFrame = new JFrame("Evaluation Via Intervenant");
     private Container c = jFrame.getContentPane();
+    private String saveValue1=null;
+    private String saveValue2=null;
+    private String saveValue3=null;
     private JLabel lbIndicateur = new JLabel("Indicateur");
     private JLabel lbEvaluation = new JLabel("Evaluation");
     private JLabel lbI1 = new JLabel("<html><body><p >correspondance entre la tache telle que decrite et<br/> la tache effectivement realisee</p></body></html> ");
@@ -33,6 +40,10 @@ public class EvaluationViaIntervanant {
     private JRadioButton radioBtn304 = new JRadioButton("4");
     private JRadioButton radioBtn305 = new JRadioButton("5");
 
+    private RadioButtonListener1 radioButtonListener1=new RadioButtonListener1();
+    private RadioButtonListener2 radioButtonListener2=new RadioButtonListener2();
+    private RadioButtonListener3 radioButtonListener3=new RadioButtonListener3();
+
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("cancel");
 
@@ -56,6 +67,12 @@ public class EvaluationViaIntervanant {
         btnGroup1.add(radioBtn103);
         btnGroup1.add(radioBtn104);
         btnGroup1.add(radioBtn105);
+
+        radioBtn101.addActionListener(radioButtonListener1);
+        radioBtn102.addActionListener(radioButtonListener1);
+        radioBtn103.addActionListener(radioButtonListener1);
+        radioBtn104.addActionListener(radioButtonListener1);
+        radioBtn105.addActionListener(radioButtonListener1);
         // 设置第一个单选按钮选中
         // radioBtn101.setSelected(true);
 
@@ -65,6 +82,13 @@ public class EvaluationViaIntervanant {
         btnGroup2.add(radioBtn203);
         btnGroup2.add(radioBtn204);
         btnGroup2.add(radioBtn205);
+
+
+        radioBtn201.addActionListener(radioButtonListener2);
+        radioBtn202.addActionListener(radioButtonListener2);
+        radioBtn203.addActionListener(radioButtonListener2);
+        radioBtn204.addActionListener(radioButtonListener2);
+        radioBtn205.addActionListener(radioButtonListener2);
         // 设置第一个单选按钮选中
        // radioBtn201.setSelected(true);
 
@@ -74,6 +98,12 @@ public class EvaluationViaIntervanant {
         btnGroup3.add(radioBtn303);
         btnGroup3.add(radioBtn304);
         btnGroup3.add(radioBtn305);
+
+        radioBtn301.addActionListener(radioButtonListener3);
+        radioBtn302.addActionListener(radioButtonListener3);
+        radioBtn303.addActionListener(radioButtonListener3);
+        radioBtn304.addActionListener(radioButtonListener3);
+        radioBtn305.addActionListener(radioButtonListener3);
         // 设置第一个单选按钮选中
        // radioBtn301.setSelected(true);
 
@@ -135,7 +165,70 @@ public class EvaluationViaIntervanant {
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
         c.add(buttonPanel, "South");
+
+        okbtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String note1 =saveValue1;
+                String note2 =saveValue2;
+                String note3 =saveValue3;
+                String commentaire=lbCommentaire.getText();
+                //实例化一个evaluation 并存到BD中
+
+
+            }
+        });
+
+
+        cancelbtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //清空所有文本信息
+                lbCommentaire.setText("");
+
+            }
+        });
+
+
+
         jFrame.setLocationRelativeTo(null);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+
+    public class RadioButtonListener1 implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            JRadioButton temp=(JRadioButton)arg0.getSource();
+            if(temp.isSelected()){
+                saveValue1=temp.getText();
+            }
+        }
+
+    }
+    public class RadioButtonListener2 implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            JRadioButton temp=(JRadioButton)arg0.getSource();
+            if(temp.isSelected()){
+                saveValue2=temp.getText();
+            }
+        }
+
+    }
+    public class RadioButtonListener3 implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            JRadioButton temp=(JRadioButton)arg0.getSource();
+            if(temp.isSelected()){
+                saveValue3=temp.getText();
+            }
+        }
+
     }
 }

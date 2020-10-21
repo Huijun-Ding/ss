@@ -14,20 +14,23 @@ import java.util.Map;
 public class Query {
 
     private static Connection conn = null;
-    private static PreparedStatement ps = null;
+    public static PreparedStatement ps = null;
     private static ResultSet rs = null;
     public static String SQLsen = null;
 
     public static ArrayList<Object> parameter = new ArrayList<>();
 
     public static void Query() {
-        DB.createConn();
+       conn= DB.createConn();
+        System.out.println("hello");
     }
 
     public static void afferentSQL(String Sqlsentence) {
         try {
             SQLsen = Sqlsentence;
+            System.out.println(SQLsen);  
             ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

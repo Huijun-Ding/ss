@@ -32,6 +32,10 @@ public class Tache {
         this.dateDeb = dateDeb;
         this.dateFin = dateFin;
     }
+
+    public Tache() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
     public ArrayList<Competence> getCompetences() {
         return this.competences;

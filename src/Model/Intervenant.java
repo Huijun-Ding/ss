@@ -9,9 +9,30 @@ public class Intervenant {
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected float noteIn;
+    //待分配的任务？
+    private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
     private ArrayList<Competence> mesCompetences;
+    
+    
+    public void etreAffecte(Tache t){
+        this.listTachesRecevoir.add(t);
+    }
+    
+     public void supprimerAffecte(Tache t){
+        this.listTachesRecevoir.remove(t);
+    }
+    
+    public boolean accepterTache(Tache t){
+        this.listTaches.add(t);
+        this.listTachesRecevoir.remove(t);
+        return true;
+    }
+    public boolean  refuserTache(Tache t){
+        this.listTachesRecevoir.remove(t);
+        return false;
+    }
 
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
         this.numInterv = numInterv;
@@ -87,4 +108,3 @@ public class Intervenant {
         this.Recus.add(rp);
     } 
 }
-

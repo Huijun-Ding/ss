@@ -2,12 +2,19 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 
 public class Affecter {
     private ArrayList<Intervenant> listAllInters;
     private ArrayList<Intervenant> listCandidats;
     private ArrayList<Intervenant> intervenants;
     private Tache tache;
+    private ArrayList<Intervenant> listAttende ;
+    private int nb = tache.getNbPersonne();
+    private int nbAccept=0;
+   
+    
     
     public void addListAllInters(Intervenant a) {
         this.listAllInters.add(a);
@@ -38,8 +45,30 @@ public class Affecter {
     }
 
     public void affecterTache() {
-        int nb = tache.getNbPersonne() * 3;
-        
-        
+
+        if (nbAccept<nb){ 
+            for(int i=0;i<nb-nbAccept;i++){  
+        listCandidats.get(i).etreAffecte(tache);  // informer l'intervenant qu,'il a tache a recevoir
+        listCandidats.remove(listCandidats.get(i));
+        listAttende.add(listCandidats.get(i));
+        }
+            //加时间条件
+            for(int i=0;i<listAttende.size();i++){
+                if (listCandidats.get(i).accepterTache(tache)){
+                    intervenants.add(listCandidats.get(i));
+                    nbAccept++;}
+            }
+            
+        }
+       
+              
     }
+    public void supprimerTache(){
+        if (nbAccept==nb){  // si le nombre de personne qui accepte la tache est egal au  nbPersonne
+        for(int i=0;i<listAttende.size();i++){
+            listAttende.get(i).supprimerAffecte(tache);
+        }
+        }
+    }
+
  }

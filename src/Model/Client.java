@@ -10,6 +10,7 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
+    protected String motdepasseC;
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
@@ -130,4 +131,11 @@ public class Client {
 
     }
 
+    public String getMotdepasseC() {
+        return motdepasseC;
+    }
+
+    public void setMotdepasseC(String motdepasseC) {
+        this.motdepasseC = motdepasseC;
+    }
 }

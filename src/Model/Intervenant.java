@@ -115,4 +115,12 @@ public class Intervenant {
             tache.setEtat(EnumEtat.FINALISEE_INTER);
         }
     }
+    
+    public String consulterTache() {
+        String mesTaches = "";
+        for (int i=0; i<this.listTaches.size(); i++) {
+            mesTaches = mesTaches + " - " + this.listTaches.get(i);
+        }
+        return mesTaches;
+    }
 }

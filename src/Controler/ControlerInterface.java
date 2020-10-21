@@ -1,6 +1,7 @@
 package Controler;
 
 import Model.Client;
+import Model.Entreprise;
 import Model.Intervenant;
 import Model.Tache;
 
@@ -43,6 +44,11 @@ public class ControlerInterface {
 
     public void putTacheInBD(Tache t){
 
+
+    }
+
+
+    public void putEntrepInBD(Entreprise en){
 
     }
 }

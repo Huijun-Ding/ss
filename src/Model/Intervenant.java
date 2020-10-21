@@ -34,7 +34,8 @@ public class Intervenant {
         return false;
     }
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
+    public Intervenant(String cb,int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
+        this.carteBancaireIn=cb;
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;

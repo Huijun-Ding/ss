@@ -17,14 +17,16 @@ public class Connecter {
     private JPasswordField password = new JPasswordField();
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("Cancel");
-    private JRadioButton radioBtn1 = new JRadioButton("Client");
+    private JButton inscription = new JButton("Inscription");
+    private JRadioButton radioBtn1 = new JRadioButton("Entreprise");
     private JRadioButton radioBtn2 = new JRadioButton("Intervenant");
-    private int identifiant=0;
+    private JRadioButton radioBtn3 = new JRadioButton("Particulier");
+    private int identifiant = 0;
     private ControlerInterface contoler;
 
     public Connecter() {
         //设置窗体的位置及大小
-        jFrame.setBounds(600, 200, 400, 280);
+        jFrame.setBounds(600, 200, 500, 280);
         //设置一层相当于桌布的东西
         c.setLayout(new BorderLayout());//布局管理器
         //设置按下右上角X号后关闭
@@ -49,6 +51,7 @@ public class Connecter {
         /*输入部分--Center*/
         ButtonGroup btnGroup1 = new ButtonGroup();
         btnGroup1.add(radioBtn1);
+        btnGroup1.add(radioBtn3);
         btnGroup1.add(radioBtn2);
 
 
@@ -62,10 +65,12 @@ public class Connecter {
         password.setBounds(190, 90, 120, 20);
         fieldPanel.add(username);
         fieldPanel.add(password);
-        radioBtn1.setBounds(100,130,100,20);
-        radioBtn2.setBounds(200,130,100,20);
+        radioBtn1.setBounds(100, 130, 100, 20);
+        radioBtn2.setBounds(300, 130, 100, 20);
+        radioBtn3.setBounds(200, 130, 100, 20);
         fieldPanel.add(radioBtn1);
         fieldPanel.add(radioBtn2);
+        fieldPanel.add(radioBtn3);
         radioBtn1.setSelected(true);
 
 
@@ -81,63 +86,93 @@ public class Connecter {
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
+        buttonPanel.add(inscription);
         c.add(buttonPanel, "South");
 
-        radioBtn1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                switch (e.getActionCommand()){
-                    case "Client":
-                        identifiant=0;
+        radioBtn1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                switch (e.getActionCommand()) {
+                    case "Entreprise":
+                        identifiant = 0;
                         break;
                     case "Intervenant":
-                        identifiant=1;
+                        identifiant = 1;
+                        break;
+                    case "Particulier":
+                        identifiant = 2;
                         break;
                 }
             }
         });
-        radioBtn2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                switch (e.getActionCommand()){
+        radioBtn2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                switch (e.getActionCommand()) {
                     case "Client":
-                        identifiant=0;
+                        identifiant = 0;
                         break;
                     case "Intervenant":
-                        identifiant=1;
+                        identifiant = 1;
+                        break;
+                    case "Particulier":
+                        identifiant = 2;
                         break;
                 }
             }
         });
-
-
+        radioBtn3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                switch (e.getActionCommand()) {
+                    case "Client":
+                        identifiant = 0;
+                        break;
+                    case "Intervenant":
+                        identifiant = 1;
+                        break;
+                    case "Particulier":
+                        identifiant = 2;
+                        break;
+                }
+            }
+        });
 
 
         okbtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == okbtn){
+                if (e.getSource() == okbtn) {
 
                     String strPwd = new String(password.getPassword());
                     String strE = new String(username.getText());
 
-                 switch (identifiant){
+                    switch (identifiant) {
                         case 0:
 
-                            if(contoler.checkPasswordC(contoler.seekClient(strE),strPwd)){
+                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
                                 jFrame.setVisible(false);
                                 ClientInterface cli = new ClientInterface();
                                 cli.getjFrame().setVisible(true);
-                            }else{
+                            } else {
                                 lbIMsgI.setText("password is wrong");
                             }
 
                             break;
                         case 1:
-                            if(contoler.checkPasswordI(contoler.seekIntervenant(strE),strPwd)){
+                            if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
                                 jFrame.setVisible(false);
                                 RecommanderTache re = new RecommanderTache();
                                 re.getjFrame().setVisible(true);
-                            }else{
+                            } else {
+                                lbIMsgI.setText("password is wrong");
+                            }
+
+                            break;
+                        case 2:
+                            if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
+                                jFrame.setVisible(false);
+                                ClientInterface cli = new ClientInterface();
+                                cli.getjFrame().setVisible(true);
+                            } else {
                                 lbIMsgI.setText("password is wrong");
                             }
 
@@ -161,19 +196,36 @@ public class Connecter {
 
             }
         });
-    }
 
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
-            case "Client":
-                identifiant=0;
-                break;
-            case "Intervenant":
-                identifiant=1;
-                break;
-        }
-    }
+        inscription.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == inscription) {
+                    switch (identifiant) {
+                        case 0:
+                            jFrame.setVisible(false);
+                            EntrepriseInscription cli = new EntrepriseInscription();
+                            cli.setVisible(true);
+                            break;
+                        case 1:
+                            jFrame.setVisible(false);
+                            IntervInscription i = new IntervInscription();
+                            i.setVisible(true);
+                            break;
+                        case 2:
+                            jFrame.setVisible(false);
+                            ParticulierInscription p = new ParticulierInscription();
+                            p.setVisible(true);
+
+                            break;
+                    }
+                }
+            }
+        });
+
+
+    }
 
 
 }

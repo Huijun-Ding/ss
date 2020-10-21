@@ -29,6 +29,7 @@ public class  LoginDemo extends JFrame {
         lbNameC = new JLabel("RaisonSocial");
         lbNumC = new JLabel("NoSiret");
         lbTelC=new JLabel("Tele");
+        lbEmailC=new JLabel("Email");
         lbRueC=new JLabel("Rue");
         lbVilleC=new JLabel("Ville");
         lbCPC=new JLabel("CodePostal");
@@ -43,6 +44,7 @@ public class  LoginDemo extends JFrame {
         txtNameC = new JTextField(20);
         txtNumC = new JTextField(30);
         txtTelC = new JTextField(20);
+        txtEmailC = new JTextField(20);
         txtRueC = new JTextField(20);
         txtVilleC = new JTextField(20);
         txtCPC = new JTextField(20);
@@ -113,6 +115,7 @@ public class  LoginDemo extends JFrame {
                 txtNameC.setText("");
                 txtNumC.setText("");
                 txtTelC.setText("");
+                txtEmailC.setText("");
                 txtRueC.setText("");
                 txtVilleC.setText("");
                 txtCPC.setText("");
@@ -130,21 +133,23 @@ public class  LoginDemo extends JFrame {
         txtNumC.setBounds(95, 60, 120, 25);
         lbTelC.setBounds(30, 90, 60, 25);
         txtTelC.setBounds(95, 90, 120, 25);
-        lbRueC.setBounds(30, 120, 60, 25);
-        txtRueC.setBounds(95, 120, 120, 25);
-        lbVilleC.setBounds(30, 150, 60, 25);
-        txtVilleC.setBounds(95, 150, 120, 25);
-        lbCPC.setBounds(30, 180, 60, 25);
-        txtCPC.setBounds(95, 180, 120, 25);
-        lblPwdC.setBounds(30, 210, 60, 25);
-        txtPwdC.setBounds(95, 210, 120, 25);
-        lbRePwdC.setBounds(30, 240, 60, 25);
-        txtRePwdC.setBounds(95, 240, 120, 25);
-        lbAddressC.setBounds(30, 270, 60, 25);
-        txtAddressC.setBounds(95, 270, 120, 25);
+        lbEmailC.setBounds(30, 120, 60, 25);
+        txtEmailC.setBounds(95, 120, 120, 25);
+        lbRueC.setBounds(30, 150, 60, 25);
+        txtRueC.setBounds(95, 150, 120, 25);
+        lbVilleC.setBounds(30, 180, 60, 25);
+        txtVilleC.setBounds(95, 180, 120, 25);
+        lbCPC.setBounds(30, 210, 60, 25);
+        txtCPC.setBounds(95, 210, 120, 25);
+        lblPwdC.setBounds(30, 240, 60, 25);
+        txtPwdC.setBounds(95, 240, 120, 25);
+        lbRePwdC.setBounds(30, 270, 60, 25);
+        txtRePwdC.setBounds(95, 270, 120, 25);
+        lbAddressC.setBounds(30, 300, 60, 25);
+        txtAddressC.setBounds(95, 300, 120, 25);
         lbIMsgC.setBounds(60, 185, 180, 25);
-        btnRegC.setBounds(60, 300, 60, 25);
-        btnCancelC.setBounds(125, 300, 60, 25);
+        btnRegC.setBounds(60, 350, 100, 25);
+        btnCancelC.setBounds(170, 350, 100, 25);
 
         //添加所有组件
         p.add(lbNameC);
@@ -153,6 +158,8 @@ public class  LoginDemo extends JFrame {
         p.add(txtNumC);
         p.add(lbTelC);
         p.add(txtTelC);
+        p.add(lbEmailC);
+        p.add(txtEmailC);
         p.add(lbRueC);
         p.add(txtRueC);
         p.add(lbVilleC);
@@ -170,7 +177,7 @@ public class  LoginDemo extends JFrame {
         p.add(btnCancelC);
 
         this.add(p);
-        this.setSize(280, 400);
+        this.setSize(350, 450);
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

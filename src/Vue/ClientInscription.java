@@ -82,25 +82,53 @@ public class ClientInscription extends JFrame {
                 String strRePwd = new String(txtRePwdC.getPassword());
                 if (strRePwd == null || strRePwd.equals("")) {
 
-                    lbIMsgC.setText("确认密码不能为空");
+                    lbIMsgC.setText("password is empty");
                     return;
                 }
 
                 //判断确认密码是否跟密码相同
                 if (!strRePwd.equals(strPwd)) {
 
-                    lbIMsgC.setText("确认密码跟密码不同");
+                    lbIMsgC.setText("password is false");
                     return;
                 }
 
 
-                //获取用户地址
-                String strAddress = new String(txtAddressC.getText());
-                if (strAddress == null || strAddress.equals("")) {
+                //email
+                String email = new String(txtEmailC.getText());
+                if (email == null || email.equals("")) {
 
-                    lbIMsgC.setText("地址不能为空");
+                    lbIMsgC.setText("email is empty");
                     return;
                 }
+
+                //tel
+                String tel = new String(txtTelC.getText());
+                if (tel == null || tel.equals("")) {
+
+                    lbIMsgC.setText("tel is empty");
+                    return;
+                }
+
+                //rue
+                String rue = new String(txtRueC.getText());
+                if (rue == null || rue.equals("")) {
+
+                    lbIMsgC.setText("rue is empty");
+                    return;
+                }
+
+
+                //获取用户nom
+                String num = new String(txtNumC.getText());
+                if (num == null || num.equals("")) {
+
+                    lbIMsgC.setText("number is empty");
+                    return;
+                }
+
+
+
                 lbIMsgC.setText("Successful");
 
             }

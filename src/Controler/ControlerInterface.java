@@ -9,19 +9,33 @@ public class ControlerInterface {
 
 
 
-    public boolean checkPasswordC(String pass){
+    public boolean checkPasswordC(Client c,String pass){
         boolean same=false;
-        if (client.getMotdepasseC()==pass){
+        if (c.getMotdepasseC()==pass){
             same=true;
         }
         return same;
     }
 
-    public boolean checkPasswordI(String pass){
+    public boolean checkPasswordI(Intervenant i,String pass){
         boolean same=false;
-        if (intervenant.getMotdepasseI()==pass){
+        if (i.getMotdepasseI()==pass){
             same=true;
         }
         return same;
+    }
+    // retourner une instance en fonction de Email/nom
+    public Client seekClient(String e){
+        Client c=null;
+
+        return c;
+
+    }
+
+    public Intervenant seekIntervenant(String e){
+        Intervenant i=null;
+
+        return i;
+
     }
 }

@@ -1,5 +1,7 @@
 package Vue;
 
+import Controler.ControlerInterface;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +10,8 @@ import java.awt.event.ActionListener;
 public class Connecter {
     private JFrame jFrame = new JFrame("Connexion");
     private Container c = jFrame.getContentPane();
-    private JLabel lbUser = new JLabel("UserName");
+    private JLabel lbIMsgI = new JLabel();
+    private JLabel lbUser = new JLabel("User Email");
     private JTextField username = new JTextField();
     private JLabel lbPass = new JLabel("Password");
     private JPasswordField password = new JPasswordField();
@@ -17,6 +20,7 @@ public class Connecter {
     private JRadioButton radioBtn1 = new JRadioButton("Client");
     private JRadioButton radioBtn2 = new JRadioButton("Intervenant");
     private int identifiant=0;
+    private ControlerInterface contoler;
 
     public Connecter() {
         //设置窗体的位置及大小
@@ -65,6 +69,11 @@ public class Connecter {
         radioBtn1.setSelected(true);
 
 
+        //设置标签的文字是红色
+        lbIMsgI.setForeground(Color.RED);
+        lbIMsgI.setBounds(60, 185, 180, 25);
+        fieldPanel.add(lbIMsgI);
+
         c.add(fieldPanel, "Center");
 
         /*按钮部分--South*/
@@ -107,15 +116,32 @@ public class Connecter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == okbtn){
-                    jFrame.setVisible(false);
-                    switch (identifiant){
+
+                    String strPwd = new String(password.getPassword());
+                    String strE = new String(username.getText());
+                    //查询email 为这个的 信息， 并返回一个实例
+
+                 switch (identifiant){
                         case 0:
-                            ClientInterface cli = new ClientInterface();
-                            cli.getjFrame().setVisible(true);
+
+                            if(contoler.checkPasswordC(contoler.seekClient(strE),strPwd)){
+                                jFrame.setVisible(false);
+                                ClientInterface cli = new ClientInterface();
+                                cli.getjFrame().setVisible(true);
+                            }else{
+                                lbIMsgI.setText("password is wrong");
+                            }
+
                             break;
                         case 1:
-                            RecommanderTache re = new RecommanderTache();
-                            re.getjFrame().setVisible(true);
+                            if(contoler.checkPasswordI(contoler.seekIntervenant(strE),strPwd)){
+                                jFrame.setVisible(false);
+                                RecommanderTache re = new RecommanderTache();
+                                re.getjFrame().setVisible(true);
+                            }else{
+                                lbIMsgI.setText("password is wrong");
+                            }
+
                             break;
                     }
 

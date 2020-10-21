@@ -135,9 +135,12 @@ public class EntrepriseInscription extends JFrame {
                 String cb=txtCB.getText();
                 String ville=txtVilleC.getText();
                 String cp=txtCPC.getText();
+                String domaine="java";
+                String pre="Celine";
+                String nom="Wang";
 
 
-                Entreprise en =new Entreprise(strName, siret, null, null,  null, numc, tele, rue, ville,  cp, cp, 0f);
+                Entreprise en =new Entreprise(strName, siret, nom, pre,  domaine, numc, tele, rue, ville,  cp, cp, 0f);
                 controler.putEntrepInBD(en);
                 lbIMsgC.setText("Successful");
 

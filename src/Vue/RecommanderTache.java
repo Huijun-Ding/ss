@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class RecommanderTache {
 
-    private JFrame jFrame = new JFrame("Creation de Tache");
+    private JFrame jFrame = new JFrame("Recommande");
     private Container c = jFrame.getContentPane();
     private JLabel lbNom = new JLabel("Nom de Tache");
     private JLabel lbNomTache = new JLabel("...");
@@ -23,12 +23,16 @@ public class RecommanderTache {
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("Refuse");
 
+
     public RecommanderTache() {
         jFrame.setBounds(600, 200, 600, 500);
         c.setLayout(new BorderLayout());//布局管理器
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
+    }
+    public JFrame getjFrame() {
+        return jFrame;
     }
 
     public void init() {

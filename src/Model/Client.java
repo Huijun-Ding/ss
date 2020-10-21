@@ -7,21 +7,34 @@ public class Client {
 
     protected int numClient;
     protected String telClient;
+    protected int numRue;
     protected String rurClient;
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
+    protected String email;
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
-
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
+    public Client(){};
+    public Client(int numClient, String telClient, int numRue, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
         this.numClient = numClient;
         this.telClient = telClient;
+        this.numRue = numRue;
         this.rurClient = rurClient;
         this.villeClient = villeClient;
         this.codePostalC = codePostalC;
         this.carteBancaire = carteBancaire;
+        this.email = email;
         this.noteC = noteC;
+    }
+
+   
+    public String getEmail() {
+        return email;
+    }
+
+    public ArrayList<Tache> getTaches() {
+        return taches;
     }
 
     public int getNumClient() {
@@ -125,9 +138,22 @@ public class Client {
         }
         return historiques;
     }
-
+  
     public void consulterTache(String nomTache) {
 
     }
     
+    public void addTache(Tache tache){
+        this.taches.add(tache);
+        
+    }
+
+    public void setEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setPassword(String mdp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }

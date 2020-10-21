@@ -9,6 +9,6 @@ package Dao;
  *
  * @author leonl
  */
-public class IntervenantDao {
+public class IntervenantvsBDDao {
     
 }

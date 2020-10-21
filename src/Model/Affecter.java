@@ -13,8 +13,15 @@ public class Affecter {
     private ArrayList<Intervenant> listAttende ;
     private int nb = tache.getNbPersonne();
     private int nbAccept=0;
+
+    public Affecter(ArrayList<Intervenant> listAllInters, ArrayList<Intervenant> listCandidats, ArrayList<Intervenant> intervenants, Tache tache) {
+        this.listAllInters = listAllInters;
+        this.listCandidats = listCandidats;
+        this.intervenants = intervenants;
+        this.tache = tache;
+        this.listAttende = new ArrayList<Intervenant>();
+    }
    
-    
     
     public void addListAllInters(Intervenant a) {
         this.listAllInters.add(a);

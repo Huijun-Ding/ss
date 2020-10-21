@@ -17,6 +17,7 @@ public class TacheComplexe extends Tache {
         
     }
     
+    
     public String getNomTache() {
         return nomTache;
     }
@@ -101,4 +102,7 @@ public class TacheComplexe extends Tache {
         return listTaches;
     }
      
+    public float evaluerIntervenant(Intervennat intervennat,int nbEtoileQualite, int nbEtoileDelai, String commentaire){
+       float note= super.evaluerIntervenant(nbEtoileQualite, nbEtoileDelai, commentaire);
+    }
 }

@@ -2,6 +2,8 @@ package Vue;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Connecter {
     private JFrame jFrame = new JFrame("Connexion");
@@ -54,5 +56,21 @@ public class Connecter {
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
         c.add(buttonPanel, "South");
+
+
+
+        cancelbtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //清空所有文本信息
+                username.setText("");
+                password.setText("");
+
+                //设置信息标签为空
+                //lbIMsgC.setText("");
+
+            }
+        });
     }
 }

@@ -19,7 +19,7 @@ import java.util.Map;
  * @author 92930
  */
 public class TacheclientDao {
-       ArrayList<Tache> lsttache;
+        ArrayList<Tache> lsttache;
         ArrayList<Competence> lstcompetence;
          public ArrayList<Tache> tacheclient(Client client){
                  String sqltache = "select * from tache where Code_client=? "; //Tout le tache d'un client
@@ -32,9 +32,9 @@ public class TacheclientDao {
                    for(int i=0;i<objs.size();i++){
                    Map<String,Object> rowData =(Map<String,Object>)objs.get(i);
                    Tache tache =new Tache();
-                  tache.setDateDeb((String) rowData.get("Date_deb"));//数据库里类型要改成string 现在是date
-                  tache.setDateFin((String) rowData.get("Date_Fin"));//数据库里类型要改成string
-                  tache.setDelais((int) rowData.get("Delais"));//数据库里是 date 要改成 int
+                  tache.setDateDeb((String) rowData.get("Date_deb"));
+                  tache.setDateFin((String) rowData.get("Date_Fin"));
+                  tache.setDelais((int) rowData.get("Delais"));
                   tache.setDescription((String) rowData.get("Description"));
                   tache.setDomanineTache((String) rowData.get("Domaine_tache"));
                   tache.setEtat((String) rowData.get("Etat_Tache"));
@@ -47,7 +47,8 @@ public class TacheclientDao {
                  return lsttache;}
          
                    public ArrayList<Competence> competencetache(){
-                   String sqlcompetence ="select * from affecter where ID_tache=? "; //还不确定commpetence 和 tache 同在的那个表的名字
+                   String sqlcompetence ="select * from affecter where ID_tache=? "; //
+                    
                    Query go = new Query();
                            for (int i=0;i<lsttache.size();i++){
                                 this.lstcompetence = new ArrayList<Competence>();
@@ -56,8 +57,9 @@ public class TacheclientDao {
                                    List<Object> objs=Select(); //Chaque tâche a une liste de competence
                                    for(int j=0;j<objs.size();j++){
                                        Map<String,Object> rowData =(Map<String,Object>)objs.get(j);
-                                         Competence competence =new Competence();          
-                                         lstcompetence.add(competence);
+                                         Competence competence =new Competence();        
+                                         if (lstcompetence.contains(competence)==false)
+                                         {lstcompetence.add(competence);}
                            } 
                           }
                            return lstcompetence;

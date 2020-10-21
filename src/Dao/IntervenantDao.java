@@ -17,9 +17,9 @@ import java.util.Map;
  * @author leonl
  */
 public class IntervenantDao {
+     //Laisser le client se connecter et renvoyer le client connecté
     public Intervenant login(String email,String mdp){
-            
-            String sqlinter = "select * from intervenant where Email_Inter=? and Password=? "; //需要新建一个password 在 intervenant里
+            String sqlinter = "select * from intervenant where Email_Inter=? and Password=? "; //Trouvez la ligne correspondantes en fonction du email et du mot de passe saisis
             Intervenant interres = null;
             Query go = new Query();
             go.parameter.add(email); 

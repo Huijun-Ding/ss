@@ -21,26 +21,24 @@ import java.util.Map;
  */
 public class ClientDao {
 
- 
+       
         public Client login(String email,String mdp){
             
-            String sqlclient = "select * from client where EmailC=? and Password=? ";
-            Client clientres = null;
-            Query go = new Query();
+            String sqlclient = "select * from client where EmailC=? and Password=? ";  //Trouvez la ligne correspondantes en fonction du email et du mot de passe saisis
+            Client clientres = null;    //La valeur de retour initiale est vide    
+            Query go = new Query(); //  L connexion de bd
             
-            go.parameter.add(email);
-            go.parameter.add(mdp);
+            go.parameter.add(email); // Mettre  e-mail et le mot de passe respectivement dans la position du point d'interrogation de sql                                       
+            go.parameter.add(mdp); 
            
-            go.afferentSQL(sqlclient);
-            List<Object> objs=Select();
-            System.out.println(objs);
-            //Ensemble de résultats
+            go.afferentSQL(sqlclient);    //Préparer SQL          
+            List<Object> objs=Select(); ////Ensemble de résultats
             Map<String,Object> rowData =(Map<String,Object>)objs.get(0);//Prendre la première ligne
             
-            if(rowData.get("Password").equals(mdp) && rowData.get("EmailC").equals(email))
+            if(rowData.get("Password").equals(mdp) && rowData.get("EmailC").equals(email)) //S'il y a une couple d'entrées dans la base de données, la connexion est réussie
             {  
-                clientres=new Client();
-                clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire"));
+                clientres=new Client(); //Instancier  le client
+                clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire")); //Obtenir des informations sur la base de données
                 clientres.setCodePostalC((String) rowData.get("CodePostal"));
                 clientres.setEmail(email);
                 clientres.setNoteC((float) rowData.get("NoteC"));   

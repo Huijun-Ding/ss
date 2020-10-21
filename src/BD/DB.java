@@ -5,37 +5,95 @@
  */
 package BD;
 
-import java.awt.EventQueue;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
 
 public class DB {
-    
-    private String BDD;
-    private String url;
-    private String user;
-    private String passwd;
 
-    public DB(String BDD, String url, String user, String passwd) {
-        this.BDD = BDD;
-        this.url = url;
-        this.user = user;
-        this.passwd = passwd;
-    }
-    
-    public void connexion(){
-        
-        String urlbdd = this.url+this.BDD;
+    private static Configuration conf;
+
+    /**
+     *
+     */
+    static {
+        String path = "BD//db.properties";
+        Properties pros = new Properties();
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(urlbdd, user, passwd);
-            System.out.println("Connecté avec succès !");
-        } catch (Exception e){
+            pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(path));
+        } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erreur");
-            System.exit(0);
         }
-        
+        conf = new Configuration();
+        conf.setPwd(pros.getProperty("pwd"));
+        conf.setUrl(pros.getProperty("url"));
+        conf.setUser(pros.getProperty("user"));
+        conf.setUsingDB(pros.getProperty("usingDB"));
     }
-    
+
+    /**
+     * connexion¨
+     *
+     * @return
+     */
+    public static Connection createConn() {
+        try {
+            return DriverManager.getConnection(conf.getUrl(), conf.getUser(), conf.getPwd());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @return	Configuration
+     */
+    public static Configuration getConf() {
+        return conf;
+    }
+
+    public static void close(Connection con) {
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException("failed", e);
+            }
+        }
+    }
+
+    /**
+     * @param rs
+     * @param ps
+     * @param conn
+     */
+    public static void close(ResultSet rs, Statement ps, Connection conn) {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

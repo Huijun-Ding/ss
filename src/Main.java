@@ -8,8 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DB db = new DB("dolt", "jdbc:mysql://localhost:3306/", "root", "");
-        db.connexion();
+        DB db = new DB();
         // TODO code application logic here
 
     }

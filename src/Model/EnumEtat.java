@@ -6,6 +6,5 @@ public enum EnumEtat {
     ACCEPTEE,
     PAYEE,
     FINALISEE_INTER,
-    VALIDEE_CLIENT,
-    TERMINEE
+    VALIDEE_CLIENT
 }

@@ -91,7 +91,6 @@ public class Client {
         if (tache.getEtat() == EnumEtat.FINALISEE_INTER) {
             tache.setEtat(EnumEtat.VALIDEE_CLIENT);
         }
-
     }
 
     public ArrayList<Object> getListNomTaches() {

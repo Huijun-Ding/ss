@@ -105,6 +105,14 @@ public class Intervenant {
     }
     
     public void setRecuPaiement(RecuPaiement rp) {
-        this.Recus.add(rp);
+        if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
+            this.Recus.add(rp);
+        }
     } 
+    
+    public void finaliser(Tache tache) {
+        if (tache.getEtat() == EnumEtat.PAYEE) {
+            tache.setEtat(EnumEtat.FINALISEE_INTER);
+        }
+    }
 }

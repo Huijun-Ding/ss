@@ -179,11 +179,20 @@ public class Tache {
     }
 
     public void setRecuPaiement(RecuPaiement rp) {
-        this.listRecus.add(rp);
+        if (this.etat == EnumEtat.VALIDEE_CLIENT) {
+            this.listRecus.add(rp);
+        }  
     }   
 
     public void ajouterCompetence(Competence c){
         this.competences.add(c);
+    }
+    
+    public boolean terminerTache(Tache t) {
+        if (t.getEtat() == EnumEtat.VALIDEE_CLIENT) {
+            return true;
+        }
+        return false;
     }
 }
 

@@ -44,6 +44,7 @@ public class Client {
         return codePostalC;
     }
 
+
     public String getCarteBancaire() {
         return carteBancaire;
     }
@@ -137,5 +138,9 @@ public class Client {
 
     public void setMotdepasseC(String motdepasseC) {
         this.motdepasseC = motdepasseC;
+    }
+
+    public ArrayList<Tache> getTaches() {
+        return taches;
     }
 }

@@ -2,6 +2,7 @@ package Controler;
 
 import Model.Client;
 import Model.Intervenant;
+import Model.Tache;
 
 public class ControlerInterface {
     private Client client;
@@ -36,6 +37,12 @@ public class ControlerInterface {
         Intervenant i=null;
 
         return i;
+
+    }
+
+
+    public void putTacheInBD(Tache t){
+
 
     }
 }

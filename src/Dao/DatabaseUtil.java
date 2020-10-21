@@ -64,7 +64,7 @@ public class DatabaseUtil {
 	}
         public boolean isLogin(Client user) {
 		boolean login_win = false;
-		String sql = "select * from users where EmailC='" + user.getEmail()+ "' and Password='"
+		String sql = "select * from client where EmailC='" + user.getEmail()+ "' and Password='"
 				+ user.getPassword() + "'";
 		try {
 			conn = DriverManager.getConnection(url, username, password);

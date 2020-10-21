@@ -4,9 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class IntervInscription extends JFrame {
     //声明组件
+    private JComboBox<String> faceCombo;
     private JPanel p;
     private JLabel lbNameI,lbNumI,lbTelI,lbEmailI,lbCompetenceI,lbRueI,lbVilleI,lbCPI, lblPwdI, lbRePwdI, lbAddressI, lbIMsgI;
 
@@ -151,8 +154,35 @@ public class IntervInscription extends JFrame {
         btnRegI.setBounds(60, 350, 100, 25);
         btnCancelI.setBounds(170, 350, 100, 25);
 
+        ItemListener itemListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent arg0) {
+                // TODO Auto-generated method stub
+                if(ItemEvent.SELECTED == arg0.getStateChange()){
+                    String selectedItem = arg0.getItem().toString();
+                    //label.setFont(new Font(selectedItem, Font.PLAIN, FONTSIZE));
+                    System.out.printf("new selected item : %s%n",selectedItem);
+                }
+                if(ItemEvent.DESELECTED == arg0.getStateChange()){
+                    String selectedItem = arg0.getItem().toString();
+                    System.out.printf("deselected item : %s%n",selectedItem);
+                }
+            }
+        };
+//添加一个JComboBox
+        faceCombo = new JComboBox<String>();
+        faceCombo.setEditable(true);
+        //faceCombo.addActionListener(actionListener);
+        //faceCombo.addPopupMenuListener(popupMenuListener);
+        faceCombo.addItemListener(itemListener);
+        faceCombo.setEnabled(true);
+        faceCombo.addItem("java");
+        faceCombo.addItem("c++");
+        faceCombo.addItem("php");
+        faceCombo.addItem("python");
 
 
+        p.add(faceCombo);
 
 
 
@@ -183,7 +213,7 @@ public class IntervInscription extends JFrame {
 
 
         this.add(p);
-        this.setSize(350, 450);
+        this.setSize(350, 500);
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

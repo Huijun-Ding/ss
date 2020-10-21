@@ -44,6 +44,7 @@ public class DB {
      */
     public static Connection createConn() {
         try {
+            System.out.println("connect reussi");
             return DriverManager.getConnection(conf.getUrl(), conf.getUser(), conf.getPwd());
         } catch (Exception e) {
             e.printStackTrace();

@@ -119,7 +119,6 @@ public class Connecter {
 
                     String strPwd = new String(password.getPassword());
                     String strE = new String(username.getText());
-                    //查询email 为这个的 信息， 并返回一个实例
 
                  switch (identifiant){
                         case 0:
@@ -144,8 +143,6 @@ public class Connecter {
 
                             break;
                     }
-
-
 
                 }
             }

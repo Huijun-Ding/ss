@@ -161,20 +161,8 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-  
-    // annuler une tâche s'il la tâche n'est pas encore distribué
-   public void annuler(){
-       if(this.etat=="en cours"){
-           this.etat="anuler";
-       }
-   }
-   
-   //validation tache
-    public void valider(){
-       if(this.etat=="termine"){
-           this.etat="valide";
-       }
-   }
+ 
+    
     
     //evaluation tache
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){

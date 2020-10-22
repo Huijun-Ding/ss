@@ -9,8 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.URL;
 
 public class IntervInscription extends JFrame {
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
 
     private ControlerInterface controler;
@@ -38,7 +42,8 @@ public class IntervInscription extends JFrame {
         super("IntervInscription");
         //创建面板，面板布局为NULL
         p = new JPanel(null);
-
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
         jFrame=this;
         // 添加条目选中状态改变的监听器
         comboBox.addItemListener(new ItemListener() {
@@ -203,6 +208,7 @@ public class IntervInscription extends JFrame {
 
 
 
+
         // 添加到内容面板
         p.add(comboBox);
 
@@ -233,6 +239,7 @@ public class IntervInscription extends JFrame {
         p.add(btnRetour);
         p.add(lbCBI);
         p.add(txtCBI);
+        p.add(lblBackground); // 将组件添加到面板中
 
 
 

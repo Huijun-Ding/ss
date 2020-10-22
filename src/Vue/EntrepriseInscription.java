@@ -9,12 +9,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 public class EntrepriseInscription extends JFrame {
     private ControlerInterface controler;
     private JFrame jFrame;
-
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
     //声明组件
     private JPanel p;
     private JLabel lbNameC,lbNumC,lbTelC,lbEmailC,lbRueC,lbVilleC,lbCPC, lblPwdC, lbRePwdC, lbCB, lbIMsgC;
@@ -208,6 +211,10 @@ public class EntrepriseInscription extends JFrame {
         btnCancelC.setBounds(170, 380, 100, 25);
         btnRetour.setBounds(310, 380, 100, 25);
 
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+
+
         //添加所有组件
         p.add(lbNameC);
         p.add(txtNameC);
@@ -233,6 +240,7 @@ public class EntrepriseInscription extends JFrame {
         p.add(btnRegC);
         p.add(btnCancelC);
         p.add(btnRetour);
+        p.add(lblBackground); // 将组件添加到面板中
 
         this.add(p);
         this.setSize(500, 450);

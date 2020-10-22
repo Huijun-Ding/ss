@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class Connecter {
     private JFrame jFrame = new JFrame("Connexion");
@@ -14,6 +15,7 @@ public class Connecter {
     private JLabel lbUser = new JLabel("User Email");
     private JTextField username = new JTextField();
     private JLabel lbPass = new JLabel("Password");
+    private JLabel titre = new JLabel("Connexion");
     private JPasswordField password = new JPasswordField();
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("Cancel");
@@ -23,10 +25,14 @@ public class Connecter {
     private JRadioButton radioBtn3 = new JRadioButton("Particulier");
     private int identifiant = 0;
     private ControlerInterface contoler=new ControlerInterface();
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
     public Connecter() {
         //设置窗体的位置及大小
-        jFrame.setBounds(600, 200, 500, 280);
+        titre.setBounds(470,20,100,30);
+        jFrame.setBounds(600, 200, 1000, 550);
         //设置一层相当于桌布的东西
         c.setLayout(new BorderLayout());//布局管理器
         //设置按下右上角X号后关闭
@@ -47,8 +53,11 @@ public class Connecter {
         /*标题部分--North*/
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout());
-        titlePanel.add(new JLabel("Client/Intervenant"));
+        //titlePanel.add(new JLabel("Client/Intervenant"));
         c.add(titlePanel, "North");
+
+
+
 
 
 
@@ -58,40 +67,55 @@ public class Connecter {
         btnGroup1.add(radioBtn3);
         btnGroup1.add(radioBtn2);
 
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
 
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
-        lbUser.setBounds(100, 50, 80, 20);
-        lbPass.setBounds(100, 90, 80, 20);
+        lbUser.setBounds(360, 90, 80, 20);
+        lbPass.setBounds(360, 130, 80, 20);
         fieldPanel.add(lbUser);
         fieldPanel.add(lbPass);
-        username.setBounds(190, 50, 120, 20);
-        password.setBounds(190, 90, 120, 20);
+        fieldPanel.add(titre);
+
+        okbtn.setBounds(360,240,100,20);
+        cancelbtn.setBounds(460,240,100,20);
+        inscription.setBounds(560,240,100,20);
+
+
+
+
+        fieldPanel.add(okbtn);
+        fieldPanel.add(cancelbtn);
+        fieldPanel.add(inscription);
+
+        username.setBounds(460, 90, 200, 20);
+        password.setBounds(460, 130, 200, 20);
         fieldPanel.add(username);
         fieldPanel.add(password);
-        radioBtn1.setBounds(100, 130, 100, 20);
-        radioBtn2.setBounds(300, 130, 100, 20);
-        radioBtn3.setBounds(200, 130, 100, 20);
+        radioBtn1.setBounds(360, 170, 100, 20);
+        radioBtn2.setBounds(460, 170, 100, 20);
+        radioBtn3.setBounds(560, 170, 100, 20);
         fieldPanel.add(radioBtn1);
         fieldPanel.add(radioBtn2);
         fieldPanel.add(radioBtn3);
         radioBtn1.setSelected(true);
-
+        fieldPanel.add(lblBackground); // 将组件添加到面板中
 
         //设置标签的文字是红色
         lbIMsgI.setForeground(Color.RED);
-        lbIMsgI.setBounds(60, 185, 180, 25);
+        lbIMsgI.setBounds(500, 185, 180, 25);
         fieldPanel.add(lbIMsgI);
 
         c.add(fieldPanel, "Center");
 
         /*按钮部分--South*/
-        JPanel buttonPanel = new JPanel();
+        /*JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
         buttonPanel.add(inscription);
-        c.add(buttonPanel, "South");
+        c.add(buttonPanel, "South");*/
 
         radioBtn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

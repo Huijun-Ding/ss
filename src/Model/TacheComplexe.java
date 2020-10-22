@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class TacheComplexe extends Tache {
        private ArrayList<Tache> listTaches;
        
-    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
-        super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin);
+    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin, c);
         listTaches = new ArrayList();
     }
     

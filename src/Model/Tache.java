@@ -21,8 +21,21 @@ public class Tache {
     private Paiement paiement;  
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
-    private int id;
-    public Tache(){}
+    
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        this.nomTache = nomTache;
+        this.description = description;
+        this.nbPersonne = nbPersonne;
+        this.prix = prix;
+        this.domanineTache = domanineTache;
+        this.etat = etat;
+        this.dateDeb = dateDeb;
+        this.dateFin = dateFin;
+        this.client = c;
+        competences = new ArrayList();
+        listRecus = new ArrayList();
+    }
+ 
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
         this.description = description;
@@ -35,15 +48,15 @@ public class Tache {
         competences = new ArrayList();
         listRecus = new ArrayList();
     }
-   
+
+    public Tache() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public ArrayList<Competence> getCompetences() {
         return this.competences;
     }
     
-  
-    public int getId() {
-        return id;
-    }
     
 
     public String getNomTache() {

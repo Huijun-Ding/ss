@@ -26,7 +26,7 @@ public class FenetreListeNoms extends JFrame implements ListSelectionListener {
     private JLabel Description = new JLabel("Description");
     private JTextArea Descri=new JTextArea(10, 30);
     private Client client;
-    private Tache t=new Tache("t1","ed",1,1f,"j",EnumEtat.EN_COURS,"1","2");
+    private Tache t=new Tache("t1","ed",1,1f,"j",EnumEtat.EN_COURS,"1","2",client);
     private Tache choix[] = {};
     private String nomChoix[] = {};
 

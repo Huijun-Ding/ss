@@ -6,8 +6,8 @@ public class TacheSimple extends Tache {
     
 //    private Intervenant intervenant;
 
-    public TacheSimple(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
-        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
+    public TacheSimple(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin, c);
     }
 
 //    public Intervenant getIntervenant() {

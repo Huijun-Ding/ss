@@ -75,7 +75,7 @@ public class TacheDao {
     public void ChangerTachEtat(Tache tache) {
         String sql = "UPDATE tache SET Etat_Tache= ? WHERE ID_tache=?";
         parameter.add(tache.getEtat());
-        parameter.add(tache.getId());
+        parameter.add(tache.getNumTache());
         Query();
         afferentSQL(sql);
     }

@@ -12,7 +12,6 @@ public class Intervenant {
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected String motdepasseI;
-    protected boolean reponse=false;
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
@@ -23,8 +22,20 @@ public class Intervenant {
         this.mesCompetences.add(c);
     }
     
+    public ArrayList<Tache> getListTaches() {
+        return this.listTaches;
+    }
+    
+    public String getTacheAffectee() {
+        String t = "";
+        for (int i=0; i<this.listTachesRecevoir.size(); i++) {
+            t += this.listTachesRecevoir.get(i).getNomTache() + " ";
+        }
+        return t;
+    }
+    
     public ArrayList<Tache> getListTachesRecevoir() {
-        return listTachesRecevoir;
+        return this.listTachesRecevoir;
     }
 
     public void etreAffecte(Tache t){
@@ -35,17 +46,15 @@ public class Intervenant {
         this.listTachesRecevoir.remove(t);
     }
     
-    public void accepterTache(Tache t){
+    public boolean accepterTache(Tache t){
         this.listTaches.add(t);
         this.listTachesRecevoir.remove(t);
-        this.reponse= true;
+        return true;
     }
-    public void  refuserTache(Tache t){
+    
+    public boolean refuserTache(Tache t){
         this.listTachesRecevoir.remove(t);
-        this.reponse= false;
-    }
-    public boolean getReponse(){
-        return this.reponse;
+        return false;
     }
 
     public Intervenant(){}
@@ -148,7 +157,7 @@ public class Intervenant {
     public String consulterTache() {
         String mesTaches = "";
         for (int i=0; i<this.listTaches.size(); i++) {
-            mesTaches = mesTaches + " - " + this.listTaches.get(i);
+            mesTaches = mesTaches + " - " + this.listTaches.get(i).getNomTache();
         }
         return mesTaches;
     }

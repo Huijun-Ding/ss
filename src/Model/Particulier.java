@@ -12,7 +12,6 @@ public class Particulier extends Client {
         this.civilité = civilité;
     }
 
-
     public String getNomPart() {
         return nomPart;
     }

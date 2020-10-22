@@ -16,13 +16,13 @@ public class Tache {
     protected EnumEtat etat;
     protected String dateDeb;
     protected String dateFin;
-    protected ClientEvaluation clientEvaluation;
+    protected EvaluationIntervenant eva;
     private Client client;
-    private Paiement paiement;  
+    private Paiement paiement;
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
-    
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+
+    public Tache(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
         this.nomTache = nomTache;
         this.description = description;
         this.nbPersonne = nbPersonne;
@@ -35,8 +35,8 @@ public class Tache {
         competences = new ArrayList();
         listRecus = new ArrayList();
     }
- 
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
+
+    public Tache(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
         this.description = description;
         this.nbPersonne = nbPersonne;
@@ -48,52 +48,21 @@ public class Tache {
         competences = new ArrayList();
         listRecus = new ArrayList();
     }
-    
+
     public ArrayList<Competence> getCompetences() {
         return this.competences;
     }
-    
-    class ClientEvaluation{
-        private int nbEtoileQualite;
-        private int nbEtoileDelai;
-        private String commentaire;
 
-        public ClientEvaluation(int nbEtoileQualite, int nbEtoileDelai, String commentaire) {
-            this.nbEtoileQualite = nbEtoileQualite;
-            this.nbEtoileDelai = nbEtoileDelai;
-            this.commentaire = commentaire;
-        }
-
-        public int getNbEtoileQualite() {
-            return nbEtoileQualite;
-        }
-
-        public int getNbEtoileDelai() {
-            return nbEtoileDelai;
-        }
-
-        public String getCommentaire() {
-            return commentaire;
-        }
-
-        public void setNbEtoileQualite(int nbEtoileQualite) {
-            this.nbEtoileQualite = nbEtoileQualite;
-        }
-
-        public void setNbEtoileDelai(int nbEtoileDelai) {
-            this.nbEtoileDelai = nbEtoileDelai;
-        }
-
-        public void setCommentaire(String commentaire) {
-            this.commentaire = commentaire;
-        }
-        
+    // client évaluer intervenant
+    public void evaluerIntervenant(EvaluationIntervenant eva, Intervenant intervenant) {
+        float note = (eva.getNbEtoileQualite() + eva.getNbEtoileDelai()) / 2;
+        intervenant.setNoteIn((note + intervenant.getNoteIn()) / 2);
     }
 
     public String getNomTache() {
         return nomTache;
     }
-    
+
     public Client getClient() {
         return this.client;
     }
@@ -132,10 +101,6 @@ public class Tache {
 
     public String getDateFin() {
         return dateFin;
-    }
-
-    public ClientEvaluation getClientEvaluation() {
-        return clientEvaluation;
     }
 
     public void setNomTache(String nomTache) {
@@ -177,18 +142,6 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
-    
-    //evaluation tache
-    public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
-       this.clientEvaluation=new ClientEvaluation(nbEtoileQualite,nbEtoileDelai,commentaire);
-       float originNote = this.client.getNoteC();
-       int note=(nbEtoileQualite+nbEtoileDelai)/2;
-       if(commentaire.matches(".*bien.*")
-               ||commentaire.matches(".*bravo.*")){
-           note++;
-       }
-       this.client.setNoteC(note+originNote);
-    }
 
     public void setPaiement(Paiement p) {
         this.paiement = p;
@@ -197,13 +150,13 @@ public class Tache {
     public void setRecuPaiement(RecuPaiement rp) {
         if (this.etat == EnumEtat.VALIDEE_CLIENT) {
             this.listRecus.add(rp);
-        }  
-    }   
+        }
+    }
 
-    public void ajouterCompetence(Competence c){
+    public void ajouterCompetence(Competence c) {
         this.competences.add(c);
     }
-    
+
     public boolean terminerTache(Tache t) {
         if (t.getEtat() == EnumEtat.VALIDEE_CLIENT) {
             return true;
@@ -211,4 +164,3 @@ public class Tache {
         return false;
     }
 }
-

@@ -95,7 +95,7 @@ public class Client {
         }
     }
 
-    public ArrayList<Object> getListNomTaches() {
+    public ArrayList<Object> getListNomTaches() {   // consulation d'historique de tâche
         ArrayList<Object> historiques = new ArrayList();
         for (Tache tache : this.taches) {
             if (tache instanceof TacheSimple) {
@@ -126,10 +126,6 @@ public class Client {
             }
         }
         return historiques;
-    }
-
-    public void consulterTache(String nomTache) {
-
     }
 
     public String getMotdepasseC() {

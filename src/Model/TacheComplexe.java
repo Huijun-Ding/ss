@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TacheComplexe extends Tache {
-       private ArrayList<Tache> listTaches;
+       private ArrayList<Tache> listTaches;  // une tache complexe est composée par plusieurs taches(simple ou massive)
        
     public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
         super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin, c);
@@ -15,7 +15,6 @@ public class TacheComplexe extends Tache {
         this.listTaches.add(ts);
     }
 
-    
     public void newTache(){
         System.out.println("saisissez un nouvelle tache");
         Scanner nomtache = new Scanner (System.in); 
@@ -103,6 +102,5 @@ public class TacheComplexe extends Tache {
 
     public ArrayList<Tache> getListTaches() {
         return listTaches;
-    }
-     
+    }  
 }

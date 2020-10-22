@@ -23,7 +23,7 @@ public class Intervenant {
         return this.listTaches;
     }
     
-    public String getTacheAffectee() {
+    public String getTacheAffectee() {  // retourner tous les tâches qui ont été affectées à cet intervenant
         String t = "";
         for (int i=0; i<this.listTachesRecevoir.size(); i++) {
             t += this.listTachesRecevoir.get(i).getNomTache() + " ";
@@ -128,13 +128,13 @@ public class Intervenant {
         this.noteIn = noteIn;
     }
     
-    public void setRecuPaiement(RecuPaiement rp) {
+    public void setRecuPaiement(RecuPaiement rp) {  // quand le client a validé la tâche, la palteforme peut payer l'intervenant
         if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
             this.recus.add(rp);
         }
     } 
     
-    public void finaliser(Tache tache) {
+    public void finaliser(Tache tache) {  // terminer la tâche
         if (tache.getEtat() == EnumEtat.PAYEE) {
             tache.setEtat(EnumEtat.FINALISEE_INTER);
         }
@@ -151,6 +151,7 @@ public class Intervenant {
     public void setMotdepasseI(String motdepasseI) {
         this.motdepasseI = motdepasseI;
     }
+    
     public String getMotdepasseI(){
         return this.motdepasseI;
     }

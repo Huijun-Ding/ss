@@ -11,7 +11,7 @@ package BD;
  * @author leonl
  */
 public class Configuration {
-    private String driver;
+    private static String driver;
     /**
      * jdbc url
      */
@@ -64,16 +64,15 @@ public class Configuration {
         this.usingDB = usingDB;
     }
 
-    public  String getDriver() {
+    public static String getDriver() {
         return driver;
     }
 
-    public  void setDriver(String driver) {
-       this.driver = driver;
+    public static void setDriver(String driver) {
+        Configuration.driver = driver;
     }
 
-    public Configuration(String driver,String url, String user, String pwd, String usingDB) {
-        this.driver = driver;
+    public Configuration(String url, String user, String pwd, String usingDB) {
         this.url = url;
         this.user = user;
         this.pwd = pwd;

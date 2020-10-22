@@ -6,21 +6,16 @@ import java.util.Scanner;
 public class TacheComplexe extends Tache {
        private ArrayList<Tache> listTaches;
        
-    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
+    public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin);
-        listTaches = new ArrayList();
-    }
-    
-    public void addTache(Tache ts) {
-        this.listTaches.add(ts);
     }
 
-    
     public void newTache(){
         System.out.println("saisissez un nouvelle tache");
-        Scanner nomtache = new Scanner (System.in); 
+        Scanner nomtache = new Scanner (System.in);
+        
+        
     }
-    
     
     public String getNomTache() {
         return nomTache;
@@ -34,7 +29,7 @@ public class TacheComplexe extends Tache {
         return nbPersonne;
     }
 
-    public String getDelais() {
+    public int getDelais() {
         return delais;
     }
 
@@ -50,7 +45,7 @@ public class TacheComplexe extends Tache {
         return domanineTache;
     }
 
-    public EnumEtat getEtat() {
+    public String getEtat() {
         return etat;
     }
 
@@ -74,7 +69,7 @@ public class TacheComplexe extends Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(String delais) {
+    public void setDelais(int delais) {
         this.delais = delais;
     }
 
@@ -90,7 +85,7 @@ public class TacheComplexe extends Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(EnumEtat etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
 
@@ -105,5 +100,5 @@ public class TacheComplexe extends Tache {
     public ArrayList<Tache> getListTaches() {
         return listTaches;
     }
-
+     
 }

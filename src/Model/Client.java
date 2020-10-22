@@ -1,3 +1,4 @@
+
 package Model;
 
 import java.util.ArrayList;
@@ -10,29 +11,17 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
-    protected String email;
-    protected String motdepasseC;
-
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
-    public Client(){};
-    public Client( String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
+
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
+        this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
         this.villeClient = villeClient;
         this.codePostalC = codePostalC;
         this.carteBancaire = carteBancaire;
-        this.email = email;
         this.noteC = noteC;
-    }
-
-   
-    public String getEmail() {
-        return email;
-    }
-
-    public ArrayList<Tache> getTaches() {
-        return taches;
     }
 
     public int getNumClient() {
@@ -54,7 +43,6 @@ public class Client {
     public String getCodePostalC() {
         return codePostalC;
     }
-
 
     public String getCarteBancaire() {
         return carteBancaire;
@@ -91,21 +79,20 @@ public class Client {
     public void setNoteC(float noteC) {
         this.noteC = noteC;
     }
-
     // annuler une tâche s'il la tâche n'est pas encore distribué
-    public void annuler(Tache tache) {
-        if (tache.getEtat() == EnumEtat.EN_COURS) {
-            tache.setEtat(EnumEtat.ANNULEE);
+   public void annuler(Tache tache){
+       if(tache.getEtat()=="en cours"){
+           tache.setEtat("anuler");
+       }
+   }
+   
+   //validation tache
+    public void valider(Tache tache){
+        if(tache.getEtat()=="termine"){
+            tache.setEtat("valide");
         }
-    }
 
-    //validation tache
-    public void valider(Tache tache) {
-        if (tache.getEtat() == EnumEtat.FINALISEE_INTER) {
-            tache.setEtat(EnumEtat.VALIDEE_CLIENT);
-        }
-    }
-
+   }
     public ArrayList<Object> getListNomTaches() {
         ArrayList<Object> historiques = new ArrayList();
         for (Tache tache : this.taches) {
@@ -138,33 +125,9 @@ public class Client {
         }
         return historiques;
     }
-  
+
     public void consulterTache(String nomTache) {
 
     }
-
-
     
-    public void addTache(Tache tache){
-        this.taches.add(tache);
-        
-    }
-
-    public void setEmail(String email) {
-       this.email=email;
-    }
-
-    public void setPassword(String mdp) {
-        this.motdepasseC=mdp;
-    }
-   
-
-    public String getMotdepasseC() {
-        return motdepasseC;
-    }
-
-    public void setMotdepasseC(String motdepasseC) {
-        this.motdepasseC = motdepasseC;
-    }
-
 }

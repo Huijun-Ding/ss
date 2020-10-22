@@ -17,7 +17,7 @@ public class Affecter {
     private int nbAccept = 0;
     private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
     private static Integer delay = 1000;
-    
+
     public void Affecter(Tache t) {
         listAllInters = new ArrayList();
         listCandidats = new ArrayList();
@@ -67,11 +67,14 @@ public class Affecter {
             timer.schedule(new TimerTask() {
                 public void run() {
                     cacheTime = (int) (14400000 + Math.random() * 3600000);    // pour chaque 4 heures faire
-                    
+
                     // pour le nombre des intervenants qu'on a pas encore trouvés
                     for (int i = 0; i < nb - nbAccept; i++) {
                         // envoyer une affectation à un intervenant qui est dans la liste des candidats par l'ordre croissante
                         listCandidats.get(i).etreAffecte(tache);  // ajouter cette tâche dans listTachesRecevoir de ce intervenant
+
+                    }
+                    for (int i = 0; i < nb - nbAccept; i++) {
                         listCandidats.remove(listCandidats.get(i)); // enlever ce intervenant de la liste des candidats
                         listAttende.add(listCandidats.get(i)); //mais l'ajouter dans liste d'attente
                     }
@@ -79,7 +82,7 @@ public class Affecter {
                     for (int i = 0; i < listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
                         if (listCandidats.get(i).getReponse()) { // si il accepte
                             intervenants.add(listCandidats.get(i)); // ajouter ce intervenant dans la liste finale
-                            nbAccept += 1; 
+                            nbAccept += 1;
                         }
                     }
                 }

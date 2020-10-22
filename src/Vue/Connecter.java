@@ -142,6 +142,7 @@ public class Connecter {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == okbtn) {
 
+
                     String strPwd = new String(password.getPassword());
                     String strE = new String(username.getText());
 

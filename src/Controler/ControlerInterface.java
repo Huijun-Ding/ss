@@ -6,6 +6,10 @@ public class ControlerInterface {
     private Client client;
     private Intervenant intervenant;
 
+    public ControlerInterface(Client client, Intervenant intervenant) {
+        this.client = client;
+        this.intervenant = intervenant;
+    }
 
     public boolean checkPasswordC(Client c, String pass) {
         boolean same = false;

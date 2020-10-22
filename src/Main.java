@@ -59,7 +59,7 @@ public class Main {
         af1.addListAllInters(i4);
         af1.selectCandidats();
         af1.classerCandidats();
-        
+
         try {
             af1.affecterTache();
             //Thread.sleep(14400000); //4 heures
@@ -67,19 +67,19 @@ public class Main {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
-        
+
         i2.accepterTache(t3);
         i3.accepterTache(t3);
         i4.refuserTache(t3);
-        
+
         System.out.println("tous les intervenants: " + af1.getListAllInter());
         System.out.println("les candidats" + af1.getListCandidats());
         System.out.println("liste finle" + af1.getIntervenants());
-        
+
         System.out.println("Intervenant2 tache: " + i2.consulterTache());
         System.out.println("Intervenant3 tache: " + i3.consulterTache());
         System.out.println("Intervenant4 tache: " + i4.consulterTache());
-        
+
         System.out.println("Intervenant1 tache reçu: " + i1.getListTachesRecevoir());
         System.out.println("Intervenant2 tache reçu: " + i2.getListTachesRecevoir());
         System.out.println("Intervenant3 tache reçu: " + i3.getListTachesRecevoir());

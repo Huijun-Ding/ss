@@ -22,7 +22,7 @@ public class Tache {
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
     
-    public Tache(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
         this.nomTache = nomTache;
         this.description = description;
         this.nbPersonne = nbPersonne;
@@ -78,7 +78,7 @@ public class Tache {
     }
 
     public String getNomTache() {
-        return this.nomTache;
+        return nomTache;
     }
     
     public Client getClient() {
@@ -86,11 +86,11 @@ public class Tache {
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public int getNbPersonne() {
-        return this.nbPersonne;
+        return nbPersonne;
     }
 
     public int getDelais() {

@@ -9,19 +9,20 @@ public class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
-    protected int delais; // nombre de jours
+    protected String delais; // nombre de jours
     protected int numTache;
     protected float prix;
     protected String domanineTache;
     protected EnumEtat etat;
     protected String dateDeb;
     protected String dateFin;
+    private int clientId;
     private Client client;
     private Paiement paiement;  
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
     private int id;
-    
+    public Tache(){}
     public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
         this.description = description;
@@ -37,7 +38,7 @@ public class Tache {
         return this.competences;
     }
     
-
+  
     public int getId() {
         return id;
     }
@@ -59,7 +60,7 @@ public class Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -99,7 +100,7 @@ public class Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 
@@ -146,7 +147,11 @@ public class Tache {
         this.competences.add(c);
     }
     
-
+    public int getClientId(){
+        return this.clientId;
+    }
+    
+    
     public boolean terminerTache(Tache t) {
         if (t.getEtat() == EnumEtat.VALIDEE_CLIENT) {
             return true;
@@ -158,6 +163,10 @@ public class Tache {
     public void evaluerIntervenant(EvaluationIntervenant eva,Intervenant intervenant ){
        float note= (eva.getNbEtoileQualite()+eva.getNbEtoileDelai())/2;
        intervenant.setNoteIn((note+intervenant.getNoteIn())/2);
+    }
+    
+    public void setClientId(int id){
+        clientId=id;
     }
 }
 

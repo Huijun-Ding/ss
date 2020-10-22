@@ -9,8 +9,8 @@ public class Entreprise extends Client{
     protected String  prenomCorrespondant;
     protected String domaine;
 
-    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, int numClient, String telClient, int numRue, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
-        super(numClient, telClient, numRue, rurClient, villeClient, codePostalC, carteBancaire, email, noteC);
+    public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, String telClient,  String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
+        super(telClient,rurClient, villeClient, codePostalC, carteBancaire, email, noteC);
         this.raisonSocial = raisonSocial;
         this.noSiret = noSiret;
         this.nomCorrespondant = nomCorrespondant;
@@ -18,9 +18,6 @@ public class Entreprise extends Client{
         this.domaine = domaine;
     }
 
-    public int getNumRue() {
-        return numRue;
-    }
 
 
 

@@ -21,6 +21,18 @@ public class EvaluationIntervenant {
         this.nbEtoileDelai = nbEtoileDelai;
         this.commentaire = commentaire;
     }
+
+    public int getNbEtoileQualite() {
+        return nbEtoileQualite;
+    }
+
+    public int getNbEtoileDelai() {
+        return nbEtoileDelai;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
     
    
 }

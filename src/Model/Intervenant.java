@@ -2,7 +2,10 @@ package Model;
 import java.util.ArrayList;
 
 public class Intervenant {
+    protected String nomInterv; 
+    protected String prenomInterv;
     protected int numInterv; 
+    protected String email;
     protected String telInterv; 
     protected String rurInterv;
     protected String villeInterv;
@@ -40,7 +43,7 @@ public class Intervenant {
     public boolean getReponse(){
         return this.reponse;
     }
-
+    public Intervenant(){}
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
 
         this.numInterv = numInterv;
@@ -54,6 +57,14 @@ public class Intervenant {
     
     public ArrayList<Competence> getMesCompetences() {
         return this.mesCompetences;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getNumInterv() {
@@ -138,4 +149,13 @@ public class Intervenant {
     public String getMotdepasseI(){
         return this.motdepasseI;
     }
+
+    public String getNomInterv() {
+        return nomInterv;
+    }
+
+    public String getPrenomInterv() {
+        return prenomInterv;
+    }
+    
 }

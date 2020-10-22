@@ -6,23 +6,18 @@ public class Client {
 
     protected int numClient;
     protected String telClient;
-    protected int numRue;
     protected String rurClient;
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
-<<<<<<< HEAD
     protected String email;
-=======
     protected String motdepasseC;
->>>>>>> 1bcc73d81e7c073bcb711c2625db79c988d8d318
+
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
     public Client(){};
-    public Client(int numClient, String telClient, int numRue, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
-        this.numClient = numClient;
+    public Client( String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
         this.telClient = telClient;
-        this.numRue = numRue;
         this.rurClient = rurClient;
         this.villeClient = villeClient;
         this.codePostalC = codePostalC;
@@ -148,7 +143,7 @@ public class Client {
 
     }
 
-<<<<<<< HEAD
+
     
     public void addTache(Tache tache){
         this.taches.add(tache);
@@ -156,15 +151,14 @@ public class Client {
     }
 
     public void setEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.email=email;
     }
 
     public void setPassword(String mdp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.motdepasseC=mdp;
     }
    
 
-=======
     public String getMotdepasseC() {
         return motdepasseC;
     }
@@ -173,8 +167,4 @@ public class Client {
         this.motdepasseC = motdepasseC;
     }
 
-    public ArrayList<Tache> getTaches() {
-        return taches;
-    }
->>>>>>> 1bcc73d81e7c073bcb711c2625db79c988d8d318
 }

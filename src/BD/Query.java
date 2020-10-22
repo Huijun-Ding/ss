@@ -48,6 +48,8 @@ public class Query {
                 } else if (param instanceof Double) {
                     ps.setDouble(o, (double) param);
                 } else if (param instanceof String) {
+                    System.out.println(o);
+                    System.out.println(param);
                     ps.setString(o, (String) param);
                 }
             }

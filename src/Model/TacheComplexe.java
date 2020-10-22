@@ -30,7 +30,7 @@ public class TacheComplexe extends Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -70,7 +70,7 @@ public class TacheComplexe extends Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 

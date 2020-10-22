@@ -22,7 +22,7 @@ public class Connecter {
     private JRadioButton radioBtn2 = new JRadioButton("Intervenant");
     private JRadioButton radioBtn3 = new JRadioButton("Particulier");
     private int identifiant = 0;
-    private ControlerInterface contoler;
+    private ControlerInterface contoler=new ControlerInterface();
 
     public Connecter() {
         //设置窗体的位置及大小

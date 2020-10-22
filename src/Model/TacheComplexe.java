@@ -101,8 +101,5 @@ public class TacheComplexe extends Tache {
     public ArrayList<Tache> getListTaches() {
         return listTaches;
     }
-     
-    public float evaluerIntervenant(Intervennat intervennat,int nbEtoileQualite, int nbEtoileDelai, String commentaire){
-       float note= super.evaluerIntervenant(nbEtoileQualite, nbEtoileDelai, commentaire);
-    }
+
 }

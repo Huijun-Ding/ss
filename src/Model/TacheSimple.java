@@ -59,10 +59,7 @@ public class TacheSimple extends Tache {
        return dateFin;
     }
    
-    public float evaluerIntervenant(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
-        float note=(nbEtoileQualite+nbEtoileDelai)/2;
-        return note;
-    }
+    
     
     
 }

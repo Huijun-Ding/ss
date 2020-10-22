@@ -27,6 +27,7 @@ public class Affecter {
         this.listAttende = new ArrayList<Intervenant>();
     }
    
+
     public void addListAllInters(Intervenant a) {
         this.listAllInters.add(a);
     }

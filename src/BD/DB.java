@@ -33,6 +33,7 @@ public class DB {
         conf.setUrl(pros.getProperty("url"));
         conf.setUser(pros.getProperty("user"));
         conf.setUsingDB(pros.getProperty("usingDB"));
+        conf.setDriver(pros.getProperty("driver"));
         
     }
 
@@ -43,6 +44,7 @@ public class DB {
      */
     public static Connection createConn() {
         try {
+            Class.forName(conf.getDriver());
             return DriverManager.getConnection(conf.getUrl()+conf.getUsingDB(), conf.getUser(), conf.getPwd());
         } catch (Exception e) {
             e.printStackTrace();

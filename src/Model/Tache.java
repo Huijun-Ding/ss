@@ -155,8 +155,8 @@ public class Tache {
 
     }
     
-    public void evaluerIntervenant(Intervenant intervenant,int nbEtoileQualite, int nbEtoileDelai, String commentaire){
-       float note= (nbEtoileQualite+nbEtoileDelai)/2;
+    public void evaluerIntervenant(EvaluationIntervenant eva,Intervenant intervenant ){
+       float note= (eva.getNbEtoileQualite()+eva.getNbEtoileDelai())/2;
        intervenant.setNoteIn((note+intervenant.getNoteIn())/2);
     }
 }

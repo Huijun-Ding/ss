@@ -16,6 +16,12 @@ public class EvaluationClient {
         this.tache = t;
         this.inter = i;
     }
+
+    public Intervenant getInter() {
+        return inter;
+    }
+    
+    
     
     public void calculerNoteC() {
         float note = (this.noteContenu + this.noteEchange + this.noteRentabilite)/3;

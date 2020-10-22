@@ -22,7 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import Dao.ClientDao;
+import Dao.BDvdClientDao;
 import Model.Client;
 import BD.DB;
 

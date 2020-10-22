@@ -142,7 +142,7 @@ public class Client {
     public void consulterTache(String nomTache) {
 
     }
-<<<<<<< HEAD
+
     
     public void addTache(Tache tache){
         this.taches.add(tache);
@@ -157,7 +157,5 @@ public class Client {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
-=======
 
->>>>>>> 9e96e5c6363e89187af5a6f0e60c2744f0a61152
 }

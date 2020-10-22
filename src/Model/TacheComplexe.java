@@ -8,13 +8,17 @@ public class TacheComplexe extends Tache {
        
     public TacheComplexe(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         super(nomTache, description, nbPersonne,  prix, domanineTache, etat, dateDeb, dateFin);
+        listTaches = new ArrayList();
+    }
+    
+    public void addTache(Tache ts) {
+        this.listTaches.add(ts);
     }
 
+    
     public void newTache(){
         System.out.println("saisissez un nouvelle tache");
-        Scanner nomtache = new Scanner (System.in);
-        
-        
+        Scanner nomtache = new Scanner (System.in); 
     }
     
     

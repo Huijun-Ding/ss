@@ -44,7 +44,7 @@ public IntervenantDao(){};
             interres.setNoteIn((float) rowData.get("NoteIn")); //
             interres.setNumInterv((int) rowData.get("Code_Intervevant"));
             interres.setMotdepasseI((String) rowData.get("Password"));
-            interres.setRurInterv((String) rowData.get("Nom_Rue_Inter"));
+            interres.setRueInterv((String) rowData.get("Nom_Rue_Inter"));
             //interres.setNumRue((int) rowData.get("Num_Rue_Inter")); 
             interres.setTelInterv((String) rowData.get("Telephone_Inter"));
             interres.setVilleInterv((String) rowData.get("Ville_Inter"));
@@ -63,7 +63,7 @@ public IntervenantDao(){};
         parameter.add(intervenant.getPrenomInterv());
         parameter.add(intervenant.getTelInterv());
         parameter.add(intervenant.getEmail());
-        parameter.add(intervenant.getRurInterv());
+        parameter.add(intervenant.getRueInterv());
         parameter.add(intervenant.getVilleInterv());
         parameter.add(intervenant.getCodePostalIn());
         parameter.add(intervenant.getCarteBancaireIn());

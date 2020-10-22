@@ -25,8 +25,8 @@ public class ControlerInterface {
         System.out.println("3");
     }
     
-    public boolean checkPasswordC(Client c, String pass) {        
-       
+
+    public boolean checkPasswordC(Client c, String pass) {
         boolean same = false;
          System.out.println(same);
         if (c.getMotdepasseC().equals(pass)) {

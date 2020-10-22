@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ClientInterface {
+public class Intervenantface {
     private JFrame jFrame = new JFrame("Connexion");
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
@@ -16,9 +16,8 @@ public class ClientInterface {
     private Client client=null;
     private ControlerInterface controler;
 
-    public ClientInterface(Client cl){
+    public Intervenantface(Client cl){
         this.client=cl;
-        System.out.println("yichuan"+cl.getEmail());
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
         //设置一层相当于桌布的东西
@@ -73,7 +72,6 @@ public class ClientInterface {
                 if(e.getSource() == creerTache){
                     jFrame.setVisible(false);
                     //主界面显示,如
-                    System.out.println("erchuan"+client.getEmail());
                     CreationTache cre = new CreationTache(client);
                     cre.getjFrame().setVisible(true);
                     //不正确,则提示错误信息

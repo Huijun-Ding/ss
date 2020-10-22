@@ -32,6 +32,8 @@ public class Tache {
         this.etat = etat;
         this.dateDeb = dateDeb;
         this.dateFin = dateFin;
+        competences = new ArrayList();
+        listRecus = new ArrayList();
     }
    
     public ArrayList<Competence> getCompetences() {

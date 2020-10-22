@@ -44,7 +44,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         //this.client=c;
         p = new JPanel(null);
         //addChoix();
-
+        client= new Client();
         liste = new JList(nomChoix);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);

@@ -11,11 +11,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //每次打开新建任务 先去数据库检测是否有记录
-
 public class CreationTache {
-    private Client client;
+
+    private Client client = new Client();
 
     private JFrame jFrame = new JFrame("Evaluation Via Client");
     private Container c = jFrame.getContentPane();
@@ -45,9 +48,9 @@ public class CreationTache {
 
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
-
     public CreationTache(Client cl) {
-        this.client=cl;
+        this.client = cl;
+        contoler = new ControlerInterface();
         jFrame.setBounds(600, 200, 800, 500);
         c.setLayout(new BorderLayout());//布局管理器
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,7 +89,6 @@ public class CreationTache {
         tfCompe.setBounds(250, 310, 120, 20);
         comboBox.setBounds(250, 270, 120, 20);
 
-
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -119,7 +121,6 @@ public class CreationTache {
         fieldPanel.add(tfCompe);
         fieldPanel.add(comboBox);
 
-
         c.add(fieldPanel, "Center");
 
         /*按钮部分--South*/
@@ -151,8 +152,6 @@ public class CreationTache {
             }
 
         });*/   //treeeessss complexe   du coup je l'enlve.
-
-
         okbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == okbtn) {
@@ -167,16 +166,29 @@ public class CreationTache {
                     String competence = tfCompe.getText();
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
-                    Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
+                    //System.out.println("sanchuan"+client.getNumClient());
+                    Tache t = new Tache();
+                    t.setNomTache(nomT);
+                    t.setDateDeb(dateD);
+                    t.setDateFin(dateF);
+                    t.setPrix(p);
+                    t.setNbPersonne(nb);
+                    t.setDescription(descri);
+                    t.setDomanineTache(domaine);
                     t.setClientId(client.getNumClient());
-                    contoler.putTacheInBD(t);
+                    t.setEtat(EnumEtat.EN_COURS);
+                    t.setDelais("");
+
+                    try {
+                        contoler.putTacheInBD(t);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(CreationTache.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
             }
 
         });
-
-
 
         sousbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -203,7 +215,6 @@ public class CreationTache {
 
         });
 
-
         cancelbtn.addActionListener(new ActionListener() {
 
             @Override
@@ -217,9 +228,7 @@ public class CreationTache {
                 tfNomTache.setText("");
                 tfPrix.setText("");
 
-
                 //lbIMsgC.setText("");
-
             }
         });
 
@@ -238,6 +247,5 @@ public class CreationTache {
         String competence = tfCompe.getText();
         String domaine = (String) comboBox.getSelectedItem();
     }
-
 
 }

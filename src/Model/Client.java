@@ -163,8 +163,5 @@ public class Client {
         return motdepasseC;
     }
 
-    public void setMotdepasseC(String motdepasseC) {
-        this.motdepasseC = motdepasseC;
-    }
 
 }

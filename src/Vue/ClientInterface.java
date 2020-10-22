@@ -2,22 +2,26 @@ package Vue;
 
 import Controler.ControlerInterface;
 import Model.Client;
+import Model.Tache;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ClientInterface {
     private JFrame jFrame = new JFrame("Connexion");
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
     private JButton creerTache = new JButton("creer une tache");
-    private Client client=null;
+    private Client client;
     private ControlerInterface controler;
 
     public ClientInterface(Client cl){
+        client=new Client();
         this.client=cl;
+        controler=new ControlerInterface();
         System.out.println("yichuan"+cl.getEmail());
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
@@ -74,6 +78,10 @@ public class ClientInterface {
                     jFrame.setVisible(false);
                     //主界面显示,如
                     System.out.println("erchuan"+client.getEmail());
+                    ArrayList<Tache> cliTaches=controler.getArrayListClient(client);
+                    for(Tache ta: cliTaches){
+                        client.addTache(ta);
+                    }
                     CreationTache cre = new CreationTache(client);
                     cre.getjFrame().setVisible(true);
                     //不正确,则提示错误信息

@@ -1,18 +1,18 @@
 package Model;
 
 public class Competence {
-    protected String nomP;
+    protected String nomC;
 
-    public Competence(String nomP, String dateP, float montantP) {
-        this.nomP = nomP;
+    public Competence(String nom) {
+        this.nomC = nom;
     }
 
     public String getNomP() {
-        return nomP;
+        return nomC;
     }
 
     public void setNomP(String nomP) {
-        this.nomP = nomP;
+        this.nomC = nomP;
     }
 }
 

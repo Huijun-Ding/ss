@@ -6,11 +6,11 @@ import Model.Tache;
 public class Paiement {
 
     private int numP;
-    private Date dateP;
+    private String dateP;
     private float montantP;
     private Tache tache;
 
-    public Paiement(int num, Date date, int montant, Tache t) {
+    public Paiement(int num, String date, float montant, Tache t) {
         this.numP = num;
         this.dateP = date;
         this.montantP = montant;
@@ -25,7 +25,7 @@ public class Paiement {
         return numP;
     }
 
-    public Date getDateP() {
+    public String getDateP() {
         return dateP;
     }
 

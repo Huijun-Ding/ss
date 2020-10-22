@@ -8,11 +8,11 @@ import java.util.TimerTask;
 
 public class Affecter {
 
-    private ArrayList<Intervenant> listAllInters;
-    private ArrayList<Intervenant> listCandidats;
-    private ArrayList<Intervenant> intervenants;
+    private ArrayList<Intervenant> listAllInters = new ArrayList();
+    private ArrayList<Intervenant> listCandidats = new ArrayList();
+    private ArrayList<Intervenant> intervenants = new ArrayList();
     private Tache tache;
-    private ArrayList<Intervenant> listAttende;
+    private ArrayList<Intervenant> listAttende = new ArrayList();
     private int nb = tache.getNbPersonne();
     private int nbAccept = 0;
     private static Integer cacheTime = 14400000;
@@ -46,7 +46,7 @@ public class Affecter {
         }
     }
 
-    public void affecterTache() {//人工定期激活，或者等待时间自动激活分配函数
+    public void affecterTache() {
         Timer timer = new Timer();
         if (nbAccept < nb) {
             timer.schedule(new TimerTask() {

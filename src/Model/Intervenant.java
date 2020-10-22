@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Intervenant {
     protected int numInterv; 
     protected String telInterv; 
-    protected String rurInterv;
+    protected String rueInterv;
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
@@ -13,9 +13,13 @@ public class Intervenant {
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
-    private ArrayList<RecuPaiement> Recus;
+    private ArrayList<RecuPaiement> recus;
     private ArrayList<Competence> mesCompetences;
 
+    public void addMesCompetences(Competence c) {
+        this.mesCompetences.add(c);
+    }
+    
     public ArrayList<Tache> getListTachesRecevoir() {
         return listTachesRecevoir;
     }
@@ -41,15 +45,18 @@ public class Intervenant {
         return this.reponse;
     }
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
-
+    public Intervenant(int numInterv, String telInterv, String rueInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
-        this.rurInterv = rurInterv;
+        this.rueInterv = rueInterv;
         this.villeInterv = villeInterv;
         this.codePostalIn = codePostalIn;
         this.carteBancaireIn = carteBancaireIn;
         this.noteIn = noteIn;
+        listTachesRecevoir = new ArrayList();
+        listTaches = new ArrayList();
+        recus = new ArrayList();
+        mesCompetences = new ArrayList();    
     }
     
     public ArrayList<Competence> getMesCompetences() {
@@ -64,8 +71,8 @@ public class Intervenant {
         return telInterv;
     }
 
-    public String getRurInterv() {
-        return rurInterv;
+    public String getRueInterv() {
+        return rueInterv;
     }
 
     public String getVilleInterv() {
@@ -92,8 +99,8 @@ public class Intervenant {
         this.telInterv = telInterv;
     }
 
-    public void setRurInterv(String rurInterv) {
-        this.rurInterv = rurInterv;
+    public void setRueInterv(String rurInterv) {
+        this.rueInterv = rurInterv;
     }
 
     public void setVilleInterv(String villeInterv) {
@@ -114,7 +121,7 @@ public class Intervenant {
     
     public void setRecuPaiement(RecuPaiement rp) {
         if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
-            this.Recus.add(rp);
+            this.recus.add(rp);
         }
     } 
     

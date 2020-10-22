@@ -18,7 +18,7 @@ import java.net.URL;
 public class CreationTache {
     private Client client;
 
-    private JFrame jFrame = new JFrame("Evaluation Via Client");
+    private JFrame jFrame = new JFrame("Creation de tache");
     private Container c = jFrame.getContentPane();
     private JLabel lbNomTache = new JLabel("Nom de tache");
     private JLabel lbIMsgI = new JLabel();
@@ -112,7 +112,7 @@ public class CreationTache {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                Connecter cn = new Connecter();
+                ClientInterface cn = new ClientInterface();
                 cn.getjFrame().setVisible(true);
 
             }

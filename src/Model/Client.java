@@ -143,4 +143,7 @@ public class Client {
     public ArrayList<Tache> getTaches() {
         return taches;
     }
+    public void addTache(Tache tache){
+        taches.add(tache);
+    }
 }

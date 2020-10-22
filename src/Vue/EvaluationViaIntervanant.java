@@ -5,21 +5,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class EvaluationViaIntervanant {
 
     private JFrame jFrame = new JFrame("Evaluation Via Intervenant");
     private Container c = jFrame.getContentPane();
-    private String saveValue1=null;
-    private String saveValue2=null;
-    private String saveValue3=null;
+    private String saveValue1 = null;
+    private String saveValue2 = null;
+    private String saveValue3 = null;
     private JLabel lbIndicateur = new JLabel("Indicateur");
     private JLabel lbEvaluation = new JLabel("Evaluation");
     private JLabel lbI1 = new JLabel("<html><body><p >correspondance entre la tache telle que decrite et<br/> la tache effectivement realisee</p></body></html> ");
     private JLabel lbI2 = new JLabel("rentabilite de la tache");
     private JLabel lbI3 = new JLabel("qualite d'echange entre client");
     private JLabel lbcomm = new JLabel("Commentaire");
+    private JButton btnRetour = new JButton("Return");
+
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
     private JTextField lbCommentaire = new JTextField(10);
     // 创建两个单选按钮
     private JRadioButton radioBtn101 = new JRadioButton("1");
@@ -40,9 +46,9 @@ public class EvaluationViaIntervanant {
     private JRadioButton radioBtn304 = new JRadioButton("4");
     private JRadioButton radioBtn305 = new JRadioButton("5");
 
-    private RadioButtonListener1 radioButtonListener1=new RadioButtonListener1();
-    private RadioButtonListener2 radioButtonListener2=new RadioButtonListener2();
-    private RadioButtonListener3 radioButtonListener3=new RadioButtonListener3();
+    private RadioButtonListener1 radioButtonListener1 = new RadioButtonListener1();
+    private RadioButtonListener2 radioButtonListener2 = new RadioButtonListener2();
+    private RadioButtonListener3 radioButtonListener3 = new RadioButtonListener3();
 
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("cancel");
@@ -65,6 +71,8 @@ public class EvaluationViaIntervanant {
         titlePanel.add(new JLabel("Evaluation Interface Intervenant"));
         c.add(titlePanel, "North");
 
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
         ButtonGroup btnGroup1 = new ButtonGroup();
         btnGroup1.add(radioBtn101);
         btnGroup1.add(radioBtn102);
@@ -94,7 +102,7 @@ public class EvaluationViaIntervanant {
         radioBtn204.addActionListener(radioButtonListener2);
         radioBtn205.addActionListener(radioButtonListener2);
         // 设置第一个单选按钮选中
-       // radioBtn201.setSelected(true);
+        // radioBtn201.setSelected(true);
 
         ButtonGroup btnGroup3 = new ButtonGroup();
         btnGroup3.add(radioBtn301);
@@ -109,7 +117,7 @@ public class EvaluationViaIntervanant {
         radioBtn304.addActionListener(radioButtonListener3);
         radioBtn305.addActionListener(radioButtonListener3);
         // 设置第一个单选按钮选中
-       // radioBtn301.setSelected(true);
+        // radioBtn301.setSelected(true);
 
         /*输入部分--Center*/
         JPanel fieldPanel = new JPanel();
@@ -121,21 +129,33 @@ public class EvaluationViaIntervanant {
         lbEvaluation.setBounds(500, 50, 100, 20);
         lbcomm.setBounds(100, 250, 100, 20);
         lbCommentaire.setBounds(100, 280, 600, 100);
-        radioBtn101.setBounds(500,110,40,20);
-        radioBtn102.setBounds(540,110,40,20);
-        radioBtn103.setBounds(580,110,40,20);
-        radioBtn104.setBounds(620,110,40,20);
-        radioBtn105.setBounds(660,110,40,20);
-        radioBtn201.setBounds(500,150,40,20);
-        radioBtn202.setBounds(540,150,40,20);
-        radioBtn203.setBounds(580,150,40,20);
-        radioBtn204.setBounds(620,150,40,20);
-        radioBtn205.setBounds(660,150,40,20);
-        radioBtn301.setBounds(500,190,40,20);
-        radioBtn302.setBounds(540,190,40,20);
-        radioBtn303.setBounds(580,190,40,20);
-        radioBtn304.setBounds(620,190,40,20);
-        radioBtn305.setBounds(660,190,40,20);
+        radioBtn101.setBounds(500, 110, 40, 20);
+        radioBtn102.setBounds(540, 110, 40, 20);
+        radioBtn103.setBounds(580, 110, 40, 20);
+        radioBtn104.setBounds(620, 110, 40, 20);
+        radioBtn105.setBounds(660, 110, 40, 20);
+        radioBtn201.setBounds(500, 150, 40, 20);
+        radioBtn202.setBounds(540, 150, 40, 20);
+        radioBtn203.setBounds(580, 150, 40, 20);
+        radioBtn204.setBounds(620, 150, 40, 20);
+        radioBtn205.setBounds(660, 150, 40, 20);
+        radioBtn301.setBounds(500, 190, 40, 20);
+        radioBtn302.setBounds(540, 190, 40, 20);
+        radioBtn303.setBounds(580, 190, 40, 20);
+        radioBtn304.setBounds(620, 190, 40, 20);
+        radioBtn305.setBounds(660, 190, 40, 20);
+
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                ConsulterTacheI cn = new ConsulterTacheI();
+                cn.setVisible(true);
+
+            }
+        });
+
 
         fieldPanel.add(lbIndicateur);
         fieldPanel.add(lbI1);
@@ -159,6 +179,7 @@ public class EvaluationViaIntervanant {
         fieldPanel.add(radioBtn303);
         fieldPanel.add(radioBtn304);
         fieldPanel.add(radioBtn305);
+        fieldPanel.add(lblBackground);
 
 
         c.add(fieldPanel, "Center");
@@ -168,16 +189,17 @@ public class EvaluationViaIntervanant {
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
         buttonPanel.add(cancelbtn);
+        buttonPanel.add(btnRetour);
         c.add(buttonPanel, "South");
 
         okbtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String note1 =saveValue1;
-                String note2 =saveValue2;
-                String note3 =saveValue3;
-                String commentaire=lbCommentaire.getText();
+                String note1 = saveValue1;
+                String note2 = saveValue2;
+                String note3 = saveValue3;
+                String commentaire = lbCommentaire.getText();
                 //实例化一个evaluation 并存到BD中
 
 
@@ -196,41 +218,39 @@ public class EvaluationViaIntervanant {
         });
 
 
-
         jFrame.setLocationRelativeTo(null);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 
-    public class RadioButtonListener1 implements ActionListener
-    {
+    public class RadioButtonListener1 implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            JRadioButton temp=(JRadioButton)arg0.getSource();
-            if(temp.isSelected()){
-                saveValue1=temp.getText();
+            JRadioButton temp = (JRadioButton) arg0.getSource();
+            if (temp.isSelected()) {
+                saveValue1 = temp.getText();
             }
         }
 
     }
-    public class RadioButtonListener2 implements ActionListener
-    {
+
+    public class RadioButtonListener2 implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            JRadioButton temp=(JRadioButton)arg0.getSource();
-            if(temp.isSelected()){
-                saveValue2=temp.getText();
+            JRadioButton temp = (JRadioButton) arg0.getSource();
+            if (temp.isSelected()) {
+                saveValue2 = temp.getText();
             }
         }
 
     }
-    public class RadioButtonListener3 implements ActionListener
-    {
+
+    public class RadioButtonListener3 implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent arg0) {
-            JRadioButton temp=(JRadioButton)arg0.getSource();
-            if(temp.isSelected()){
-                saveValue3=temp.getText();
+            JRadioButton temp = (JRadioButton) arg0.getSource();
+            if (temp.isSelected()) {
+                saveValue3 = temp.getText();
             }
         }
 

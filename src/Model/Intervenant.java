@@ -145,4 +145,11 @@ public class Intervenant {
     public String getMotdepasseI(){
         return this.motdepasseI;
     }
+
+    public ArrayList<Tache> getListTaches() {
+        return listTaches;
+    }
+    public void addTache(Tache t){
+        this.listTaches.add(t);
+    }
 }

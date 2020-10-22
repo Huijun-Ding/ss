@@ -67,15 +67,15 @@ public class Connecter {
 
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
-        lbUser.setBounds(360, 90, 80, 20);
-        lbPass.setBounds(360, 130, 80, 20);
+        lbUser.setBounds(360, 130, 80, 20);
+        lbPass.setBounds(360, 170, 80, 20);
         fieldPanel.add(lbUser);
         fieldPanel.add(lbPass);
         fieldPanel.add(titre);
 
-        okbtn.setBounds(360,240,100,20);
-        cancelbtn.setBounds(460,240,100,20);
-        inscription.setBounds(560,240,100,20);
+        okbtn.setBounds(360,280,100,20);
+        cancelbtn.setBounds(460,280,100,20);
+        inscription.setBounds(560,280,100,20);
 
 
         logo.setBounds(0,0,220,100);
@@ -86,13 +86,13 @@ public class Connecter {
         fieldPanel.add(cancelbtn);
         fieldPanel.add(inscription);
 
-        username.setBounds(460, 90, 200, 20);
-        password.setBounds(460, 130, 200, 20);
+        username.setBounds(460, 130, 200, 20);
+        password.setBounds(460, 170, 200, 20);
         fieldPanel.add(username);
         fieldPanel.add(password);
-        radioBtn1.setBounds(360, 170, 100, 20);
-        radioBtn2.setBounds(460, 170, 100, 20);
-        radioBtn3.setBounds(560, 170, 100, 20);
+        radioBtn1.setBounds(360, 210, 100, 20);
+        radioBtn2.setBounds(460, 210, 100, 20);
+        radioBtn3.setBounds(560, 210, 100, 20);
         fieldPanel.add(radioBtn1);
         fieldPanel.add(radioBtn2);
         fieldPanel.add(radioBtn3);

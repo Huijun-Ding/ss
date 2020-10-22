@@ -54,6 +54,9 @@ public class Affecter {
                     cacheTime = (int) (14400000 + Math.random() * 3600000);
                     for (int i = 0; i < nb - nbAccept; i++) {
                         listCandidats.get(i).etreAffecte(tache);  // informer l'intervenant qu,'il a tache a recevoir
+
+                    }
+                    for (int i = 0; i < nb - nbAccept; i++) {
                         listCandidats.remove(listCandidats.get(i));
                         listAttende.add(listCandidats.get(i));
                     }

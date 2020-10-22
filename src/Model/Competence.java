@@ -2,9 +2,10 @@ package Model;
 
 public class Competence {
     protected String nomP;
-
-    public Competence(String nomP, String dateP, float montantP) {
+    protected int numP;
+    public Competence(String nomP,int numP, String dateP, float montantP) {
         this.nomP = nomP;
+        this.numP=numP;
     }
 
     public Competence() {
@@ -18,5 +19,16 @@ public class Competence {
     public void setNomP(String nomP) {
         this.nomP = nomP;
     }
+
+    public int getNumP() {
+        return numP;
+    }
+
+    public void setNumP(int numP) {
+        this.numP = numP;
+    }
+    
+    
+    
 }
 

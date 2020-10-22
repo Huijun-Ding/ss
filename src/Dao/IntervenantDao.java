@@ -37,10 +37,12 @@ public class IntervenantDao {
                 interres.setCarteBancaireIn((String) rowData.get("Numero_carte_Bancaire"));
                 interres.setCodePostalIn((String) rowData.get("Code_Postal"));
                 interres.setEmail(email);
-                interres.setNoteIn((float) rowData.get("NoteIn")); //需要新加一个attribut NoteIn float   
+                interres.setNoteIn((float) rowData.get("NoteIn")); //
                 interres.setNumInterv((int) rowData.get("Code_Intervevant"));
                 interres.setPassword(mdp);
-                interres.setRurInterv((String) rowData.get("Num_Rue_Inter")+rowData.get("Nom_Rue_Inter")); //不确定这么对不对 不对的话可以删掉一个numrue
+                interres.setRurInterv((String) rowData.get("Nom_Rue_Inter"));
+                interres.setNumRue((int) rowData.get("Num_Rue_Inter")); 
+                 //不确定这么对不对 不对的话可以删掉一个numrue
                 interres.setTelInterv((String) rowData.get("Telephone_Inter"));
                 interres.setVilleInterv((String) rowData.get("Ville_Inter"));  
                 System.out.println(" connexion réussie! welcome intervenant");

@@ -24,14 +24,13 @@ public class TacheclientDao {
          public ArrayList<Tache> tacheclient(Client client){
                  String sqltache = "select * from tache where Code_client=? "; //Tout le tache d'un client
                  Query go = new Query(); //connect
-                 this.lsttache = new ArrayList<Tache>();
                  go.parameter.add(client.getNumClient());
                  go.afferentSQL(sqltache);
+                 this.lsttache = new ArrayList<Tache>();
                  List<Object> objs=Select();
-                 
-                   for(int i=0;i<objs.size();i++){
+                  for(int i=0;i<objs.size();i++){
                    Map<String,Object> rowData =(Map<String,Object>)objs.get(i);
-                   Tache tache =new Tache();
+                  Tache tache =new Tache();
                   tache.setDateDeb((String) rowData.get("Date_deb"));
                   tache.setDateFin((String) rowData.get("Date_Fin"));
                   tache.setDelais((int) rowData.get("Delais"));
@@ -46,22 +45,20 @@ public class TacheclientDao {
                     }
                  return lsttache;}
          
-                   public ArrayList<Competence> competencetache(){
-                   String sqlcompetence ="select * from affecter where ID_tache=? "; //
-                    
-                   Query go = new Query();
-                           for (int i=0;i<lsttache.size();i++){
-                                this.lstcompetence = new ArrayList<Competence>();
-                                  go.parameter.add(lsttache.get(i).getNumTache());
-                                  go.afferentSQL(sqlcompetence);
-                                   List<Object> objs=Select(); //Chaque tâche a une liste de competence
-                                   for(int j=0;j<objs.size();j++){
-                                       Map<String,Object> rowData =(Map<String,Object>)objs.get(j);
-                                         Competence competence =new Competence();        
-                                         if (lstcompetence.contains(competence)==false)
-                                         {lstcompetence.add(competence);}
-                           } 
-                          }
+                   public ArrayList<Competence> competencetache(Tache tache){
+                   String sqlcompetence ="select * from affecter where ID_tache=? "; // 
+                   Query go = new Query(); 
+                   go.parameter.add(tache.getNumTache());
+                   go.afferentSQL(sqlcompetence);
+                   this.lstcompetence = new ArrayList<Competence>();  
+                   List<Object> objs=Select(); //Chaque tâche a une liste de competence
+                   for(int j=0;j<objs.size();j++){
+                   Map<String,Object> rowData =(Map<String,Object>)objs.get(j);
+                   Competence competence =new Competence();
+                   competence.setNumP((int) rowData.get("Code_competence"));
+                   competence.setNomP((String) rowData.get("Libelle"));   
+                   lstcompetence.add(competence);
+                           }    
                            return lstcompetence;
                          }
 }

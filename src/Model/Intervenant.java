@@ -13,6 +13,7 @@ public class Intervenant {
     private ArrayList<Tache> listTachesRecevoir;
     protected String email;
     protected String password;
+    protected int numRue;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
     private ArrayList<Competence> mesCompetences;
@@ -36,7 +37,7 @@ public class Intervenant {
         return false;
     }
 
-    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn, String email, String password, ArrayList<Tache> listTaches, ArrayList<RecuPaiement> Recus, ArrayList<Competence> mesCompetences) {
+    public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn, String email, String password,int numRue, ArrayList<Tache> listTaches, ArrayList<RecuPaiement> Recus, ArrayList<Competence> mesCompetences) {
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -45,7 +46,7 @@ public class Intervenant {
         this.carteBancaireIn = carteBancaireIn;
         this.noteIn = noteIn;
         this.email = email;
-      
+        this.numRue=numRue;
         this.listTaches = listTaches;
         this.Recus = Recus;
         this.mesCompetences = mesCompetences;
@@ -140,6 +141,15 @@ public class Intervenant {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getNumRue() {
+        return numRue;
+    }
+
+    public void setNumRue(int numRue) {
+        this.numRue = numRue;
+    }
+    
 
     }
     

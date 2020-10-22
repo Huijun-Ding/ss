@@ -23,7 +23,7 @@ public class ClientDao {
 
        
         public Client login(String email,String mdp){
-            
+           
             String sqlclient = "select * from client where EmailC=? and Password=? ";  //Trouvez la ligne correspondantes en fonction du email et du mot de passe saisis
             Client clientres = null;    //La valeur de retour initiale est vide    
             Query go = new Query(); //  L connexion de bd
@@ -44,7 +44,8 @@ public class ClientDao {
                 clientres.setNoteC((float) rowData.get("NoteC"));   
                 clientres.setNumClient((int) rowData.get("Code_client"));
                 clientres.setPassword(mdp);
-                clientres.setRurClient((String) rowData.get("NumRue")+rowData.get("NomRue"));
+                clientres.setRurClient((String) rowData.get("NomRue"));
+                clientres.setNumRue((int) rowData.get("NumRue")); 
                 clientres.setTelClient((String) rowData.get("TelC"));
                 clientres.setVilleClient((String) rowData.get("VilleC"));  
                 System.out.println(" connexion réussie! welcome client");

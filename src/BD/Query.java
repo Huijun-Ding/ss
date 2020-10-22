@@ -29,8 +29,7 @@ public class Query {
         try {
             SQLsen = Sqlsentence;
             System.out.println(SQLsen);  
-            ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);
-            
+            ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);           
         } catch (SQLException e) {
             e.printStackTrace();
         }

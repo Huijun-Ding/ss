@@ -14,9 +14,10 @@ public class Client {
     protected float noteC;
     protected String email;
     protected String password;
+    protected int numRue;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
 
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC, String email, String password) {
+    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC, String email, String password, int numRue) {
         this.numClient = numClient;
         this.telClient = telClient;
         this.rurClient = rurClient;
@@ -26,7 +27,11 @@ public class Client {
         this.noteC = noteC;
         this.email = email;
         this.password = password;
+        this.numRue = numRue;
     }
+
+  
+    
 
 
 
@@ -123,6 +128,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getNumRue() {
+        return numRue;
+    }
+
+    public void setNumRue(int numRue) {
+        this.numRue = numRue;
     }
     
     

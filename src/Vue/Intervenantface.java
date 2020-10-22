@@ -2,6 +2,7 @@ package Vue;
 
 import Controler.ControlerInterface;
 import Model.Client;
+import Model.Intervenant;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +13,12 @@ public class Intervenantface {
     private JFrame jFrame = new JFrame("Connexion");
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
-    private JButton creerTache = new JButton("creer une tache");
-    private Client client=null;
+    private JButton recommande = new JButton("mes taches recommandees");
+    private Intervenant intervenant=null;
     private ControlerInterface controler;
 
-    public Intervenantface(Client cl){
-        this.client=cl;
+    public Intervenantface(){
+        //this.client=cl;Client cl
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
         //设置一层相当于桌布的东西
@@ -49,7 +50,7 @@ public class Intervenantface {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(consulterTache);
-        buttonPanel.add(creerTache);
+        buttonPanel.add(recommande);
         c.add(buttonPanel, "South");
 
 
@@ -65,15 +66,15 @@ public class Intervenantface {
             }
         });
 
-        creerTache.addActionListener(new ActionListener() {
+        recommande.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == creerTache){
+                if(e.getSource() == recommande){
                     jFrame.setVisible(false);
                     //主界面显示,如
-                    CreationTache cre = new CreationTache(client);
-                    cre.getjFrame().setVisible(true);
+                    RecommanderTache re = new RecommanderTache(intervenant);
+                    re.getjFrame().setVisible(true);
                     //不正确,则提示错误信息
                 }
 

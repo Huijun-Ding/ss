@@ -19,6 +19,10 @@ public class Intervenant {
         this.mesCompetences.add(c);
     }
     
+    public ArrayList<Tache> getListTaches() {
+        return this.listTaches;
+    }
+    
     public String getTacheAffectee() {
         String t = "";
         for (int i=0; i<this.listTachesRecevoir.size(); i++) {
@@ -49,7 +53,6 @@ public class Intervenant {
         this.listTachesRecevoir.remove(t);
         return false;
     }
-
 
     public Intervenant(int numInterv, String telInterv, String rueInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
         this.numInterv = numInterv;

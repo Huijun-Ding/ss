@@ -74,7 +74,7 @@ public class Affecter {
         }
         
         for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
-            if (this.listAttende.get(i).accepterTache(tache)) { // si il accepte
+            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
                 intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
                 nbAccept += 1; 
             }

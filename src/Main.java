@@ -30,10 +30,10 @@ public class Main {
         Paiement p1 = new Paiement(1,"20/10/2020",1000.00f,t2);
         Paiement p2 = new Paiement(1,"20/10/2020",3000.00f,t3);
         
-        /* RecuPaiement rp1 = new RecuPaiement("conecption","05/11/2021",1000,t2,i1);
+        RecuPaiement rp1 = new RecuPaiement("conecption","05/11/2021",1000,t2,i1);
         RecuPaiement rp2 = new RecuPaiement("developpeur 1","05/01/2021",1000,t3,i2);
         RecuPaiement rp3 = new RecuPaiement("developpeur 2","05/01/2021",1000,t3,i3);
-        RecuPaiement rp4 = new RecuPaiement("developpeur 3","05/01/2021",1000,t3,i4);*/
+        RecuPaiement rp4 = new RecuPaiement("developpeur 3","05/01/2021",1000,t3,i4);
         
         t1.addTache(t2);
         t1.addTache(t3);
@@ -52,6 +52,22 @@ public class Main {
         i4.addMesCompetences(comp3);
         i4.addMesCompetences(comp4);
 
+        Affecter af2= new Affecter(t2);
+        af2.addListAllInters(i1);
+        af2.addListAllInters(i2);
+        af2.addListAllInters(i3);
+        af2.addListAllInters(i4);
+        af2.selectCandidats();
+        af2.classerCandidats();
+  
+        try {
+            af2.affecterTache();
+            //Thread.sleep(14400000); //4 heures
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        
         Affecter af1= new Affecter(t3);
         af1.addListAllInters(i1);
         af1.addListAllInters(i2);
@@ -68,14 +84,18 @@ public class Main {
             Thread.currentThread().interrupt();
         }
 
+        i1.accepterTache(t2);
         i2.accepterTache(t3);
         i3.accepterTache(t3);
-        i4.refuserTache(t3);
+        i4.accepterTache(t3);
 
         System.out.println("tous les intervenants: " + af1.getListAllInter());
         System.out.println("les candidats" + af1.getListCandidats());
-        System.out.println("liste finle" + af1.getIntervenants());
+        System.out.println("liste finle Developpement" + af1.getIntervenants());
 
+        System.out.println("liste finle Conception" + af2.getIntervenants());
+                
+        System.out.println("Intervenant1 tache: " + i1.consulterTache());
         System.out.println("Intervenant2 tache: " + i2.consulterTache());
         System.out.println("Intervenant3 tache: " + i3.consulterTache());
         System.out.println("Intervenant4 tache: " + i4.consulterTache());

@@ -59,8 +59,8 @@ public class ClientInterface {
             public void actionPerformed(ActionEvent e) {
                 //跳转到 suivi tache
                 jFrame.setVisible(false);
-                ConsulterTacheC con = new ConsulterTacheC(client);
-                con.getjFrame().setVisible(true);
+                ConsulterTacheC con = new ConsulterTacheC();//client
+                con.setVisible(true);
 
             }
         });

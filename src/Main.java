@@ -1,6 +1,7 @@
 
 import BD.DB;
 import Model.*;
+import java.util.*;
 
 public class Main {
 
@@ -22,9 +23,9 @@ public class Main {
         
         Client c1 = new Client(1,"7674677267","rue xxxx","toulouse","31000","123456789056789",4.26f);
         
-        TacheComplexe t1 = new TacheComplexe("Developement site web","xxxxxxxxxxx",4,4000,"IT",EnumEtat.EN_COURS,"18/10/2020","01/01/2021");
-        TacheSimple t2 = new TacheSimple("Conception site web","xxxxxxxxxxx",1,1000,"IT",EnumEtat.EN_COURS,"18/10/2020","30/10/2021");
-        TacheMassive t3 = new TacheMassive("developpeurs","xxxxxxxxxxx",3,3000,"IT",EnumEtat.EN_COURS,"18/10/2020","01/01/2021");
+        TacheComplexe t1 = new TacheComplexe("Developement site web","xxxxxxxxxxx",4,4000,"IT",EnumEtat.EN_COURS,"18/10/2020","01/01/2021",c1);
+        TacheSimple t2 = new TacheSimple("Conception site web","xxxxxxxxxxx",1,1000,"IT",EnumEtat.EN_COURS,"18/10/2020","30/10/2021",c1);
+        TacheMassive t3 = new TacheMassive("developpeurs","xxxxxxxxxxx",3,3000,"IT",EnumEtat.EN_COURS,"18/10/2020","01/01/2021",c1);
  
         Paiement p1 = new Paiement(1,"20/10/2020",1000.00f,t2);
         Paiement p2 = new Paiement(1,"20/10/2020",3000.00f,t3);
@@ -51,19 +52,39 @@ public class Main {
         i4.addMesCompetences(comp3);
         i4.addMesCompetences(comp4);
 
-        Affecter af1= new Affecter(t2);
+        Affecter af1= new Affecter(t3);
         af1.addListAllInters(i1);
         af1.addListAllInters(i2);
         af1.addListAllInters(i3);
         af1.addListAllInters(i4);
         af1.selectCandidats();
         af1.classerCandidats();
-        af1.affecterTache();
         
-        System.out.println("Intervenant 1" + i1.getListTachesRecevoir());
-        System.out.println("Intervenant 2" + i2.getListTachesRecevoir());
-        System.out.println("Intervenant 3" + i3.getListTachesRecevoir());
-        System.out.println("Intervenant 4" + i4.getListTachesRecevoir());
+        try {
+            af1.affecterTache();
+            //Thread.sleep(14400000); //4 heures
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        
+        i2.accepterTache(t3);
+        i3.accepterTache(t3);
+        i4.refuserTache(t3);
+        
+        System.out.println("tous les intervenants: " + af1.getListAllInter());
+        System.out.println("les candidats" + af1.getListCandidats());
+        System.out.println("liste finle" + af1.getIntervenants());
+        
+        System.out.println("Intervenant2 tache: " + i2.consulterTache());
+        System.out.println("Intervenant3 tache: " + i3.consulterTache());
+        System.out.println("Intervenant4 tache: " + i4.consulterTache());
+        
+        System.out.println("Intervenant1 tache reçu: " + i1.getListTachesRecevoir());
+        System.out.println("Intervenant2 tache reçu: " + i2.getListTachesRecevoir());
+        System.out.println("Intervenant3 tache reçu: " + i3.getListTachesRecevoir());
+        System.out.println("Intervenant4 tache reçu: " + i4.getListTachesRecevoir());
+        
     }
        
 }

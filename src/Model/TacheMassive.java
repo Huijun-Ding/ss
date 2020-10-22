@@ -4,8 +4,8 @@ import Model.Tache;
 
 public class TacheMassive extends Tache {
     
-    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
-        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
+    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin, c);
     }
 
     public String getNomTache() {

@@ -150,7 +150,7 @@ public class Connecter {
 
                             if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
                                 jFrame.setVisible(false);
-                                ClientInterface cli = new ClientInterface();
+                                ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
                                 cli.getjFrame().setVisible(true);
                             } else {
                                 lbIMsgI.setText("password is wrong");
@@ -170,7 +170,7 @@ public class Connecter {
                         case 2:
                             if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
                                 jFrame.setVisible(false);
-                                ClientInterface cli = new ClientInterface();
+                                ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
                                 cli.getjFrame().setVisible(true);
                             } else {
                                 lbIMsgI.setText("password is wrong");

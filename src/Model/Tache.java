@@ -35,7 +35,20 @@ public class Tache {
         competences = new ArrayList();
         listRecus = new ArrayList();
     }
-   
+ 
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
+        this.nomTache = nomTache;
+        this.description = description;
+        this.nbPersonne = nbPersonne;
+        this.prix = prix;
+        this.domanineTache = domanineTache;
+        this.etat = etat;
+        this.dateDeb = dateDeb;
+        this.dateFin = dateFin;
+        competences = new ArrayList();
+        listRecus = new ArrayList();
+    }
+    
     public ArrayList<Competence> getCompetences() {
         return this.competences;
     }

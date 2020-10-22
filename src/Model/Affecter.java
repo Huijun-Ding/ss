@@ -17,7 +17,7 @@ public class Affecter {
     private int nbAccept = 0;
     private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
     private static Integer delay = 1000;
-    
+
     public Affecter(Tache t) {
         listAllInters = new ArrayList();
         listCandidats = new ArrayList();

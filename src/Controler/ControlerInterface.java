@@ -6,6 +6,9 @@ public class ControlerInterface {
     private Client client;
     private Intervenant intervenant;
 
+    public ControlerInterface() {
+
+    }
 
     public boolean checkPasswordC(Client c, String pass) {
         boolean same = false;

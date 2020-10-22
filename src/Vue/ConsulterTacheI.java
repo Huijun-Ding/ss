@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConsulterTacheC extends JFrame implements ListSelectionListener {
+public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private JPanel p;
     private int courrent;
     private JList liste = new JList();
@@ -27,19 +27,19 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JLabel Description = new JLabel("Description");
     private JTextArea Descri = new JTextArea(10, 30);
 
-    private JButton btnPayer=new JButton("Payer");
-    private JButton btnValider=new JButton("Valider");
+
+    private JButton btnValider=new JButton("Finaliser");
     private JButton btnEvaluer=new JButton("Evaluer");
-    private JButton btnModifier=new JButton("Modifier");
+
 
     private Client client;
-   // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
+    // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
     private Tache choix[] = {};
     private String nomChoix[] = {"java"};
 
     JLabel etiquette = new JLabel("                   ");
 
-    public ConsulterTacheC() {//Client c
+    public ConsulterTacheI() {//Client c
         super("Consulter mes taches");
         //this.client=c;
         p = new JPanel(null);
@@ -64,8 +64,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         Descri.setBounds(250, 240, 600, 100);
         etiquette.setBounds(250, 400, 50, 50);
         btnEvaluer.setBounds(800, 500, 80, 50);
-        btnPayer.setBounds(800, 500, 80, 50);
-        btnModifier.setBounds(900, 500, 80, 50);
+
         btnValider.setBounds(800, 500, 80, 50);
 
         p.add(liste);
@@ -83,12 +82,9 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         p.add(Description);
         p.add(etiquette);
         p.add(btnEvaluer);
-        p.add(btnModifier);
-        p.add(btnPayer);
+
         p.add(btnValider);
 
-        btnPayer.setVisible(false);
-        //btnPayer.setContentAreaFilled(false);
 
         btnEvaluer.setVisible(false);
         //btnEvaluer.setContentAreaFilled(false);
@@ -102,24 +98,12 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
 
 
-        btnPayer.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == btnPayer) {
-                    choix[courrent].setEtat(EnumEtat.PAYEE);
-
-                    //应该创建objet paiement 但是我没有
-                }
-            }
-        });
-
         btnValider.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnValider) {
-                    choix[courrent].setEtat(EnumEtat.VALIDEE_CLIENT);
+                    choix[courrent].setEtat(EnumEtat.FINALISEE_INTER);
                 }
             }
         });
@@ -130,26 +114,11 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnEvaluer) {
                     //this.setVisible(false);
-                    EvaluationViaClient ec = new EvaluationViaClient();
-                    ec.getjFrame().setVisible(true);
+                    EvaluationViaIntervanant ei = new EvaluationViaIntervanant();
+                    ei.getjFrame().setVisible(true);
                 }
             }
         });
-
-
-        btnModifier.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == btnModifier) {
-                    //this.setVisible(false);
-                    System.out.println("modifier");
-                    Modifier mo = new Modifier();
-                    mo.getjFrame().setVisible(true);
-                }
-            }
-        });
-
 
 
         this.setSize(1000, 600);
@@ -179,13 +148,9 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
                         btnEvaluer.setVisible(true);
                         //btnEvaluer.setContentAreaFilled(true);
                         break;
-                    case FINALISEE_INTER:
+                    case PAYEE:
                         btnValider.setVisible(true);
                         //btnValider.setContentAreaFilled(true);
-                        break;
-                    case ACCEPTEE:
-                        btnPayer.setVisible(true);
-                        //btnPayer.setContentAreaFilled(true);
                         break;
                 }
             } else {

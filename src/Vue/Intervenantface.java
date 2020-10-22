@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ClientInterface {
+public class Intervenantface {
     private JFrame jFrame = new JFrame("Connexion");
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
@@ -16,7 +16,7 @@ public class ClientInterface {
     private Client client=null;
     private ControlerInterface controler;
 
-    public ClientInterface(Client cl){
+    public Intervenantface(Client cl){
         this.client=cl;
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);

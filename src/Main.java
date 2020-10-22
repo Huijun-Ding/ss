@@ -80,10 +80,10 @@ public class Main {
         System.out.println("Intervenant3 tache: " + i3.consulterTache());
         System.out.println("Intervenant4 tache: " + i4.consulterTache());
 
-        System.out.println("Intervenant1 tache reçu: " + i1.getListTachesRecevoir());
-        System.out.println("Intervenant2 tache reçu: " + i2.getListTachesRecevoir());
-        System.out.println("Intervenant3 tache reçu: " + i3.getListTachesRecevoir());
-        System.out.println("Intervenant4 tache reçu: " + i4.getListTachesRecevoir());
+        System.out.println("Intervenant1 tache reçu: " + i1.getTacheAffectee());
+        System.out.println("Intervenant2 tache reçu: " + i2.getTacheAffectee());
+        System.out.println("Intervenant3 tache reçu: " + i3.getTacheAffectee());
+        System.out.println("Intervenant4 tache reçu: " + i4.getTacheAffectee());
         
     }
        

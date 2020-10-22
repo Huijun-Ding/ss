@@ -22,7 +22,7 @@ public class Connecter {
     private JRadioButton radioBtn2 = new JRadioButton("Intervenant");
     private JRadioButton radioBtn3 = new JRadioButton("Particulier");
     private int identifiant = 0;
-    private ControlerInterface contoler;
+    private ControlerInterface contoler=new ControlerInterface();
 
     public Connecter() {
         //设置窗体的位置及大小
@@ -142,6 +142,7 @@ public class Connecter {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == okbtn) {
 
+
                     String strPwd = new String(password.getPassword());
                     String strE = new String(username.getText());
 
@@ -168,7 +169,7 @@ public class Connecter {
 
                             break;
                         case 2:
-                            if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
+                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
                                 jFrame.setVisible(false);
                                 ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
                                 cli.getjFrame().setVisible(true);

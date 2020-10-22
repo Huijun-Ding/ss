@@ -17,17 +17,17 @@ public class RecommanderTache {
     private JFrame jFrame = new JFrame("Recommande");
     private Container c = jFrame.getContentPane();
     private JLabel lbNom = new JLabel("Nom de Tache");
-    private JLabel lbNomTache;
+    private JLabel lbNomTache=new JLabel("...");
     private JLabel lbEc = new JLabel("Echeance");
-    private JLabel lbEcheance ;
+    private JLabel lbEcheance =new JLabel("...");
     private JLabel lbComp = new JLabel("Competence");
-    private JLabel lbCompetence ;
+    private JLabel lbCompetence =new JLabel("...");
     private JLabel lbPri = new JLabel("Prix");
-    private JLabel lbPrix;
+    private JLabel lbPrix=new JLabel("...");
     private JLabel lbDescri = new JLabel("Description de tache :");
    private JTextArea lbDescription = new JTextArea(10, 10);
     private JLabel lbDateD = new JLabel("Date Debut");
-    private JLabel lbDateDebut ;
+    private JLabel lbDateDebut=new JLabel("...") ;
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("Refuse");
 
@@ -63,11 +63,11 @@ public class RecommanderTache {
             lbDateDebut = new JLabel(tache.getDateDeb());
 
         }else{
-            lbNomTache=new JLabel("...");
-            lbEcheance = new JLabel("...");
-            lbCompetence = new JLabel("...");
-            lbPrix = new JLabel("...");
-            lbDateDebut = new JLabel("...");
+            lbNomTache.setText("...");
+            lbEcheance .setText("...");
+            lbCompetence .setText("...");
+            lbPrix .setText("...");
+            lbDateDebut.setText("...");
         }
 
 
@@ -139,4 +139,3 @@ public class RecommanderTache {
         jFrame.setLocationRelativeTo(null);
     }
 }
-

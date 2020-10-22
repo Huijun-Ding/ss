@@ -44,6 +44,10 @@ public class EvaluationViaClient {
         jFrame.setVisible(true);
     }
 
+    public JFrame getjFrame() {
+        return jFrame;
+    }
+
     public void init() {
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout());

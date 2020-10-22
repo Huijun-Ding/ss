@@ -19,12 +19,16 @@ public class Intervenant {
         this.mesCompetences.add(c);
     }
     
-    public String getListTachesRecevoir() {
+    public String getTacheAffectee() {
         String t = "";
         for (int i=0; i<this.listTachesRecevoir.size(); i++) {
             t += this.listTachesRecevoir.get(i).getNomTache() + " ";
         }
         return t;
+    }
+    
+    public ArrayList<Tache> getListTachesRecevoir() {
+        return this.listTachesRecevoir;
     }
 
     public void etreAffecte(Tache t){

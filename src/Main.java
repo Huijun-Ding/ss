@@ -51,8 +51,19 @@ public class Main {
         i4.addMesCompetences(comp3);
         i4.addMesCompetences(comp4);
 
-        //Affecter af1= new Affecter(t2);
-        //af1.affecter()
+        Affecter af1= new Affecter(t2);
+        af1.addListAllInters(i1);
+        af1.addListAllInters(i2);
+        af1.addListAllInters(i3);
+        af1.addListAllInters(i4);
+        af1.selectCandidats();
+        af1.classerCandidats();
+        af1.affecterTache();
+        
+        System.out.println("Intervenant 1" + i1.getListTachesRecevoir());
+        System.out.println("Intervenant 2" + i2.getListTachesRecevoir());
+        System.out.println("Intervenant 3" + i3.getListTachesRecevoir());
+        System.out.println("Intervenant 4" + i4.getListTachesRecevoir());
     }
        
 }

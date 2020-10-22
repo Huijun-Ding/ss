@@ -18,7 +18,7 @@ public class Affecter {
     private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
     private static Integer delay = 1000;
     
-    public void Affecter(Tache t) {
+    public Affecter(Tache t) {
         listAllInters = new ArrayList();
         listCandidats = new ArrayList();
         intervenants = new ArrayList();
@@ -44,7 +44,7 @@ public class Affecter {
 
     // retourner la note de client qui a déposé cette tâche
     public float getNoteClient() {
-        return tache.getClient().getNoteC();
+        return this.tache.getClient().getNoteC();
     }
 
     // pour tous les candidats potenciels, nous allons les clsser par leur note de l'order décroissante

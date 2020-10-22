@@ -3,11 +3,22 @@ package Model;
 import Model.Tache;
 
 public class TacheSimple extends Tache {
+    
+//    private Intervenant intervenant;
 
     public TacheSimple(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
         super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin, c);
     }
 
+//    public Intervenant getIntervenant() {
+//        return intervenant;
+//    }
+//
+//    public void setIntervenant(Intervenant intervenant) {
+//        this.intervenant = intervenant;
+//    }
+    
+    
     public String getNomTache() {
         return nomTache;
     }
@@ -20,7 +31,7 @@ public class TacheSimple extends Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -47,6 +58,9 @@ public class TacheSimple extends Tache {
    public String getDateFin() {
        return dateFin;
     }
+   
+    
+    
     
 }
 

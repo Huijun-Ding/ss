@@ -5,11 +5,15 @@ public class Particulier extends Client {
     protected String  prenomPart;
     protected String civilité;
 
-    public Particulier(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC, String nomPart, String prenomPart, String civilité) {
-        super(numClient, telClient, rurClient, villeClient, codePostalC, carteBancaire, noteC);
+    public Particulier(String nomPart, String prenomPart, String civilité, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
+        super(telClient, rurClient, villeClient, codePostalC, carteBancaire, email, noteC);
         this.nomPart = nomPart;
         this.prenomPart = prenomPart;
         this.civilité = civilité;
+    }
+
+    public String getMotdepasseC() {
+        return motdepasseC;
     }
 
     public String getNomPart() {

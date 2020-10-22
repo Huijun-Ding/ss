@@ -21,7 +21,8 @@ public class Query {
     public static ArrayList<Object> parameter = new ArrayList<>();
 
     public static void Query() {
-        DB.createConn();
+        conn=DB.createConn();
+        //System.out.println("hello");
     }
 
     public static void afferentSQL(String Sqlsentence) {
@@ -32,8 +33,9 @@ public class Query {
             e.printStackTrace();
         }
     }
-
+    
     public static int Update() {
+        System.out.println(parameter);
         int a = 0;
         try {
             for (int i = 0; i < parameter.size(); i++) {
@@ -46,16 +48,22 @@ public class Query {
                 } else if (param instanceof Double) {
                     ps.setDouble(o, (double) param);
                 } else if (param instanceof String) {
+                    System.out.println(o);
+                    System.out.println(param);
                     ps.setString(o, (String) param);
                 }
             }
-
+            
             a = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close();
         }
+        
+         if(a>=1){
+            System.out.println("succcess");
+        };  
         //return le nombre de ligne a été affecté
         return a;
     }

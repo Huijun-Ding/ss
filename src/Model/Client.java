@@ -10,18 +10,28 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
+    protected String email;
     protected String motdepasseC;
+
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
-
-    public Client(int numClient, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, float noteC) {
-        this.numClient = numClient;
+    public Client(){};
+    public Client( String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
         this.telClient = telClient;
         this.rurClient = rurClient;
         this.villeClient = villeClient;
         this.codePostalC = codePostalC;
         this.carteBancaire = carteBancaire;
+        this.email = email;
         this.noteC = noteC;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public ArrayList<Tache> getTaches() {
+        return taches;
     }
 
     public int getNumClient() {
@@ -127,16 +137,20 @@ public class Client {
         }
         return historiques;
     }
+    
+    public void addTache(Tache tache){
+        this.taches.add(tache);
+    }
+
+    public void setEmail(String email) {
+       this.email=email;
+    }
+
+    public void setPassword(String mdp) {
+        this.motdepasseC=mdp;
+    }
 
     public String getMotdepasseC() {
         return motdepasseC;
-    }
-
-    public void setMotdepasseC(String motdepasseC) {
-        this.motdepasseC = motdepasseC;
-    }
-
-    public ArrayList<Tache> getTaches() {
-        return taches;
     }
 }

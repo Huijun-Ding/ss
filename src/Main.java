@@ -6,9 +6,12 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        /*DB db = new DB();
+        db.createConn();*/
 
         /*DB db = new DB();
         db.createConn();*/      
+
 
         // TODO code application logic here
         Intervenant i1 = new Intervenant(1,"0603047123","6 rue des étoiles","Toulouse","31000","1836458393995747",4.00f);
@@ -21,7 +24,7 @@ public class Main {
         Competence comp3 = new Competence("php");
         Competence comp4 = new Competence("css");
         
-        Client c1 = new Client(1,"7674677267","rue xxxx","toulouse","31000","123456789056789",4.26f);
+        Client c1 = new Client("7674677267","rue xxxx","toulouse","31000","123456789056789","gsczdddd@gmail.com",4.26f);
         
         TacheComplexe t1 = new TacheComplexe("Developement site web","xxxxxxxxxxx",4,4000,"IT",EnumEtat.EN_COURS,"18/10/2020","01/01/2021",c1);
         TacheSimple t2 = new TacheSimple("Conception site web","xxxxxxxxxxx",1,1000,"IT",EnumEtat.EN_COURS,"18/10/2020","30/10/2021",c1);

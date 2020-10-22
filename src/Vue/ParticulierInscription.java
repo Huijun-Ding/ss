@@ -168,7 +168,7 @@ public class ParticulierInscription extends JFrame {
                 String cp = txtCPC.getText();
 
 
-                Particulier pa = new Particulier(0, tele, rue, ville, cp, cb, 0f,  nom, strName,  civilite);
+                Particulier pa = new Particulier(tele, rue, ville, cp, cb,  nom, strName,  civilite,email,0f);
                     controler.putPartiInBD(pa);
                 lbIMsgC.setText("Successful");
 

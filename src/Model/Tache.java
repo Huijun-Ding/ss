@@ -9,7 +9,7 @@ public class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
-    protected int delais; // nombre de jours
+    protected String delais; // nombre de jours
     protected int numTache;
     protected float prix;
     protected String domanineTache;
@@ -17,6 +17,7 @@ public class Tache {
     protected String dateDeb;
     protected String dateFin;
     protected EvaluationIntervenant eva;
+    private int clientId;
     private Client client;
     private Paiement paiement;
     private ArrayList<RecuPaiement> listRecus;
@@ -59,6 +60,10 @@ public class Tache {
         intervenant.setNoteIn((note + intervenant.getNoteIn()) / 2);
     }
 
+    public Tache() {
+        
+    }
+
     public String getNomTache() {
         return nomTache;
     }
@@ -75,7 +80,7 @@ public class Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -115,7 +120,7 @@ public class Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 
@@ -157,10 +162,18 @@ public class Tache {
         this.competences.add(c);
     }
 
+    public int getClientId(){
+        return this.clientId;
+    }
+    
     public boolean terminerTache(Tache t) {
         if (t.getEtat() == EnumEtat.VALIDEE_CLIENT) {
             return true;
         }
         return false;
+    }
+    
+    public void setClientId(int id){
+        clientId=id;
     }
 }

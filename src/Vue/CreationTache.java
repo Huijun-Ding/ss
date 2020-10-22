@@ -1,6 +1,7 @@
 package Vue;
 
 import Controler.ControlerInterface;
+import Model.Client;
 import Model.EnumEtat;
 import Model.Tache;
 
@@ -14,6 +15,7 @@ import java.awt.event.ItemListener;
 //每次打开新建任务 先去数据库检测是否有记录
 
 public class CreationTache {
+    private Client client;
 
     private JFrame jFrame = new JFrame("Evaluation Via Client");
     private Container c = jFrame.getContentPane();
@@ -44,7 +46,8 @@ public class CreationTache {
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
 
-    public CreationTache() {
+    public CreationTache(Client cl) {
+        this.client=cl;
         jFrame.setBounds(600, 200, 800, 500);
         c.setLayout(new BorderLayout());//布局管理器
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,7 +194,7 @@ public class CreationTache {
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
                     jFrame.setVisible(false);
                     //sauter a la page suivant
-                    CreationTache sousFrame = new CreationTache();
+                    CreationTache sousFrame = new CreationTache(client);
                     sousFrame.getjFrame().setVisible(true);
 
                 }

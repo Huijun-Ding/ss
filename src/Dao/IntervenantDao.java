@@ -42,7 +42,7 @@ public class IntervenantDao {
                 interres.setPassword(mdp);
                 interres.setRurInterv((String) rowData.get("Nom_Rue_Inter"));
                 interres.setNumRue((int) rowData.get("Num_Rue_Inter")); 
-                 //不确定这么对不对 不对的话可以删掉一个numrue
+
                 interres.setTelInterv((String) rowData.get("Telephone_Inter"));
                 interres.setVilleInterv((String) rowData.get("Ville_Inter"));  
                 System.out.println(" connexion réussie! welcome intervenant");

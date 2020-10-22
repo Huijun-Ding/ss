@@ -51,6 +51,8 @@ public class Main {
         i4.addMesCompetences(comp3);
         i4.addMesCompetences(comp4);
 
+        //Affecter af1= new Affecter(t2);
+        //af1.affecter()
     }
        
 }

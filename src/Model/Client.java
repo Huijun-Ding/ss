@@ -11,7 +11,11 @@ public class Client {
     protected String villeClient;
     protected String codePostalC;
     protected String carteBancaire;
+<<<<<<< HEAD
     protected String email;
+=======
+    protected String motdepasseC;
+>>>>>>> 1bcc73d81e7c073bcb711c2625db79c988d8d318
     protected float noteC;
     protected ArrayList<Tache> taches = new ArrayList<Tache>();
     public Client(){};
@@ -55,6 +59,7 @@ public class Client {
     public String getCodePostalC() {
         return codePostalC;
     }
+
 
     public String getCarteBancaire() {
         return carteBancaire;
@@ -143,6 +148,7 @@ public class Client {
 
     }
 
+<<<<<<< HEAD
     
     public void addTache(Tache tache){
         this.taches.add(tache);
@@ -158,4 +164,17 @@ public class Client {
     }
    
 
+=======
+    public String getMotdepasseC() {
+        return motdepasseC;
+    }
+
+    public void setMotdepasseC(String motdepasseC) {
+        this.motdepasseC = motdepasseC;
+    }
+
+    public ArrayList<Tache> getTaches() {
+        return taches;
+    }
+>>>>>>> 1bcc73d81e7c073bcb711c2625db79c988d8d318
 }

@@ -8,13 +8,18 @@ public class Intervenant {
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
+    protected String motdepasseI;
+    protected boolean reponse=false;
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
     private ArrayList<RecuPaiement> Recus;
     private ArrayList<Competence> mesCompetences;
-    
-    
+
+    public ArrayList<Tache> getListTachesRecevoir() {
+        return listTachesRecevoir;
+    }
+
     public void etreAffecte(Tache t){
         this.listTachesRecevoir.add(t);
     }
@@ -23,17 +28,21 @@ public class Intervenant {
         this.listTachesRecevoir.remove(t);
     }
     
-    public boolean accepterTache(Tache t){
+    public void accepterTache(Tache t){
         this.listTaches.add(t);
         this.listTachesRecevoir.remove(t);
-        return true;
+        this.reponse= true;
     }
-    public boolean  refuserTache(Tache t){
+    public void  refuserTache(Tache t){
         this.listTachesRecevoir.remove(t);
-        return false;
+        this.reponse= false;
+    }
+    public boolean getReponse(){
+        return this.reponse;
     }
 
     public Intervenant(int numInterv, String telInterv, String rurInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
+
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rurInterv = rurInterv;
@@ -121,5 +130,12 @@ public class Intervenant {
             mesTaches = mesTaches + " - " + this.listTaches.get(i);
         }
         return mesTaches;
+    }
+
+    public void setMotdepasseI(String motdepasseI) {
+        this.motdepasseI = motdepasseI;
+    }
+    public String getMotdepasseI(){
+        return this.motdepasseI;
     }
 }

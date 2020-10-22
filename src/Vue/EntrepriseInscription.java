@@ -1,26 +1,31 @@
 package Vue;
 
 
+import Controler.ControlerInterface;
+import Model.Client;
+import Model.Entreprise;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ClientInscription extends JFrame {
+
+public class EntrepriseInscription extends JFrame {
+    private ControlerInterface controler;
 
     //声明组件
     private JPanel p;
-    private JLabel lbNameC,lbNumC,lbTelC,lbEmailC,lbRueC,lbVilleC,lbCPC, lblPwdC, lbRePwdC, lbAddressC, lbIMsgC;
+    private JLabel lbNameC,lbNumC,lbTelC,lbEmailC,lbRueC,lbVilleC,lbCPC, lblPwdC, lbRePwdC, lbCB, lbIMsgC;
 
     //声明文本框
-    private JTextField txtNameC,txtNumC,txtTelC,txtEmailC,txtRueC,txtVilleC,txtCPC;
+    private JTextField txtNameC,txtNumC,txtTelC,txtEmailC,txtRueC,txtVilleC,txtCPC,txtCB;
     //声明两个密码框
     private JPasswordField txtPwdC, txtRePwdC;
-    //声明一个文本域
-    private JTextArea txtAddressC;
+
     private JButton btnRegC, btnCancelC;
 
-    public ClientInscription() {
+    public EntrepriseInscription() {
 
         super("Inscription-Client");
         //创建面板，面板布局为NULL
@@ -35,7 +40,7 @@ public class ClientInscription extends JFrame {
         lbCPC=new JLabel("CodePostal");
         lblPwdC = new JLabel("password");
         lbRePwdC = new JLabel("check password");
-        lbAddressC = new JLabel("addresse");
+        lbCB = new JLabel("Carde Bancaire");
         //显示信息的标签
         lbIMsgC = new JLabel();
         //设置标签的文字是红色
@@ -48,23 +53,24 @@ public class ClientInscription extends JFrame {
         txtRueC = new JTextField(20);
         txtVilleC = new JTextField(20);
         txtCPC = new JTextField(20);
+        txtCB = new JTextField(20);
         //创建两个密码框长度为20
         txtPwdC = new JPasswordField(20);
         txtRePwdC = new JPasswordField(20);
         //设置密码框显示的字符为*
         txtPwdC.setEchoChar('*');
         txtRePwdC.setEchoChar('*');
-        //创建一个文本域  20,2
-        txtAddressC = new JTextArea(20, 2);
         //创建两个按钮
         btnRegC = new JButton("OK");
         btnCancelC = new JButton("Reset");
-        btnRegC.addActionListener(new ActionListener() {
 
+        btnRegC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //设置信息标签为空 清楚原来的历史信息
                 lbIMsgC.setText("");
+                String siret=txtNumC.getText();
+                int numc=Integer.parseInt(siret);
                 //获取用户输入的用户名
                 String strName = txtNameC.getText();
                 if (strName == null || strName.equals("")) {
@@ -82,25 +88,60 @@ public class ClientInscription extends JFrame {
                 String strRePwd = new String(txtRePwdC.getPassword());
                 if (strRePwd == null || strRePwd.equals("")) {
 
-                    lbIMsgC.setText("确认密码不能为空");
+                    lbIMsgC.setText("password is empty");
                     return;
                 }
 
                 //判断确认密码是否跟密码相同
                 if (!strRePwd.equals(strPwd)) {
 
-                    lbIMsgC.setText("确认密码跟密码不同");
+                    lbIMsgC.setText("password is false");
                     return;
                 }
 
 
-                //获取用户地址
-                String strAddress = new String(txtAddressC.getText());
-                if (strAddress == null || strAddress.equals("")) {
+                //email
+                String email = new String(txtEmailC.getText());
+                if (email == null || email.equals("")) {
 
-                    lbIMsgC.setText("地址不能为空");
+                    lbIMsgC.setText("email is empty");
                     return;
                 }
+
+                //tel
+                String tele = new String(txtTelC.getText());
+                if (tele == null || tele.equals("")) {
+
+                    lbIMsgC.setText("tele is empty");
+                    return;
+                }
+
+                //rue
+                String rue = new String(txtRueC.getText());
+                if (rue == null || rue.equals("")) {
+
+                    lbIMsgC.setText("rue is empty");
+                    return;
+                }
+
+
+                //获取用户nom
+                String num = new String(txtNumC.getText());
+                if (num == null || num.equals("")) {
+
+                    lbIMsgC.setText("number is empty");
+                    return;
+                }
+                String cb=txtCB.getText();
+                String ville=txtVilleC.getText();
+                String cp=txtCPC.getText();
+                String domaine="java";
+                String pre="Celine";
+                String nom="Wang";
+
+
+                Entreprise en =new Entreprise(strName, siret, nom, pre,  domaine, numc, tele, rue, ville,  cp, cp, 0f);
+                controler.putEntrepInBD(en);
                 lbIMsgC.setText("Successful");
 
             }
@@ -121,32 +162,32 @@ public class ClientInscription extends JFrame {
                 txtCPC.setText("");
                 txtPwdC.setText("");
                 txtRePwdC.setText("");
-                txtAddressC.setText("");
+                txtCB.setText("");
                 //设置信息标签为空
                 lbIMsgC.setText("");
 
             }
         });
-        lbNameC.setBounds(30, 30, 60, 25);
-        txtNameC.setBounds(95, 30, 120, 25);
-        lbNumC.setBounds(30, 60, 60, 25);
-        txtNumC.setBounds(95, 60, 120, 25);
-        lbTelC.setBounds(30, 90, 60, 25);
-        txtTelC.setBounds(95, 90, 120, 25);
-        lbEmailC.setBounds(30, 120, 60, 25);
-        txtEmailC.setBounds(95, 120, 120, 25);
-        lbRueC.setBounds(30, 150, 60, 25);
-        txtRueC.setBounds(95, 150, 120, 25);
-        lbVilleC.setBounds(30, 180, 60, 25);
-        txtVilleC.setBounds(95, 180, 120, 25);
-        lbCPC.setBounds(30, 210, 60, 25);
-        txtCPC.setBounds(95, 210, 120, 25);
-        lblPwdC.setBounds(30, 240, 60, 25);
-        txtPwdC.setBounds(95, 240, 120, 25);
-        lbRePwdC.setBounds(30, 270, 60, 25);
-        txtRePwdC.setBounds(95, 270, 120, 25);
-        lbAddressC.setBounds(30, 300, 60, 25);
-        txtAddressC.setBounds(95, 300, 120, 25);
+        lbNameC.setBounds(30, 30, 120, 25);
+        txtNameC.setBounds(155, 30, 120, 25);
+        lbNumC.setBounds(30, 60, 120, 25);
+        txtNumC.setBounds(155, 60, 120, 25);
+        lbTelC.setBounds(30, 90, 120, 25);
+        txtTelC.setBounds(155, 90, 120, 25);
+        lbEmailC.setBounds(30, 120, 120, 25);
+        txtEmailC.setBounds(155, 120, 120, 25);
+        lbRueC.setBounds(30, 150, 120, 25);
+        txtRueC.setBounds(155, 150, 120, 25);
+        lbVilleC.setBounds(30, 180, 120, 25);
+        txtVilleC.setBounds(155, 180, 120, 25);
+        lbCPC.setBounds(30, 210, 120, 25);
+        txtCPC.setBounds(155, 210, 120, 25);
+        lbCB.setBounds(30, 240, 120, 25);
+        txtCB.setBounds(155, 240, 120, 25);
+        lblPwdC.setBounds(30, 270, 120, 25);
+        txtPwdC.setBounds(155, 270, 120, 25);
+        lbRePwdC.setBounds(30, 300, 120, 25);
+        txtRePwdC.setBounds(155, 300, 120, 25);
         lbIMsgC.setBounds(60, 185, 180, 25);
         btnRegC.setBounds(60, 350, 100, 25);
         btnCancelC.setBounds(170, 350, 100, 25);
@@ -170,8 +211,8 @@ public class ClientInscription extends JFrame {
         p.add(lblPwdC);
         p.add(txtRePwdC);
         p.add(lbRePwdC);
-        p.add(txtAddressC);
-        p.add(lbAddressC);
+        p.add(txtCB);
+        p.add(lbCB);
         p.add(lbIMsgC);
         p.add(btnRegC);
         p.add(btnCancelC);
@@ -181,5 +222,7 @@ public class ClientInscription extends JFrame {
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
+
 }

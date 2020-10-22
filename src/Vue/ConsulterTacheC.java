@@ -9,9 +9,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JPanel p;
+    private JFrame jFrame;
     private int courrent;
     private JList liste = new JList();
     private JLabel etat = new JLabel("Etat de tache");
@@ -26,11 +28,14 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JLabel dateFT = new JLabel("...");
     private JLabel Description = new JLabel("Description");
     private JTextArea Descri = new JTextArea(10, 30);
-
+    private JButton btnRetour = new JButton("Return");
     private JButton btnPayer=new JButton("Payer");
     private JButton btnValider=new JButton("Valider");
     private JButton btnEvaluer=new JButton("Evaluer");
     private JButton btnModifier=new JButton("Modifier");
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
     private Client client;
    // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
@@ -43,13 +48,16 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         super("Consulter mes taches");
         //this.client=c;
         p = new JPanel(null);
+        jFrame=this;
         //addChoix();
 
         liste = new JList(nomChoix);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);
-
-
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
         nom.setBounds(250, 20, 120, 20);
         nomTa.setBounds(390, 20, 120, 20);
         etat.setBounds(650, 20, 120, 20);
@@ -68,6 +76,18 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         btnModifier.setBounds(900, 500, 80, 50);
         btnValider.setBounds(800, 500, 80, 50);
 
+        btnRetour.setBounds(750, 500, 80, 50);
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                ClientInterface cn = new ClientInterface();
+                cn.getjFrame().setVisible(true);
+
+            }
+        });
+        p.add(btnRetour);
         p.add(liste);
         p.add(nomTa);
         p.add(etatTac);
@@ -87,6 +107,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
         p.add(btnPayer);
         p.add(btnValider);
 
+        p.add(lblBackground); // 将组件添加到面板中
         btnPayer.setVisible(false);
         //btnPayer.setContentAreaFilled(false);
 

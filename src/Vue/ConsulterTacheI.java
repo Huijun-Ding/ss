@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private JPanel p;
+    private JFrame jFrame;
     private int courrent;
     private JList liste = new JList();
     private JLabel etat = new JLabel("Etat de tache");
@@ -44,6 +45,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
         //this.client=c;
         p = new JPanel(null);
         //addChoix();
+        jFrame=this;
 
         liste = new JList(nomChoix);
         liste.addListSelectionListener(this);
@@ -113,7 +115,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnEvaluer) {
-                    //this.setVisible(false);
+                    jFrame.setVisible(false);
                     EvaluationViaIntervanant ei = new EvaluationViaIntervanant();
                     ei.getjFrame().setVisible(true);
                 }

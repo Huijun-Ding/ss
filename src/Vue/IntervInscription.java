@@ -12,8 +12,10 @@ import java.awt.event.ItemListener;
 
 public class IntervInscription extends JFrame {
 
+
     private ControlerInterface controler;
     //声明组件
+    private JFrame jFrame;
     private JPanel p;
     private JLabel lbCBI,lbNameI, lbNumI, lbTelI, lbEmailI, lbCompetenceI, lbRueI, lbVilleI, lbCPI, lblPwdI, lbRePwdI, lbIMsgI;
 
@@ -23,7 +25,7 @@ public class IntervInscription extends JFrame {
     private JPasswordField txtPwdI, txtRePwdI;
     //声明一个文本域
 
-    private JButton btnRegI, btnCancelI;
+    private JButton btnRegI, btnCancelI,btnRetour;
 
 
     String[] listData = new String[]{"Java", "Php", "C++", "Python"};
@@ -37,6 +39,7 @@ public class IntervInscription extends JFrame {
         //创建面板，面板布局为NULL
         p = new JPanel(null);
 
+        jFrame=this;
         // 添加条目选中状态改变的监听器
         comboBox.addItemListener(new ItemListener() {
             @Override
@@ -86,6 +89,7 @@ public class IntervInscription extends JFrame {
         //创建两个按钮
         btnRegI = new JButton("OK");
         btnCancelI = new JButton("Reset");
+        btnRetour = new JButton("Return");
         btnRegI.addActionListener(new ActionListener() {
 
             @Override
@@ -156,31 +160,45 @@ public class IntervInscription extends JFrame {
 
             }
         });
-        lbNameI.setBounds(30, 30, 120, 25);
-        txtNameI.setBounds(160, 30, 120, 25);
-        lbNumI.setBounds(30, 60, 120, 25);
-        txtNumI.setBounds(160, 60, 120, 25);
-        lbTelI.setBounds(30, 90, 120, 25);
-        txtTelI.setBounds(160, 90, 120, 25);
-        lbEmailI.setBounds(30, 120, 120, 25);
-        txtEmailI.setBounds(160, 120, 120, 25);
-        lbRueI.setBounds(30, 150, 120, 25);
-        txtRueI.setBounds(160, 150, 120, 25);
-        lbVilleI.setBounds(30, 180, 120, 25);
-        txtVilleI.setBounds(160, 180, 120, 25);
-        lbCPI.setBounds(30, 210, 120, 25);
-        txtCPI.setBounds(160, 210, 120, 25);
-        lblPwdI.setBounds(30, 240, 120, 25);
-        txtPwdI.setBounds(160, 240, 120, 25);
-        lbRePwdI.setBounds(30, 270, 120, 25);
-        txtRePwdI.setBounds(160, 270, 120, 25);
-        lbCompetenceI.setBounds(30, 300, 120, 25);
+
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                Connecter cn = new Connecter();
+                cn.getjFrame().setVisible(true);
+                //设置信息标签为空
+                lbIMsgI.setText("");
+
+            }
+        });
+        lbNameI.setBounds(80, 30, 120, 25);
+        txtNameI.setBounds(210, 30, 120, 25);
+        lbNumI.setBounds(80, 60, 120, 25);
+        txtNumI.setBounds(210, 60, 120, 25);
+        lbTelI.setBounds(80, 90, 120, 25);
+        txtTelI.setBounds(210, 90, 120, 25);
+        lbEmailI.setBounds(80, 120, 120, 25);
+        txtEmailI.setBounds(210, 120, 120, 25);
+        lbRueI.setBounds(80, 150, 120, 25);
+        txtRueI.setBounds(210, 150, 120, 25);
+        lbVilleI.setBounds(80, 180, 120, 25);
+        txtVilleI.setBounds(210, 180, 120, 25);
+        lbCPI.setBounds(80, 210, 120, 25);
+        txtCPI.setBounds(210, 210, 120, 25);
+        lblPwdI.setBounds(80, 240, 120, 25);
+        txtPwdI.setBounds(210, 240, 120, 25);
+        lbRePwdI.setBounds(80, 270, 120, 25);
+        txtRePwdI.setBounds(210, 270, 120, 25);
+        lbCompetenceI.setBounds(80, 300, 120, 25);
         lbIMsgI.setBounds(60, 185, 180, 25);
         btnRegI.setBounds(60, 380, 100, 25);
         btnCancelI.setBounds(170, 380, 100, 25);
-        comboBox.setBounds(160,300,120,25);
-        lbCBI.setBounds(30,330,120,25);
-        txtCBI.setBounds(160,330,120,25);
+        btnRetour.setBounds(280, 380, 100, 25);
+        comboBox.setBounds(210,300,120,25);
+        lbCBI.setBounds(80,330,120,25);
+        txtCBI.setBounds(210,330,120,25);
 
 
 
@@ -212,13 +230,14 @@ public class IntervInscription extends JFrame {
         p.add(lbIMsgI);
         p.add(btnRegI);
         p.add(btnCancelI);
+        p.add(btnRetour);
         p.add(lbCBI);
         p.add(txtCBI);
 
 
 
         this.add(p);
-        this.setSize(350, 500);
+        this.setSize(500, 500);
         this.setLocationRelativeTo(null);//setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(p);

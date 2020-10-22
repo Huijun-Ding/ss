@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 
 public class EntrepriseInscription extends JFrame {
     private ControlerInterface controler;
+    private JFrame jFrame;
 
     //声明组件
     private JPanel p;
@@ -23,13 +24,14 @@ public class EntrepriseInscription extends JFrame {
     //声明两个密码框
     private JPasswordField txtPwdC, txtRePwdC;
 
-    private JButton btnRegC, btnCancelC;
+    private JButton btnRegC, btnCancelC,btnRetour;
 
     public EntrepriseInscription() {
 
         super("Inscription-Client");
         //创建面板，面板布局为NULL
         p = new JPanel(null);
+        jFrame=this;
         //实例化5个标签
         lbNameC = new JLabel("RaisonSocial");
         lbNumC = new JLabel("NoSiret");
@@ -63,6 +65,7 @@ public class EntrepriseInscription extends JFrame {
         //创建两个按钮
         btnRegC = new JButton("OK");
         btnCancelC = new JButton("Reset");
+        btnRetour = new JButton("Return");
 
         btnRegC.addActionListener(new ActionListener() {
             @Override
@@ -146,6 +149,18 @@ public class EntrepriseInscription extends JFrame {
 
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                Connecter cn = new Connecter();
+                cn.getjFrame().setVisible(true);
+                //设置信息标签为空
+                //lbIMsgI.setText("");
+
+            }
+        });
 
         //取消按钮的事件处理
         btnCancelC.addActionListener(new ActionListener() {
@@ -168,29 +183,30 @@ public class EntrepriseInscription extends JFrame {
 
             }
         });
-        lbNameC.setBounds(30, 30, 120, 25);
-        txtNameC.setBounds(155, 30, 120, 25);
-        lbNumC.setBounds(30, 60, 120, 25);
-        txtNumC.setBounds(155, 60, 120, 25);
-        lbTelC.setBounds(30, 90, 120, 25);
-        txtTelC.setBounds(155, 90, 120, 25);
-        lbEmailC.setBounds(30, 120, 120, 25);
-        txtEmailC.setBounds(155, 120, 120, 25);
-        lbRueC.setBounds(30, 150, 120, 25);
-        txtRueC.setBounds(155, 150, 120, 25);
-        lbVilleC.setBounds(30, 180, 120, 25);
-        txtVilleC.setBounds(155, 180, 120, 25);
-        lbCPC.setBounds(30, 210, 120, 25);
-        txtCPC.setBounds(155, 210, 120, 25);
-        lbCB.setBounds(30, 240, 120, 25);
-        txtCB.setBounds(155, 240, 120, 25);
-        lblPwdC.setBounds(30, 270, 120, 25);
-        txtPwdC.setBounds(155, 270, 120, 25);
-        lbRePwdC.setBounds(30, 300, 120, 25);
-        txtRePwdC.setBounds(155, 300, 120, 25);
-        lbIMsgC.setBounds(60, 185, 180, 25);
-        btnRegC.setBounds(60, 350, 100, 25);
-        btnCancelC.setBounds(170, 350, 100, 25);
+        lbNameC.setBounds(80, 30, 120, 25);
+        txtNameC.setBounds(205, 30, 120, 25);
+        lbNumC.setBounds(80, 60, 120, 25);
+        txtNumC.setBounds(205, 60, 120, 25);
+        lbTelC.setBounds(80, 90, 120, 25);
+        txtTelC.setBounds(205, 90, 120, 25);
+        lbEmailC.setBounds(80, 120, 120, 25);
+        txtEmailC.setBounds(205, 120, 120, 25);
+        lbRueC.setBounds(80, 150, 120, 25);
+        txtRueC.setBounds(205, 150, 120, 25);
+        lbVilleC.setBounds(80, 180, 120, 25);
+        txtVilleC.setBounds(205, 180, 120, 25);
+        lbCPC.setBounds(80, 210, 120, 25);
+        txtCPC.setBounds(205, 210, 120, 25);
+        lbCB.setBounds(80, 240, 120, 25);
+        txtCB.setBounds(205, 240, 120, 25);
+        lblPwdC.setBounds(80, 270, 120, 25);
+        txtPwdC.setBounds(205, 270, 120, 25);
+        lbRePwdC.setBounds(80, 300, 120, 25);
+        txtRePwdC.setBounds(205, 300, 120, 25);
+        lbIMsgC.setBounds(80, 185, 180, 25);
+        btnRegC.setBounds(30, 380, 100, 25);
+        btnCancelC.setBounds(170, 380, 100, 25);
+        btnRetour.setBounds(310, 380, 100, 25);
 
         //添加所有组件
         p.add(lbNameC);
@@ -216,13 +232,17 @@ public class EntrepriseInscription extends JFrame {
         p.add(lbIMsgC);
         p.add(btnRegC);
         p.add(btnCancelC);
+        p.add(btnRetour);
 
         this.add(p);
-        this.setSize(350, 450);
+        this.setSize(500, 450);
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
+    public JFrame getjFrame() {
+        return jFrame;
+    }
 }

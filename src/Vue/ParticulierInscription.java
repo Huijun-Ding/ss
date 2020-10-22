@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class ParticulierInscription extends JFrame {
     private ControlerInterface controler;
     private String civilite;
+    private JFrame jFrame;
 
 
     //声明组件
@@ -22,7 +23,7 @@ public class ParticulierInscription extends JFrame {
     //声明两个密码框
     private JPasswordField txtPwdC, txtRePwdC;
 
-    private JButton btnRegC, btnCancelC;
+    private JButton btnRegC, btnCancelC,btnRetour;
 
     private JRadioButton radioBtn1 = new JRadioButton("Madame");
     private JRadioButton radioBtn2 = new JRadioButton("Monsieur");
@@ -32,6 +33,7 @@ public class ParticulierInscription extends JFrame {
         super("Inscription-Client");
         //创建面板，面板布局为NULL
         p = new JPanel(null);
+        jFrame=this;
         //实例化5个标签
         lbNameC = new JLabel("Prenom");
         lbNumC = new JLabel("Nom");
@@ -65,6 +67,7 @@ public class ParticulierInscription extends JFrame {
         //创建两个按钮
         btnRegC = new JButton("OK");
         btnCancelC = new JButton("Reset");
+        btnRetour = new JButton("Return");
         ButtonGroup btnGroup1 = new ButtonGroup();
         btnGroup1.add(radioBtn1);
         btnGroup1.add(radioBtn2);
@@ -174,6 +177,18 @@ public class ParticulierInscription extends JFrame {
 
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                Connecter cn = new Connecter();
+                cn.getjFrame().setVisible(true);
+                //设置信息标签为空
+                //lbIMsgI.setText("");
+
+            }
+        });
 
         //取消按钮的事件处理
         btnCancelC.addActionListener(new ActionListener() {
@@ -196,31 +211,32 @@ public class ParticulierInscription extends JFrame {
 
             }
         });
-        lbNameC.setBounds(30, 30, 120, 25);
-        txtNameC.setBounds(155, 30, 120, 25);
-        lbNumC.setBounds(30, 60, 120, 25);
-        txtNumC.setBounds(155, 60, 120, 25);
-        radioBtn1.setBounds(40, 90, 80, 20);
-        radioBtn2.setBounds(180, 90, 80, 20);
-        lbTelC.setBounds(30, 120, 120, 25);
-        txtTelC.setBounds(155, 120, 120, 25);
-        lbEmailC.setBounds(30, 150, 120, 25);
-        txtEmailC.setBounds(155, 150, 120, 25);
-        lbRueC.setBounds(30, 180, 120, 25);
-        txtRueC.setBounds(155, 180, 120, 25);
-        lbVilleC.setBounds(30, 210, 120, 25);
-        txtVilleC.setBounds(155, 210, 120, 25);
-        lbCPC.setBounds(30, 240, 120, 25);
-        txtCPC.setBounds(155, 240, 120, 25);
-        lbCB.setBounds(30, 270, 120, 25);
-        txtCB.setBounds(155, 270, 120, 25);
-        lblPwdC.setBounds(30, 300, 120, 25);
-        txtPwdC.setBounds(155, 300, 120, 25);
-        lbRePwdC.setBounds(30, 330, 120, 25);
-        txtRePwdC.setBounds(155, 330, 120, 25);
-        lbIMsgC.setBounds(60, 185, 180, 25);
-        btnRegC.setBounds(60, 380, 100, 25);
+        lbNameC.setBounds(60, 30, 120, 25);
+        txtNameC.setBounds(185, 30, 120, 25);
+        lbNumC.setBounds(60, 60, 120, 25);
+        txtNumC.setBounds(185, 60, 120, 25);
+        radioBtn1.setBounds(70, 90, 80, 20);
+        radioBtn2.setBounds(210, 90, 80, 20);
+        lbTelC.setBounds(60, 120, 120, 25);
+        txtTelC.setBounds(185, 120, 120, 25);
+        lbEmailC.setBounds(60, 150, 120, 25);
+        txtEmailC.setBounds(185, 150, 120, 25);
+        lbRueC.setBounds(60, 180, 120, 25);
+        txtRueC.setBounds(185, 180, 120, 25);
+        lbVilleC.setBounds(60, 210, 120, 25);
+        txtVilleC.setBounds(185, 210, 120, 25);
+        lbCPC.setBounds(60, 240, 120, 25);
+        txtCPC.setBounds(185, 240, 120, 25);
+        lbCB.setBounds(60, 270, 120, 25);
+        txtCB.setBounds(185, 270, 120, 25);
+        lblPwdC.setBounds(60, 300, 120, 25);
+        txtPwdC.setBounds(185, 300, 120, 25);
+        lbRePwdC.setBounds(60, 330, 120, 25);
+        txtRePwdC.setBounds(185, 330, 120, 25);
+        lbIMsgC.setBounds(90, 185, 180, 25);
+        btnRegC.setBounds(30, 380, 100, 25);
         btnCancelC.setBounds(170, 380, 100, 25);
+        btnRetour.setBounds(310, 380, 100, 25);
 
 
         //添加所有组件
@@ -247,16 +263,20 @@ public class ParticulierInscription extends JFrame {
         p.add(lbIMsgC);
         p.add(btnRegC);
         p.add(btnCancelC);
+        p.add(btnRetour);
         p.add(radioBtn1);
         p.add(radioBtn2);
 
         this.add(p);
-        this.setSize(350, 450);
+        this.setSize(450, 450);
         this.setLocation(200, 100);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
+    public JFrame getjFrame() {
+        return jFrame;
+    }
 }
 

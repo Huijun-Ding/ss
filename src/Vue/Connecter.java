@@ -39,6 +39,10 @@ public class Connecter {
         jFrame.setVisible(true);
     }
 
+    public JFrame getjFrame() {
+        return jFrame;
+    }
+
     public void init() {
         /*标题部分--North*/
         JPanel titlePanel = new JPanel();

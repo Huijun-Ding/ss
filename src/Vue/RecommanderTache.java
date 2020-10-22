@@ -32,8 +32,8 @@ public class RecommanderTache {
     private JButton cancelbtn = new JButton("Refuse");
 
 
-    public RecommanderTache(Intervenant in) {
-        this.intervenant=in;
+    public RecommanderTache() {
+        //this.intervenant=in;Intervenant in
         jFrame.setBounds(600, 200, 600, 500);
         c.setLayout(new BorderLayout());//布局管理器
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

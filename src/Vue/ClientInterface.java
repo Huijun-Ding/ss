@@ -7,23 +7,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class ClientInterface {
     private JFrame jFrame = new JFrame("Connexion");
+
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
     private JButton creerTache = new JButton("creer une tache");
     private Client client=null;
     private ControlerInterface controler;
-
-    public ClientInterface(Client cl){
-        this.client=cl;
+    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
+    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
+    private Font font=new Font("Arial",Font.BOLD,36);
+    public ClientInterface(){
+       // this.client=cl;Client cl
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
         //设置一层相当于桌布的东西
         c.setLayout(new BorderLayout());//布局管理器
         //设置按下右上角X号后关闭
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+
 
         jFrame.setLocationRelativeTo(null);
         //初始化--往窗体里放其他控件
@@ -38,19 +46,26 @@ public class ClientInterface {
 
     public void init() {
         /*标题部分--North*/
-        JPanel titlePanel = new JPanel();
-        titlePanel.setLayout(new FlowLayout());
-        titlePanel.add(new JLabel("Client"));
-        c.add(titlePanel, "North");
+
+        JPanel p = new JPanel();
+        JLabel titre =new JLabel("Client");
 
 
 
-        /*按钮部分--South*/
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(consulterTache);
-        buttonPanel.add(creerTache);
-        c.add(buttonPanel, "South");
+        consulterTache.setBounds(20,100,170,50);
+        creerTache.setBounds(200,100,170,50);
+        titre.setBounds(150,0,100,60);
+        titre.setFont(font);
+
+
+        p.setLayout(null);
+        p.add(consulterTache);
+        p.add(titre);
+        p.add(creerTache);
+        p.add(lblBackground); // 将组件添加到面板中
+        c.add(p, "Center");
+
+
 
 
         consulterTache.addActionListener(new ActionListener() {

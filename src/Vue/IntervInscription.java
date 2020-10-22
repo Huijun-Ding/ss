@@ -16,6 +16,8 @@ public class IntervInscription extends JFrame {
     private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
+    private Font font=new Font("Arial",Font.BOLD,36);
+    private JLabel titre = new JLabel("Connexion");
 
     private ControlerInterface controler;
     //声明组件

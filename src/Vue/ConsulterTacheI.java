@@ -148,11 +148,9 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
                 switch (choix[i].getEtat()){
                     case VALIDEE_CLIENT:
                         btnEvaluer.setVisible(true);
-                        //btnEvaluer.setContentAreaFilled(true);
                         break;
                     case PAYEE:
                         btnValider.setVisible(true);
-                        //btnValider.setContentAreaFilled(true);
                         break;
                 }
             } else {

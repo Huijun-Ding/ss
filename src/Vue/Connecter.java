@@ -15,7 +15,8 @@ public class Connecter {
     private JLabel lbUser = new JLabel("User Email");
     private JTextField username = new JTextField();
     private JLabel lbPass = new JLabel("Password");
-    private JLabel titre = new JLabel("Connexion");
+    private JLabel logo = new JLabel(new ImageIcon("images/logo.png"));
+
     private JPasswordField password = new JPasswordField();
     private JButton okbtn = new JButton("Ok");
     private JButton cancelbtn = new JButton("Cancel");
@@ -28,10 +29,14 @@ public class Connecter {
     private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
     private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
-
+    private Font font=new Font("Arial",Font.BOLD,36);
+    private JLabel titre = new JLabel("Connexion");
     public Connecter() {
         //设置窗体的位置及大小
-        titre.setBounds(470,20,100,30);
+
+
+        titre.setFont(font);
+        titre.setBounds(410,20,200,40);
         jFrame.setBounds(600, 200, 1000, 550);
         //设置一层相当于桌布的东西
         c.setLayout(new BorderLayout());//布局管理器
@@ -50,16 +55,6 @@ public class Connecter {
     }
 
     public void init() {
-        /*标题部分--North*/
-       // JPanel titlePanel = new JPanel();
-        //titlePanel.setLayout(new FlowLayout());
-        //titlePanel.add(new JLabel("Client/Intervenant"));
-        //c.add(titlePanel, "North");
-
-
-
-
-
 
         /*输入部分--Center*/
         ButtonGroup btnGroup1 = new ButtonGroup();
@@ -83,6 +78,8 @@ public class Connecter {
         inscription.setBounds(560,240,100,20);
 
 
+        logo.setBounds(0,0,220,100);
+        fieldPanel.add(logo);
 
 
         fieldPanel.add(okbtn);
@@ -177,33 +174,33 @@ public class Connecter {
                     switch (identifiant) {
                         case 0:
 
-                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
+                           /* if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {*/
                                 jFrame.setVisible(false);
-                                ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
+                                ClientInterface cli = new ClientInterface();//contoler.seekClient(strE)
                                 cli.getjFrame().setVisible(true);
-                            } else {
+                           /* } else {
                                 lbIMsgI.setText("password is wrong");
-                            }
+                            }*/
 
                             break;
                         case 1:
-                            if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {
+                           /* if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {*/
                                 jFrame.setVisible(false);
-                                RecommanderTache re = new RecommanderTache(contoler.seekIntervenant(strE));
+                                RecommanderTache re = new RecommanderTache();//contoler.seekIntervenant(strE)
                                 re.getjFrame().setVisible(true);
-                            } else {
+                           /* } else {
                                 lbIMsgI.setText("password is wrong");
-                            }
+                            }*/
 
                             break;
                         case 2:
-                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
+                            /*if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {*/
                                 jFrame.setVisible(false);
-                                ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
-                                cli.getjFrame().setVisible(true);
-                            } else {
+                                ClientInterface pa = new ClientInterface();//contoler.seekClient(strE)
+                                pa.getjFrame().setVisible(true);
+                       /*     } else {
                                 lbIMsgI.setText("password is wrong");
-                            }
+                            }*/
 
                             break;
                     }

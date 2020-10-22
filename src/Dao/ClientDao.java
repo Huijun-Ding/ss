@@ -5,13 +5,14 @@
  */
 package Dao;
 
-import BD.Query;
 import static BD.Query.Query;
 import static BD.Query.Select;
+import static BD.Query.Update;
 import static BD.Query.afferentSQL;
 import static BD.Query.parameter;
 import Model.Client;
-import java.sql.PreparedStatement;
+import Model.Entreprise;
+import Model.Particulier;
 import java.util.List;
 import java.util.Map;
 
@@ -20,43 +21,81 @@ import java.util.Map;
  * @author leonl
  */
 public class ClientDao {
+        public ClientDao(){};
+     public Client login(String email) {
 
-       
-        public Client login(String email,String mdp){
-           
-            String sqlclient = "select * from client where EmailC=? and Password=? ";  //Trouvez la ligne correspondantes en fonction du email et du mot de passe saisis
-            Client clientres = null;    //La valeur de retour initiale est vide    
-            Query(); //  L connexion de bd
-            parameter.add(email); // Mettre  e-mail et le mot de passe respectivement dans la position du point d'interrogation de sql                                       
-            parameter.add(mdp); 
-           
-            afferentSQL(sqlclient);    //Préparer SQL          
-            List<Object> objs=Select(); ////Ensemble de résultats
-            Map<String,Object> rowData =(Map<String,Object>)objs.get(0);//Prendre la première ligne
-            
-            if(rowData.get("Password").equals(mdp) && rowData.get("EmailC").equals(email)) //S'il y a une couple d'entrées dans la base de données, la connexion est réussie
-            {  
-                clientres=new Client(); //Instancier  le client
-                clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire")); //Obtenir des informations sur la base de données
-                clientres.setCodePostalC((String) rowData.get("CodePostal"));
-                clientres.setEmail(email);
-                clientres.setNoteC((float) rowData.get("NoteC"));   
-                clientres.setNumClient((int) rowData.get("Code_client"));
-                clientres.setPassword(mdp);
-                clientres.setRurClient((String) rowData.get("NomRue"));
-                clientres.setNumRue((int) rowData.get("NumRue")); 
-                clientres.setTelClient((String) rowData.get("TelC"));
-                clientres.setVilleClient((String) rowData.get("VilleC"));  
-                System.out.println(" connexion réussie! welcome client");
-              return clientres;
-            }
-            else {
-        System.out.println(" La connexion de client a échoué");
-            return null;}
+        String sqlclient = "select * from client where EmailC=?";
+        Client clientres = null;
+        Query();
+        parameter.add(email);
+        afferentSQL(sqlclient);
+        List<Object> objs = Select();
+
+        if(objs.size()==0){
+            System.out.println("suibian ");
+            return null;
         }
-       public static void main(String[] args) {
-        ClientDao clogin = new ClientDao();
-        clogin.login("929302356@qq.com","049988");
-        // TODO code application logic here
+        //Ensemble de résultats
+        Map<String, Object> rowData = (Map<String, Object>) objs.get(0);
+       
+            clientres = new Client();
+            clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire"));
+            clientres.setCodePostalC((String) rowData.get("CodePostal"));
+            clientres.setEmail(email);
+            clientres.setNoteC((float) rowData.get("NoteC"));
+            clientres.setNumClient((int) rowData.get("Code_client"));
+            clientres.setPassword((String) rowData.get("Password"));
+            clientres.setRurClient((String)rowData.get("NomRue"));
+            clientres.setTelClient((String) rowData.get("TelC"));
+            clientres.setVilleClient((String) rowData.get("VilleC"));
+            System.out.println(clientres);
+            //System.out.println(" connexion réussie! welcome client");
+            System.out.println("mima"+clientres.getMotdepasseC());
+            return clientres;
+       
     }
+     
+      public void addEntreprise(Entreprise entreprise){
+        String sql="insert into client values(null,'E',null,null,?,?,?,?,?,?,?,null,?,?,?,?,?)";
+        Query();
+        afferentSQL(sql);
+        parameter.add(entreprise.getTelClient());
+        parameter.add(entreprise.getEmail());
+        //parameter.add(entreprise.getNumRue());
+        parameter.add(entreprise.getNumClient());
+        parameter.add(entreprise.getVilleClient());
+        parameter.add(entreprise.getCodePostalC());
+        parameter.add(entreprise.getCarteBancaire());
+        parameter.add(entreprise.getRaisonSocial());
+        parameter.add(entreprise.getNoSiret());
+        parameter.add(entreprise.getNomCorrespondant());
+        parameter.add(entreprise.getPrenomCorrespondant());
+        parameter.add(entreprise.getDomaine());
+        int ligne=Update();
+        if(ligne>=1){
+            System.out.println("succcess");
+        };  
+    }
+     public void addParticulier(Particulier particulier){                                         
+        String sql="insert into client values(null,'P',?,?,?,?,0,?,?,?,?,?,null,null,null,null,null,?,0)";
+        Query();
+        afferentSQL(sql);
+        
+        parameter.add(particulier.getNomPart());
+        parameter.add(particulier.getPrenomPart());
+        parameter.add(particulier.getTelClient());
+        parameter.add(particulier.getEmail());
+        parameter.add(particulier.getRurClient());
+        parameter.add(particulier.getVilleClient());
+        parameter.add(particulier.getCodePostalC());
+        parameter.add(particulier.getCarteBancaire());
+        parameter.add(particulier.getCivilité());
+        parameter.add(particulier.getMotdepasseC());
+        int ligne=Update();
+        if(ligne>=1){
+            System.out.println("succcess");
+        };  
+    }
+     
+
 }

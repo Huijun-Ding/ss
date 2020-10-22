@@ -1,13 +1,17 @@
 package Model;
 
 import Model.Tache;
+import java.util.ArrayList;
 
 public class TacheMassive extends Tache {
-    
-    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
-        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
-    }
-
+//    private ArrayList<Intervenant> intervenants;
+//    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
+//        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
+//        intervenants=new ArrayList<Intervenant>();
+//    }
+//    public void addIntervenant(Intervenant intervenant){
+//        intervenants.add(intervenant);
+//    }
     public String getNomTache() {
         return nomTache;
     }
@@ -20,7 +24,7 @@ public class TacheMassive extends Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -36,7 +40,7 @@ public class TacheMassive extends Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 
@@ -60,7 +64,7 @@ public class TacheMassive extends Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 
@@ -76,7 +80,7 @@ public class TacheMassive extends Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EnumEtat etat) {
         this.etat = etat;
     }
 
@@ -87,5 +91,9 @@ public class TacheMassive extends Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
+    
+         
+
+    
 }
 

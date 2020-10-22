@@ -1,15 +1,23 @@
 package Model;
 
-public class Particulier {
+public class Particulier extends Client {
     protected String nomPart;
     protected String  prenomPart;
     protected String civilité;
 
-    public Particulier(String nomPart, String prenomPart, String civilité) {
+    public Particulier(String nomPart, String prenomPart, String civilité, String telClient, String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
+        super(telClient, rurClient, villeClient, codePostalC, carteBancaire, email, noteC);
         this.nomPart = nomPart;
         this.prenomPart = prenomPart;
         this.civilité = civilité;
     }
+
+    public String getMotdepasseC() {
+        return motdepasseC;
+    }
+
+
+
 
     public String getNomPart() {
         return nomPart;

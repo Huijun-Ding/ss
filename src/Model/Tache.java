@@ -9,20 +9,21 @@ public class Tache {
     protected String nomTache;
     protected String description;
     protected int nbPersonne;
-    protected int delais; // nombre de jours
+    protected String delais; // nombre de jours
     protected int numTache;
     protected float prix;
     protected String domanineTache;
-    protected String etat;
+    protected EnumEtat etat;
     protected String dateDeb;
     protected String dateFin;
-    protected ClientEvaluation clientEvaluation;
+    private int clientId;
     private Client client;
     private Paiement paiement;  
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
-    
-    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, String etat, String dateDeb, String dateFin) {
+    private int id;
+    public Tache(){}
+    public Tache(String nomTache, String description, int nbPersonne,  float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
         this.nomTache = nomTache;
         this.description = description;
         this.nbPersonne = nbPersonne;
@@ -31,52 +32,19 @@ public class Tache {
         this.etat = etat;
         this.dateDeb = dateDeb;
         this.dateFin = dateFin;
-    }
-
-    public Tache() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        competences = new ArrayList();
+        listRecus = new ArrayList();
     }
    
     public ArrayList<Competence> getCompetences() {
         return this.competences;
     }
     
-    class ClientEvaluation{
-        private int nbEtoileQualite;
-        private int nbEtoileDelai;
-        private String commentaire;
-
-        public ClientEvaluation(int nbEtoileQualite, int nbEtoileDelai, String commentaire) {
-            this.nbEtoileQualite = nbEtoileQualite;
-            this.nbEtoileDelai = nbEtoileDelai;
-            this.commentaire = commentaire;
-        }
-
-        public int getNbEtoileQualite() {
-            return nbEtoileQualite;
-        }
-
-        public int getNbEtoileDelai() {
-            return nbEtoileDelai;
-        }
-
-        public String getCommentaire() {
-            return commentaire;
-        }
-
-        public void setNbEtoileQualite(int nbEtoileQualite) {
-            this.nbEtoileQualite = nbEtoileQualite;
-        }
-
-        public void setNbEtoileDelai(int nbEtoileDelai) {
-            this.nbEtoileDelai = nbEtoileDelai;
-        }
-
-        public void setCommentaire(String commentaire) {
-            this.commentaire = commentaire;
-        }
-        
+  
+    public int getId() {
+        return id;
     }
+    
 
     public String getNomTache() {
         return nomTache;
@@ -94,7 +62,7 @@ public class Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -110,7 +78,7 @@ public class Tache {
         return domanineTache;
     }
 
-    public String getEtat() {
+    public EnumEtat getEtat() {
         return etat;
     }
 
@@ -120,10 +88,6 @@ public class Tache {
 
     public String getDateFin() {
         return dateFin;
-    }
-
-    public ClientEvaluation getClientEvaluation() {
-        return clientEvaluation;
     }
 
     public void setNomTache(String nomTache) {
@@ -138,7 +102,7 @@ public class Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 
@@ -154,7 +118,7 @@ public class Tache {
         this.domanineTache = domanineTache;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EnumEtat etat) {
         this.etat = etat;
     }
 
@@ -165,19 +129,10 @@ public class Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
- 
-    
     
     //evaluation tache
     public void clientEvaluer(int nbEtoileQualite, int nbEtoileDelai, String commentaire){
-       this.clientEvaluation=new ClientEvaluation(nbEtoileQualite,nbEtoileDelai,commentaire);
-       float originNote = this.client.getNoteC();
-       int note=(nbEtoileQualite+nbEtoileDelai)/2;
-       if(commentaire.matches(".*bien.*")
-               ||commentaire.matches(".*bravo.*")){
-           note++;
-       }
-       this.client.setNoteC(note+originNote);
+       
     }
 
     public void setPaiement(Paiement p) {
@@ -185,16 +140,35 @@ public class Tache {
     }
 
     public void setRecuPaiement(RecuPaiement rp) {
-        this.listRecus.add(rp);
+        if (this.etat == EnumEtat.VALIDEE_CLIENT) {
+            this.listRecus.add(rp);
+        }  
     }   
 
-    public void affecterTache() { 
-    // lister les interveant qui ont les compétences nécissaire de tâche, classer de l'ordre décroissante de la note de 
-                                       
-    }
-    
     public void ajouterCompetence(Competence c){
         this.competences.add(c);
+    }
+    
+    public int getClientId(){
+        return this.clientId;
+    }
+    
+    
+    public boolean terminerTache(Tache t) {
+        if (t.getEtat() == EnumEtat.VALIDEE_CLIENT) {
+            return true;
+        }
+        return false;
+
+    }
+    
+    public void evaluerIntervenant(EvaluationIntervenant eva,Intervenant intervenant ){
+       float note= (eva.getNbEtoileQualite()+eva.getNbEtoileDelai())/2;
+       intervenant.setNoteIn((note+intervenant.getNoteIn())/2);
+    }
+    
+    public void setClientId(int id){
+        clientId=id;
     }
 }
 

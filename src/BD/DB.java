@@ -6,8 +6,6 @@
 package BD;
 
 import java.io.IOException;
-import Model.Client;
-import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -35,6 +33,8 @@ public class DB {
         conf.setUrl(pros.getProperty("url"));
         conf.setUser(pros.getProperty("user"));
         conf.setUsingDB(pros.getProperty("usingDB"));
+        conf.setDriver(pros.getProperty("driver"));
+        
     }
 
     /**
@@ -44,7 +44,7 @@ public class DB {
      */
     public static Connection createConn() {
         try {
-            System.out.println(conf.getUrl()+conf.getUsingDB());
+            Class.forName(conf.getDriver());
             return DriverManager.getConnection(conf.getUrl()+conf.getUsingDB(), conf.getUser(), conf.getPwd());
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,5 +98,5 @@ public class DB {
             e.printStackTrace();
         }
     }
-}
 
+}

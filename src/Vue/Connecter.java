@@ -51,10 +51,10 @@ public class Connecter {
 
     public void init() {
         /*标题部分--North*/
-        JPanel titlePanel = new JPanel();
-        titlePanel.setLayout(new FlowLayout());
+       // JPanel titlePanel = new JPanel();
+        //titlePanel.setLayout(new FlowLayout());
         //titlePanel.add(new JLabel("Client/Intervenant"));
-        c.add(titlePanel, "North");
+        //c.add(titlePanel, "North");
 
 
 

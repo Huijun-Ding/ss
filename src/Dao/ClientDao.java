@@ -26,12 +26,11 @@ public class ClientDao {
            
             String sqlclient = "select * from client where EmailC=? and Password=? ";  //Trouvez la ligne correspondantes en fonction du email et du mot de passe saisis
             Client clientres = null;    //La valeur de retour initiale est vide    
-            Query go = new Query(); //  L connexion de bd
-            
-            go.parameter.add(email); // Mettre  e-mail et le mot de passe respectivement dans la position du point d'interrogation de sql                                       
-            go.parameter.add(mdp); 
+            Query(); //  L connexion de bd
+            parameter.add(email); // Mettre  e-mail et le mot de passe respectivement dans la position du point d'interrogation de sql                                       
+            parameter.add(mdp); 
            
-            go.afferentSQL(sqlclient);    //Préparer SQL          
+            afferentSQL(sqlclient);    //Préparer SQL          
             List<Object> objs=Select(); ////Ensemble de résultats
             Map<String,Object> rowData =(Map<String,Object>)objs.get(0);//Prendre la première ligne
             
@@ -56,7 +55,6 @@ public class ClientDao {
             return null;}
         }
        public static void main(String[] args) {
-
         ClientDao clogin = new ClientDao();
         clogin.login("929302356@qq.com","049988");
         // TODO code application logic here

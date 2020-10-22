@@ -2,9 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Affecter {
 
@@ -15,8 +12,6 @@ public class Affecter {
     private Tache tache;
     private int nb;
     private int nbAccept = 0;
-    private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
-    private static Integer delay = 1000;
 
     public Affecter(Tache t) {
         listAllInters = new ArrayList();

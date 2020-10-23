@@ -38,7 +38,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
-    private Client client;
+    private Client client = new Client( "0645857455", "rue du 11 Novembre", "Toulouse", "31300", "548725100XXXX", "email",0f);
    // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
 
   private ArrayList<Tache> choix = new ArrayList<Tache>();
@@ -50,20 +50,25 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
     JLabel etiquette = new JLabel("                   ");
 
-    public ConsulterTacheC(Client c) {//
-        super("Consulter mes taches");
-        this.client= new Client();
-        this.client=c;
-        this.choix=c.getTaches();
+    public ConsulterTacheC() {//
+        super("Consulter mes taches");//Client c
+        //this.client= new Client();
+       // this.client=c;
+        //this.choix=c.getTaches();
         p = new JPanel(null);
         jFrame = this;
 
 
-        client.addTache(t1);
+       client.addTache(t1);
         client.addTache(t2);
         addChoix();
-        String[] nomChoixShu=(String[])nomChoix.toArray();
-        liste = new JList( nomChoixShu);
+
+        String[] nomChoixShu = new String[nomChoix.size()];
+        for(int i = 0; i < nomChoix.size();i++){
+            nomChoixShu[i] = nomChoix.get(i);
+        }
+
+        liste = new JList(nomChoixShu);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);
         lblBackground.setIcon(icon); // 设置标签组件要显示的图标
@@ -192,11 +197,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent evt) {
        // etiquette.setText((String) liste.getSelectedValue());
         //Par rapport au nom dans choix, si les mêmes mots sont les mêmes, les informations de la tâche seront affichées à d'autres endroits
-
-        System.out.println("hello");
-        System.out.println("hello");
-        System.out.println("hello");
-        for (int i = 0; i < nomChoix.size(); i++) {
+        for (int i = 0; i < client.getTaches().size(); i++) {
          if (liste.getSelectedValue() == choix.get(i).getNomTache()) {
                 courrent = i;
                 etatTac.setText(choix.get(i).getEtat().toString());
@@ -228,14 +229,14 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
                         //btnPayer.setContentAreaFilled(true);
                         break;
                 }
-            } else {
+            } /*else {
                 etatTac.setText("...");
                 nomTa.setText("...");
                 nbpTa.setText("...");
                 dateDT.setText("...");
                 dateFT.setText("...");
                 Descri.setText("...");
-            }
+            }*/
         }
 
 
@@ -243,8 +244,10 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
     public void addChoix() {
         for (int i = 0; i < client.getTaches().size(); i++) {
+            //System.out.println(client.getTaches().size());
             this.choix.add (client.getTaches().get(i));
             this.nomChoix.add( client.getTaches().get(i).getNomTache());
+            //System.out.println(nomChoix.size());
         }
     }
 

@@ -175,14 +175,14 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
                         btnEvaluer.setVisible(false);
                         break;
                 }
-            } else {
+            } /*else {
                 etatTac.setText("...");
                 nomTa.setText("...");
                 nbpTa.setText("...");
                 dateDT.setText("...");
                 dateFT.setText("...");
                 Descri.setText("...");
-            }
+            }*/
         }
 
 

@@ -98,7 +98,7 @@ public class Modifier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                ConsulterTacheC cn = new ConsulterTacheC(client);
+                ConsulterTacheC cn = new ConsulterTacheC();//client
                 cn.setVisible(true);
 
             }

@@ -103,7 +103,7 @@ public class ClientInterface {
                         client.addTache(ta);
                     }
                 System.out.println(cliTaches);
-                ConsulterTacheC con = new ConsulterTacheC(client);//client
+                ConsulterTacheC con = new ConsulterTacheC();//client
                 con.setVisible(true);
 
             }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dao;
 
 import static BD.Query.Query;
@@ -15,10 +10,6 @@ import Model.Intervenant;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author leonl
- */
 public class IntervenantDao {
 public IntervenantDao(){};
     public Intervenant login(String email) {
@@ -50,9 +41,6 @@ public IntervenantDao(){};
             interres.setVilleInterv((String) rowData.get("Ville_Inter"));
             System.out.println(" connexion réussie! welcome intervenant");
             return interres;
- 
-            
-  
     }
         
     public void addIntervenant(Intervenant intervenant){
@@ -84,6 +72,19 @@ public IntervenantDao(){};
 
     }
     
-    
+//      public static void main(String[] args) {
+//          IntervenantDao inDao=new IntervenantDao();
+//          Intervenant in= new Intervenant();
+//        in.setEmail("hello");
+//        in.setNomInterv("j");
+//        in.setPrenomInterv("j");
+//        in.setTelInterv("h");
+//        in.setRueInterv("j");
+//        in.setVilleInterv("heu");
+//        in.setCodePostalIn("hju");
+//        in.setCarteBancaireIn("hjj");
+//        in.setMotdepasseI("cccc");
+//        inDao.addIntervenant(in);
+//      }
 
 }

@@ -9,9 +9,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private JPanel p;
+    private JFrame jFrame;
     private int courrent;
     private JList liste = new JList();
     private JLabel etat = new JLabel("Etat de tache");
@@ -27,15 +29,21 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private JLabel Description = new JLabel("Description");
     private JTextArea Descri = new JTextArea(10, 30);
 
-
+    private JButton btnRetour = new JButton("Return");
     private JButton btnValider=new JButton("Finaliser");
     private JButton btnEvaluer=new JButton("Evaluer");
+    private JLabel lblBackground = new JLabel(); // Créer un objet de composant d'étiquette
+    private URL resource = this.getClass().getResource("images/background2.jpg");
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//Créer un objet image
 
+    private Tache t1 = new Tache("Conception site web", "xxxxxxxxxxx", 1, 1000, "IT", EnumEtat.PAYEE, "18/10/2020", "30/10/2021");
+    private Tache t2 = new Tache("Developpement site web", "xxxxxxxxxxx", 3, 3000, "IT", EnumEtat.VALIDEE_CLIENT, "18/10/2020", "01/01/2021");
 
-    private Client client;
+    private Intervenant intervenant=new Intervenant(1,"0654857410","rue du 12","Toulouse","31000","51204XXXX",0f);
     // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
-    private Tache choix[] = {};
-    private String nomChoix[] = {"java"};
+     private Tache[] choix = new Tache[2];
+    //int[] ns = new int[5];
+    private String[] nomChoix = new String[2];
 
     JLabel etiquette = new JLabel("                   ");
 
@@ -43,13 +51,17 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
         super("Consulter mes taches");
         //this.client=c;
         p = new JPanel(null);
-        //addChoix();
+        intervenant.addTache(t1);
+        intervenant.addTache(t2);
+        addChoix();
+        jFrame=this;
 
         liste = new JList(nomChoix);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);
 
-
+        lblBackground.setIcon(icon);
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); 
         nom.setBounds(250, 20, 120, 20);
         nomTa.setBounds(390, 20, 120, 20);
         etat.setBounds(650, 20, 120, 20);
@@ -63,9 +75,20 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
         Description.setBounds(250, 220, 50, 100);
         Descri.setBounds(250, 240, 600, 100);
         etiquette.setBounds(250, 400, 50, 50);
-        btnEvaluer.setBounds(800, 500, 80, 50);
+        btnEvaluer.setBounds(800, 500, 100, 50);
+        btnValider.setBounds(800, 500, 100, 50);
+        btnRetour.setBounds(650, 500, 100, 50);
+        btnRetour.addActionListener(new ActionListener() {
 
-        btnValider.setBounds(800, 500, 80, 50);
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                Intervenantface in = new Intervenantface(intervenant);
+                in.getjFrame().setVisible(true);
+
+            }
+        });
+        p.add(btnRetour);
 
         p.add(liste);
         p.add(nomTa);
@@ -84,7 +107,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
         p.add(btnEvaluer);
 
         p.add(btnValider);
-
+        p.add(lblBackground);
 
         btnEvaluer.setVisible(false);
         //btnEvaluer.setContentAreaFilled(false);
@@ -113,7 +136,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnEvaluer) {
-                    //this.setVisible(false);
+                    jFrame.setVisible(false);
                     EvaluationViaIntervanant ei = new EvaluationViaIntervanant();
                     ei.getjFrame().setVisible(true);
                 }
@@ -130,49 +153,47 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
 
     public void valueChanged(ListSelectionEvent evt) {
         etiquette.setText((String) liste.getSelectedValue());
-        //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
+
         for (int i = 0; i < nomChoix.length; i++) {
-            if (nomChoix[i] == choix[i].getNomTache()) {
+            if ( liste.getSelectedValue() == choix[i].getNomTache()) {
                 courrent=i;
-                JLabel etatTac = new JLabel(choix[i].getEtat().toString());
-                JLabel nomTa = new JLabel(choix[i].getNomTache());
+                 etatTac .setText(choix[i].getEtat().toString());
+                 nomTa .setText(choix[i].getNomTache());
                 int nb = choix[i].getNbPersonne();
                 String s = "" + nb;// transformer int en String
-                JLabel nbpTa = new JLabel(s);
-                JLabel dateDT = new JLabel(choix[i].getDateDeb());
-                JLabel dateFT = new JLabel(choix[i].getDateFin());
+                 nbpTa .setText(s);
+                 dateDT .setText(choix[i].getDateDeb());
+                 dateFT .setText(choix[i].getDateFin());
                 Descri.setText(choix[i].getDescription());
                 switch (choix[i].getEtat()){
                     case VALIDEE_CLIENT:
                         btnEvaluer.setVisible(true);
-                        //btnEvaluer.setContentAreaFilled(true);
+                        btnValider.setVisible(false);
                         break;
                     case PAYEE:
                         btnValider.setVisible(true);
-                        //btnValider.setContentAreaFilled(true);
+                        btnEvaluer.setVisible(false);
                         break;
                 }
-            } else {
+            } /*else {
                 etatTac.setText("...");
                 nomTa.setText("...");
                 nbpTa.setText("...");
                 dateDT.setText("...");
                 dateFT.setText("...");
                 Descri.setText("...");
-            }
+            }*/
         }
 
 
     }
 
     public void addChoix() {
-        for (int i = 0; i < client.getTaches().size(); i++) {
-            this.choix[i] = client.getTaches().get(i);
-            this.nomChoix[i] = client.getTaches().get(i).getNomTache();
+        for (int i = 0; i < intervenant.getListTaches().size(); i++) {
+            this.choix[i] = intervenant.getListTaches().get(i);
+            this.nomChoix[i] = intervenant.getListTaches().get(i).getNomTache();
         }
     }
 
 
 }
-

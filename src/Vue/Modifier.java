@@ -11,12 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.URL;
+import java.sql.SQLException;
 
-//每次打开新建任务 先去数据库检测是否有记录
 
 public class Modifier {
     private Client client;
-
     private JFrame jFrame = new JFrame("Modifier");
     private Container c = jFrame.getContentPane();
     private JLabel lbNomTache = new JLabel("Nom de tache");
@@ -40,7 +40,10 @@ public class Modifier {
     private JButton okbtn = new JButton("Ok");
 
     private JButton cancelbtn = new JButton("cancel");
-
+    private JButton btnRetour = new JButton("Return");
+    private JLabel lblBackground = new JLabel();
+    private URL resource = this.getClass().getResource("images/background2.jpg");
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");
     String[] listData = new String[]{"Java", "Php", "C++", "Python"};
 
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
@@ -49,7 +52,7 @@ public class Modifier {
     public Modifier() {
         //this.client=cl;Client cl
         jFrame.setBounds(600, 200, 800, 500);
-        c.setLayout(new BorderLayout());//布局管理器
+        c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
@@ -66,7 +69,10 @@ public class Modifier {
         c.add(titlePanel, "North");
 
 
-        /*输入部分--Center*/
+        lblBackground.setIcon(icon);
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+
+        /*Partie d'entrée--Center*/
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
         lbNomTache.setBounds(100, 50, 120, 20);
@@ -75,8 +81,8 @@ public class Modifier {
         lbPrix.setBounds(100, 130, 120, 20);
         lbNbP.setBounds(400, 130, 120, 20);
         lbDescrip.setBounds(100, 170, 120, 20);
-        lbDomaine.setBounds(100, 210, 120, 20);
-        lbCompetence.setBounds(100, 250, 150, 20);
+        lbDomaine.setBounds(100, 270, 120, 20);
+        lbCompetence.setBounds(100, 310, 150, 20);
         tfNomTache.setBounds(250, 50, 400, 20);
         tfDateD.setBounds(250, 90, 120, 20);
         tfDateF.setBounds(550, 90, 120, 20);
@@ -85,19 +91,30 @@ public class Modifier {
         tfDescription.setBounds(250, 170, 400, 60);
         tfCompe.setBounds(250, 310, 120, 20);
         comboBox.setBounds(250, 270, 120, 20);
+        btnRetour.setBounds(280, 380, 100, 25);
+        btnRetour.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                ConsulterTacheC cn = new ConsulterTacheC(client);//client
+                cn.setVisible(true);
+
+            }
+        });
 
 
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                // 只处理选中的状态
+                // Traiter uniquement l'état sélectionné
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     System.out.println("select: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
                 }
             }
         });
 
-        // 设置默认选中的条目
+        // Définit l'élément sélectionné par défaut
         comboBox.setSelectedIndex(2);
 
         fieldPanel.add(comboBox);
@@ -118,38 +135,19 @@ public class Modifier {
         fieldPanel.add(tfDescription);
         fieldPanel.add(tfCompe);
         fieldPanel.add(comboBox);
+        fieldPanel.add(lblBackground);
 
 
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
 
+
         buttonPanel.add(cancelbtn);
-
-
-        /*save.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == save) {
-                    String nomT = tfNomTache.getText();
-                    String dateD = tfDateD.getText();
-                    String dateF = tfDateF.getText();
-                    String prix = tfPrix.getText();
-                    float p = Float.parseFloat(prix);
-                    String nbP = tfNbP.getText();
-                    int nb = Integer.parseInt(nbP);
-                    String descri = tfDescription.getText();
-                    String competence = tfCompe.getText();
-                    String domaine = (String) comboBox.getSelectedItem();
-                    //enregistrer toutes les info dans BD
-                    Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
-                    contoler.putTacheInBD(t);
-                }
-            }
-        });*/   //treeeessss complexe   du coup je l'enlve.
-
+        buttonPanel.add(btnRetour);
 
         okbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -166,15 +164,16 @@ public class Modifier {
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
-                    contoler.putTacheInBD(t);//更新到数据库
+                    try {
+                        contoler.putTacheInBD(t);//更新到数据库
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
 
                 }
             }
 
         });
-
-
-
 
 
         cancelbtn.addActionListener(new ActionListener() {
@@ -190,8 +189,6 @@ public class Modifier {
                 tfNomTache.setText("");
                 tfPrix.setText("");
 
-
-                //lbIMsgC.setText("");
 
             }
         });

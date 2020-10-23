@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dao;
 
 import BD.Query;
@@ -17,16 +12,16 @@ import Model.EnumEtat;
 import Model.EvaluationClient;
 import Model.Intervenant;
 import Model.Tache;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author leonl
- */
 public class TacheDao {
-    public TacheDao(){};
+
+    public TacheDao() {
+    }
+    ;
     ArrayList<Tache> lsttache;
     ArrayList<Competence> lstcompetence;
 
@@ -55,9 +50,9 @@ public class TacheDao {
         return lsttache;
     }
 
-    public ArrayList<Competence> competencetache(Tache tache) {
-        String sqlcompetence = "select * from affecter where ID_tache=? "; // 
-        Query go = new Query();
+    public ArrayList<Competence> competencetache(Tache tache) throws SQLException {
+        String sqlcompetence = "select * from affecter where ID_tache=? "; 
+        Query go = new Query(sqlcompetence);
         go.parameter.add(tache.getNumTache());
         go.afferentSQL(sqlcompetence);
         this.lstcompetence = new ArrayList<Competence>();
@@ -80,22 +75,22 @@ public class TacheDao {
         afferentSQL(sql);
     }
 
-    public void createTache(Tache tache) {
-        String sql = "insert into tache values(null,?,?,?,?,?,?,?,?,?,?)";
-        Query();
+    public void createTache(Tache tache) throws SQLException {
+        String sql = "insert into tache (Nom_tache,Description,Nb_personne,Delais,Prix,Domaine_tache,Etat_Tache,Date_deb ,Date_fin, Code_client) values (?,?,?,?,?,?,?,?,?,?)";
+        Query q = new Query(sql);
+        //q.afferentSQL(sql);
         parameter.add(tache.getNomTache());
         parameter.add(tache.getDescription());
-         parameter.add(tache.getNbPersonne());
-         parameter.add(tache.getDelais());
-           parameter.add(tache.getPrix());
-            parameter.add(tache.getDomanineTache());
-             parameter.add(tache.getEtat().toString());
+        parameter.add(tache.getNbPersonne());
+        parameter.add(tache.getDelais());
+        parameter.add(tache.getPrix());
+        parameter.add(tache.getDomanineTache());
+        parameter.add(tache.getEtat().toString());
         parameter.add(tache.getDateDeb());
         parameter.add(tache.getDateFin());
-        
         parameter.add(tache.getClientId());
-        Update();
-      
+        q.Update();
+
     }
 
     public void affecteTacheIntervenant(Intervenant intervenant, Tache tache) {
@@ -105,19 +100,21 @@ public class TacheDao {
         Update();
     }
 
-    public void modifierTache(Tache tache) {
+    public void modifierTache(Tache tache) throws SQLException {
         String sql = "UPDATE tache SET Date_deb=?,Date_Fin=?,Delais =?,Description=?,Domaine_tache=?,Nb_personne=?,Nom_tache=?,Prix=? WHERE ID_tache=?";
-        Query();
-        afferentSQL(sql);
+        Query q = new Query(sql);
+        q.Query();
+        q.afferentSQL(sql);
+        
         parameter.add(tache.getDateDeb());
         parameter.add(tache.getDateFin());
-        parameter.add(tache.getDelais());
+        parameter.add(5);
         parameter.add(tache.getDescription());
         parameter.add(tache.getDomanineTache());
         parameter.add(tache.getNbPersonne());
         parameter.add(tache.getNomTache());
         parameter.add(tache.getPrix());
-        int ligne = Update();
+        int ligne = q.Update();
     }
 
     public void enregistrerEvalutaionCli(EvaluationClient eva) {
@@ -129,14 +126,5 @@ public class TacheDao {
 
     public void enregistreEvaluationInter(Tache tache) {
 
-    }
-
-    public static void main(String[] args) {
-
-        TacheDao dao = new TacheDao();
-        Tache tache = new  Tache ("hello", "h", 2, (float)22, "hello", EnumEtat.EN_COURS, "234", "333");
-        dao.createTache(tache);
-
-        // TODO code application logic here
     }
 }

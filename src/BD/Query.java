@@ -24,6 +24,10 @@ public class Query {
         conn=DB.createConn();
         //System.out.println("hello");
     }
+    public Query(String Sqlsentence) throws SQLException{
+         conn=DB.createConn();
+         ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);
+    }
 
     public static void afferentSQL(String Sqlsentence) {
         try {
@@ -36,6 +40,7 @@ public class Query {
     
     public static int Update() {
         System.out.println(parameter);
+        //ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);
         int a = 0;
         try {
             for (int i = 0; i < parameter.size(); i++) {
@@ -52,8 +57,12 @@ public class Query {
                     System.out.println(param);
                     ps.setString(o, (String) param);
                 }
+                else if (param instanceof Float) {
+                    System.out.println(o);
+                    System.out.println(param);
+                    ps.setFloat(o, (Float) param);
+                }
             }
-            
             a = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

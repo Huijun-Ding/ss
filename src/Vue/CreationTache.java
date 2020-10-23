@@ -11,13 +11,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-//每次打开新建任务 先去数据库检测是否有记录
+
 
 public class CreationTache {
+
     private Client client;
 
-    private JFrame jFrame = new JFrame("Evaluation Via Client");
+    private JFrame jFrame = new JFrame("Creation de tache");
     private Container c = jFrame.getContentPane();
     private JLabel lbNomTache = new JLabel("Nom de tache");
     private JLabel lbIMsgI = new JLabel();
@@ -35,8 +40,12 @@ public class CreationTache {
     private JTextField tfPrix = new JTextField();
     private JTextField tfNbP = new JTextField();
     private JTextField tfCompe = new JTextField();
+    private JButton btnRetour = new JButton("Return");
     private ControlerInterface contoler;
 
+    private JLabel lblBackground = new JLabel(); 
+    private URL resource = this.getClass().getResource("images/background2.jpg");
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");
     private JButton okbtn = new JButton("Ok");
     private JButton sousbtn = new JButton("add Sous-tache");
     private JButton cancelbtn = new JButton("cancel");
@@ -45,11 +54,12 @@ public class CreationTache {
 
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
-
     public CreationTache(Client cl) {
-        this.client=cl;
+        client =new Client();
+        this.client = cl;
+        contoler = new ControlerInterface();
         jFrame.setBounds(600, 200, 800, 500);
-        c.setLayout(new BorderLayout());//布局管理器
+        c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
@@ -66,7 +76,9 @@ public class CreationTache {
         c.add(titlePanel, "North");
 
 
-        /*输入部分--Center*/
+        lblBackground.setIcon(icon);
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+        /*Partie d'entrée--Center*/
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
         lbNomTache.setBounds(100, 50, 120, 20);
@@ -75,8 +87,8 @@ public class CreationTache {
         lbPrix.setBounds(100, 130, 120, 20);
         lbNbP.setBounds(400, 130, 120, 20);
         lbDescrip.setBounds(100, 170, 120, 20);
-        lbDomaine.setBounds(100, 210, 120, 20);
-        lbCompetence.setBounds(100, 250, 150, 20);
+        lbDomaine.setBounds(100, 270, 120, 20);
+        lbCompetence.setBounds(100, 310, 150, 20);
         tfNomTache.setBounds(250, 50, 400, 20);
         tfDateD.setBounds(250, 90, 120, 20);
         tfDateF.setBounds(550, 90, 120, 20);
@@ -90,16 +102,27 @@ public class CreationTache {
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                // 只处理选中的状态
+                // Traiter uniquement l'état sélectionné
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     System.out.println("select: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
                 }
             }
         });
 
-        // 设置默认选中的条目
+        // Définit l'élément sélectionné par défaut
         comboBox.setSelectedIndex(2);
+        btnRetour.setBounds(280, 380, 100, 25);
+        btnRetour.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                ClientInterface cn = new ClientInterface(client);
+                cn.getjFrame().setVisible(true);
+
+            }
+        });
+        fieldPanel.add(btnRetour);
         fieldPanel.add(comboBox);
         fieldPanel.add(lbNomTache);
         fieldPanel.add(lbDateD);
@@ -119,10 +142,10 @@ public class CreationTache {
         fieldPanel.add(tfCompe);
         fieldPanel.add(comboBox);
 
-
+        fieldPanel.add(lblBackground); 
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
@@ -130,27 +153,8 @@ public class CreationTache {
         buttonPanel.add(cancelbtn);
         buttonPanel.add(sousbtn);
 
-        /*save.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == save) {
-                    String nomT = tfNomTache.getText();
-                    String dateD = tfDateD.getText();
-                    String dateF = tfDateF.getText();
-                    String prix = tfPrix.getText();
-                    float p = Float.parseFloat(prix);
-                    String nbP = tfNbP.getText();
-                    int nb = Integer.parseInt(nbP);
-                    String descri = tfDescription.getText();
-                    String competence = tfCompe.getText();
-                    String domaine = (String) comboBox.getSelectedItem();
-                    //enregistrer toutes les info dans BD
-                    Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
-                    contoler.putTacheInBD(t);
 
-                }
-            }
-
-        });*/   //treeeessss complexe   du coup je l'enlve.
+        buttonPanel.add(btnRetour);
 
 
         okbtn.addActionListener(new ActionListener() {
@@ -167,16 +171,25 @@ public class CreationTache {
                     String competence = tfCompe.getText();
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
-                    Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
+                    //System.out.println("sanchuan"+client.getNumClient());
+                    Tache t = new Tache();
+                    t.setNomTache(nomT);
+                    t.setDateDeb(dateD);
+                    t.setDateFin(dateF);
+                    t.setPrix(p);
+                    t.setNbPersonne(nb);
+                    t.setDescription(descri);
+                    t.setDomanineTache(domaine);
                     t.setClientId(client.getNumClient());
-                    contoler.putTacheInBD(t);
+                    t.setEtat(EnumEtat.EN_COURS);
+                    t.setDelais("");
+
+
 
                 }
             }
 
         });
-
-
 
         sousbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -195,7 +208,7 @@ public class CreationTache {
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
                     jFrame.setVisible(false);
                     //sauter a la page suivant
-                    CreationTache sousFrame = new CreationTache(client);
+                    CreationTache sousFrame = new CreationTache(client);//
                     sousFrame.getjFrame().setVisible(true);
 
                 }
@@ -216,7 +229,6 @@ public class CreationTache {
                 tfNbP.setText("");
                 tfNomTache.setText("");
                 tfPrix.setText("");
-
 
                 //lbIMsgC.setText("");
 

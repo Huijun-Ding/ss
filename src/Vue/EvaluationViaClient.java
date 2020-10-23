@@ -17,7 +17,7 @@ public class EvaluationViaClient {
     private JLabel lbI2 = new JLabel("delais du tavail");
     private JLabel lbcomm = new JLabel("Commentaire");
     private JTextField lbCommentaire = new JTextField(10);
-    // 创建两个单选按钮
+
     private JRadioButton radioBtn101 = new JRadioButton("1");
     private JRadioButton radioBtn102 = new JRadioButton("2");
     private JRadioButton radioBtn103 = new JRadioButton("3");
@@ -38,7 +38,7 @@ public class EvaluationViaClient {
 
     public EvaluationViaClient() {
         jFrame.setBounds(600, 200, 800, 500);
-        c.setLayout(new BorderLayout());//布局管理器
+        c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
@@ -78,7 +78,6 @@ public class EvaluationViaClient {
         radioBtn204.addActionListener(radioButtonListener2);
         radioBtn205.addActionListener(radioButtonListener2);
 
-        /*输入部分--Center*/
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
         lbIndicateur.setBounds(100, 50, 100, 20);
@@ -120,7 +119,7 @@ public class EvaluationViaClient {
 
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+        /*button--South*/
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
@@ -134,21 +133,17 @@ public class EvaluationViaClient {
                 String note2 =saveValue2;
                 String commentaire=lbCommentaire.getText();
 
-                //实例化一个evaluation 并存到BD中
+
 
 
             }
         });
 
-
-
-
-
+        
         cancelbtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //清空所有文本信息
                 lbCommentaire.setText("");
 
             }

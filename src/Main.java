@@ -1,13 +1,12 @@
 
 import BD.DB;
 import Model.*;
+import Vue.Connecter;
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        /*DB db = new DB();
-        db.createConn();*/
 
         Intervenant i1 = new Intervenant(1, "0603047123", "6 rue des étoiles", "Toulouse", "31000", "1836458393995747", 4.00f);
         Intervenant i2 = new Intervenant(2, "0603436734", "11 rue des lois", "Toulouse", "31000", "1836458393995747", 4.26f);
@@ -163,7 +162,9 @@ public class Main {
         System.out.println("Reçu paiement pour intervenant 1" + i1.getRecuPaiement());
         System.out.println("Reçu paiement pour intervenant 2" + i2.getRecuPaiement());
         System.out.println("Reçu paiement pour intervenant 3" + i3.getRecuPaiement());
-        System.out.println("Reçu paiement pour intervenant 4" + i4.getRecuPaiement());                
+        System.out.println("Reçu paiement pour intervenant 4" + i4.getRecuPaiement());    
+        
+        new Connecter();
     }
 
 }

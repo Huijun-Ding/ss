@@ -9,6 +9,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JPanel p;
@@ -31,24 +33,35 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JButton btnValider=new JButton("Valider");
     private JButton btnEvaluer=new JButton("Evaluer");
     private JButton btnModifier=new JButton("Modifier");
+    private URL resource = this.getClass().getResource("images/background2.jpg"); 
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");
 
     private Client client;
-   // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
-    private Tache choix[] = {};
-    private String nomChoix[] = {"java"};
+    // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
+
+    private ArrayList<Tache> choix ;
+    //int[] ns = new int[5];
+    private  ArrayList<String> nomChoix;
 
     JLabel etiquette = new JLabel("                   ");
 
-    public ConsulterTacheC() {//Client c
+    public ConsulterTacheC(Client c) {
         super("Consulter mes taches");
-        //this.client=c;
-        p = new JPanel(null);
-        //addChoix();
+        choix = new ArrayList<Tache>();
+        nomChoix = new ArrayList<String>();
+        this.client= new Client();
+        this.client=c;
+        System.out.println(c.getEmail());
 
-        liste = new JList(nomChoix);
+        p = new JPanel(null);
+        addChoix();
+        String[] nomChoixShu = new String[nomChoix.size()];
+        for(int i = 0; i < nomChoix.size();i++){
+            nomChoixShu[i] = nomChoix.get(i);
+        }
+        liste = new JList( nomChoixShu);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);
-
 
         nom.setBounds(250, 20, 120, 20);
         nomTa.setBounds(390, 20, 120, 20);
@@ -107,9 +120,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnPayer) {
-                    choix[courrent].setEtat(EnumEtat.PAYEE);
-
-                    //应该创建objet paiement 但是我没有
+                    choix.get(courrent).setEtat(EnumEtat.PAYEE);
                 }
             }
         });
@@ -119,7 +130,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnValider) {
-                    choix[courrent].setEtat(EnumEtat.VALIDEE_CLIENT);
+                    choix.get(courrent).setEtat(EnumEtat.VALIDEE_CLIENT);
                 }
             }
         });
@@ -160,21 +171,24 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     }
 
     public void valueChanged(ListSelectionEvent evt) {
-        etiquette.setText((String) liste.getSelectedValue());
-        //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
-        for (int i = 0; i < nomChoix.length; i++) {
-            if (nomChoix[i] == choix[i].getNomTache()) {
-                courrent=i;
-                JLabel etatTac = new JLabel(choix[i].getEtat().toString());
-                JLabel nomTa = new JLabel(choix[i].getNomTache());
-                int nb = choix[i].getNbPersonne();
+        System.out.println("hello");
+        System.out.println("hello");
+        System.out.println("hello");
+        // etiquette.setText((String) liste.getSelectedValue());
+
+        for (int i = 0; i < nomChoix.size(); i++) {
+            if (liste.getSelectedValue() == choix.get(i).getNomTache()) {
+                courrent = i;
+                etatTac.setText(choix.get(i).getEtat().toString());
+                nomTa.setText(choix.get(i).getNomTache());
+                int nb = choix.get(i).getNbPersonne();
                 String s = "" + nb;// transformer int en String
-                JLabel nbpTa = new JLabel(s);
-                JLabel dateDT = new JLabel(choix[i].getDateDeb());
-                JLabel dateFT = new JLabel(choix[i].getDateFin());
-                Descri.setText(choix[i].getDescription());
-                switch (choix[i].getEtat()){
+                nbpTa.setText(s);
+                dateDT.setText(choix.get(i).getDateDeb());
+                dateFT.setText(choix.get(i).getDateFin());
+                Descri.setText(choix.get(i).getDescription());
+                System.out.println(choix.get(i).getNomTache());
+                switch (choix.get(i).getEtat()) {
                     case VALIDEE_CLIENT:
                         btnEvaluer.setVisible(true);
                         //btnEvaluer.setContentAreaFilled(true);
@@ -188,23 +202,26 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
                         //btnPayer.setContentAreaFilled(true);
                         break;
                 }
-            } else {
-                etatTac.setText("...");
-                nomTa.setText("...");
-                nbpTa.setText("...");
-                dateDT.setText("...");
-                dateFT.setText("...");
-                Descri.setText("...");
             }
+//				else {
+//                etatTac.setText("...");
+//                nomTa.setText("...");
+//                nbpTa.setText("...");
+//                dateDT.setText("...");
+//                dateFT.setText("...");
+//                Descri.setText("...");
+//            }
         }
 
 
     }
 
     public void addChoix() {
+        System.out.println(client.getTaches());
         for (int i = 0; i < client.getTaches().size(); i++) {
-            this.choix[i] = client.getTaches().get(i);
-            this.nomChoix[i] = client.getTaches().get(i).getNomTache();
+
+            this.choix.add (client.getTaches().get(i));
+            this.nomChoix.add( client.getTaches().get(i).getNomTache());
         }
     }
 

@@ -73,12 +73,8 @@ public class FenetreListeNoms extends JFrame implements ListSelectionListener {
 
         this.add(p);
 
-
-
-
         pack();
-
-
+        
         this.setSize(1000, 600);
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,10 +84,8 @@ public class FenetreListeNoms extends JFrame implements ListSelectionListener {
 
     public void valueChanged(ListSelectionEvent evt) {
        etiquette.setText((String) liste.getSelectedValue());
-       //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
-
     }
+    
     public void addChoix(){
         for (int i = 0; i <client.getTaches().size() ; i++) {
             this.choix[i]=client.getTaches().get(i);
@@ -99,5 +93,3 @@ public class FenetreListeNoms extends JFrame implements ListSelectionListener {
         }
     }
 }
-
-

@@ -1,3 +1,4 @@
+  
 package Controler;
 
 import Dao.ClientDao;
@@ -9,6 +10,8 @@ import Model.Intervenant;
 import Model.Intervenant;
 import Model.Particulier;
 import Model.Tache;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ControlerInterface {
     private Intervenant intervenant;
@@ -57,7 +60,7 @@ public class ControlerInterface {
         return intervDao.login(e);
     }
 
-    public void putTacheInBD(Tache t) {
+    public void putTacheInBD(Tache t) throws SQLException {
         tacheDao.createTache(t);
     }
 
@@ -70,6 +73,10 @@ public class ControlerInterface {
 
     public void putIntervInBD(Intervenant in) {
         intervDao.addIntervenant(intervenant);
+    }
+    
+    public  ArrayList<Tache> getArrayListClient(Client c){
+        return tacheDao.tacheclient(c);
     }
 
 }

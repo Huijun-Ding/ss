@@ -9,6 +9,8 @@ public class Entreprise extends Client{
     protected String  prenomCorrespondant;
     protected String domaine;
 
+    public Entreprise(){}
+        
     public Entreprise(String raisonSocial, String noSiret, String nomCorrespondant, String prenomCorrespondant, String domaine, String telClient,  String rurClient, String villeClient, String codePostalC, String carteBancaire, String email, float noteC) {
         super(telClient,rurClient, villeClient, codePostalC, carteBancaire, email, noteC);
         this.raisonSocial = raisonSocial;
@@ -18,11 +20,12 @@ public class Entreprise extends Client{
         this.domaine = domaine;
     }
 
-
-
-
     public String getEmail() {
         return email;
+    }
+    
+    public void setMotdepasseC(String motdepasseC) {
+        this.motdepasseC = motdepasseC;
     }
 
     public void setNumClient(int numClient) {

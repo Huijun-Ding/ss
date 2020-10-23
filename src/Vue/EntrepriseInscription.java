@@ -9,28 +9,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 public class EntrepriseInscription extends JFrame {
     private ControlerInterface controler;
-
-    //声明组件
+    private JFrame jFrame;
+    private JLabel lblBackground = new JLabel(); 
+    private URL resource = this.getClass().getResource("images/background2.jpg"); 
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");
     private JPanel p;
     private JLabel lbNameC,lbNumC,lbTelC,lbEmailC,lbRueC,lbVilleC,lbCPC, lblPwdC, lbRePwdC, lbCB, lbIMsgC;
-
-    //声明文本框
     private JTextField txtNameC,txtNumC,txtTelC,txtEmailC,txtRueC,txtVilleC,txtCPC,txtCB;
-    //声明两个密码框
     private JPasswordField txtPwdC, txtRePwdC;
-
-    private JButton btnRegC, btnCancelC;
+    private JButton btnRegC, btnCancelC,btnRetour;
 
     public EntrepriseInscription() {
 
         super("Inscription-Client");
-        //创建面板，面板布局为NULL
         p = new JPanel(null);
-        //实例化5个标签
+        jFrame=this;
         lbNameC = new JLabel("RaisonSocial");
         lbNumC = new JLabel("NoSiret");
         lbTelC=new JLabel("Tele");
@@ -41,11 +39,8 @@ public class EntrepriseInscription extends JFrame {
         lblPwdC = new JLabel("password");
         lbRePwdC = new JLabel("check password");
         lbCB = new JLabel("Carde Bancaire");
-        //显示信息的标签
         lbIMsgC = new JLabel();
-        //设置标签的文字是红色
         lbIMsgC.setForeground(Color.RED);
-        //创建一个长度为20 的文本框
         txtNameC = new JTextField(20);
         txtNumC = new JTextField(30);
         txtTelC = new JTextField(20);
@@ -54,31 +49,29 @@ public class EntrepriseInscription extends JFrame {
         txtVilleC = new JTextField(20);
         txtCPC = new JTextField(20);
         txtCB = new JTextField(20);
-        //创建两个密码框长度为20
         txtPwdC = new JPasswordField(20);
         txtRePwdC = new JPasswordField(20);
-        //设置密码框显示的字符为*
         txtPwdC.setEchoChar('*');
         txtRePwdC.setEchoChar('*');
-        //创建两个按钮
         btnRegC = new JButton("OK");
         btnCancelC = new JButton("Reset");
+        btnRetour = new JButton("Return");
 
         btnRegC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //设置信息标签为空 清楚原来的历史信息
+                //Définissez l'étiquette d'information pour qu'elle soit vide, effacez les informations historiques d'origine
                 lbIMsgC.setText("");
                 String siret=txtNumC.getText();
                 int numc=Integer.parseInt(siret);
-                //获取用户输入的用户名
+                //Obtenez le nom d'utilisateur saisi par l'utilisateur
                 String strName = txtNameC.getText();
                 if (strName == null || strName.equals("")) {
 
                     lbIMsgC.setText("username is empty");
                     return;
                 }
-                //获取用户名密码
+                //Obtenez un nom d'utilisateur et un mot de passe
                 String strPwd = new String(txtPwdC.getPassword());
                 if (strPwd == null || strPwd.equals("")) {
 
@@ -92,7 +85,7 @@ public class EntrepriseInscription extends JFrame {
                     return;
                 }
 
-                //判断确认密码是否跟密码相同
+                //Déterminez si le mot de passe de confirmation est le même que le mot de passe
                 if (!strRePwd.equals(strPwd)) {
 
                     lbIMsgC.setText("password is false");
@@ -124,8 +117,6 @@ public class EntrepriseInscription extends JFrame {
                     return;
                 }
 
-
-                //获取用户nom
                 String num = new String(txtNumC.getText());
                 if (num == null || num.equals("")) {
 
@@ -138,21 +129,43 @@ public class EntrepriseInscription extends JFrame {
                 String domaine="java";
                 String pre="Celine";
                 String nom="Wang";
-
-
-                Entreprise en =new Entreprise(strName, siret, nom, pre, domaine, tele, rue, ville, cp,cb,email,0f);
+                Entreprise en =new Entreprise();
+                en.setRaisonSocial(strName);
+                en.setNoSiret(siret);
+                en.setNomCorrespondant(nom);
+                en.setPrenomCorrespondant(pre);
+                en.setDomaine(domaine);
+                en.setTelClient(tele);
+                en.setRurClient(rue);
+                en.setVilleClient(ville);
+                en.setCodePostalC(cp);
+                en.setCarteBancaire(cb);
+                en.setEmail(email);
+                en.setNoteC(0f);
+                en.setMotdepasseC(strPwd);
+                System.out.print(en);
                 controler.putEntrepInBD(en);
                 lbIMsgC.setText("Successful");
 
             }
         });
+        btnRetour.addActionListener(new ActionListener() {
 
-        //取消按钮的事件处理
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.setVisible(false);
+                Connecter cn = new Connecter();
+                cn.getjFrame().setVisible(true);
+
+
+            }
+        });
+
+        //Gestion des événements du bouton d'annulation
         btnCancelC.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //清空所有文本信息
                 txtNameC.setText("");
                 txtNumC.setText("");
                 txtTelC.setText("");
@@ -163,36 +176,41 @@ public class EntrepriseInscription extends JFrame {
                 txtPwdC.setText("");
                 txtRePwdC.setText("");
                 txtCB.setText("");
-                //设置信息标签为空
+
                 lbIMsgC.setText("");
 
             }
         });
-        lbNameC.setBounds(30, 30, 120, 25);
-        txtNameC.setBounds(155, 30, 120, 25);
-        lbNumC.setBounds(30, 60, 120, 25);
-        txtNumC.setBounds(155, 60, 120, 25);
-        lbTelC.setBounds(30, 90, 120, 25);
-        txtTelC.setBounds(155, 90, 120, 25);
-        lbEmailC.setBounds(30, 120, 120, 25);
-        txtEmailC.setBounds(155, 120, 120, 25);
-        lbRueC.setBounds(30, 150, 120, 25);
-        txtRueC.setBounds(155, 150, 120, 25);
-        lbVilleC.setBounds(30, 180, 120, 25);
-        txtVilleC.setBounds(155, 180, 120, 25);
-        lbCPC.setBounds(30, 210, 120, 25);
-        txtCPC.setBounds(155, 210, 120, 25);
-        lbCB.setBounds(30, 240, 120, 25);
-        txtCB.setBounds(155, 240, 120, 25);
-        lblPwdC.setBounds(30, 270, 120, 25);
-        txtPwdC.setBounds(155, 270, 120, 25);
-        lbRePwdC.setBounds(30, 300, 120, 25);
-        txtRePwdC.setBounds(155, 300, 120, 25);
-        lbIMsgC.setBounds(60, 185, 180, 25);
-        btnRegC.setBounds(60, 350, 100, 25);
-        btnCancelC.setBounds(170, 350, 100, 25);
+        lbNameC.setBounds(80, 30, 120, 25);
+        txtNameC.setBounds(205, 30, 120, 25);
+        lbNumC.setBounds(80, 60, 120, 25);
+        txtNumC.setBounds(205, 60, 120, 25);
+        lbTelC.setBounds(80, 90, 120, 25);
+        txtTelC.setBounds(205, 90, 120, 25);
+        lbEmailC.setBounds(80, 120, 120, 25);
+        txtEmailC.setBounds(205, 120, 120, 25);
+        lbRueC.setBounds(80, 150, 120, 25);
+        txtRueC.setBounds(205, 150, 120, 25);
+        lbVilleC.setBounds(80, 180, 120, 25);
+        txtVilleC.setBounds(205, 180, 120, 25);
+        lbCPC.setBounds(80, 210, 120, 25);
+        txtCPC.setBounds(205, 210, 120, 25);
+        lbCB.setBounds(80, 240, 120, 25);
+        txtCB.setBounds(205, 240, 120, 25);
+        lblPwdC.setBounds(80, 270, 120, 25);
+        txtPwdC.setBounds(205, 270, 120, 25);
+        lbRePwdC.setBounds(80, 300, 120, 25);
+        txtRePwdC.setBounds(205, 300, 120, 25);
+        lbIMsgC.setBounds(80, 185, 180, 25);
+        btnRegC.setBounds(30, 380, 100, 25);
+        btnCancelC.setBounds(170, 380, 100, 25);
+        btnRetour.setBounds(310, 380, 100, 25);
 
-        //添加所有组件
+        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+
+
+        //Ajouter tous les composants
         p.add(lbNameC);
         p.add(txtNameC);
         p.add(lbNumC);
@@ -216,13 +234,18 @@ public class EntrepriseInscription extends JFrame {
         p.add(lbIMsgC);
         p.add(btnRegC);
         p.add(btnCancelC);
+        p.add(btnRetour);
+        p.add(lblBackground);
 
         this.add(p);
-        this.setSize(350, 450);
+        this.setSize(500, 450);
         this.setLocation(200, 100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
+    public JFrame getjFrame() {
+        return jFrame;
+    }
 }

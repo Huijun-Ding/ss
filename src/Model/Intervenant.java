@@ -149,9 +149,7 @@ public class Intervenant {
     } 
     
     public void finaliser(Tache tache) {  // terminer la tâche
-        if (tache.getEtat() == EnumEtat.PAYEE) {
-            tache.setEtat(EnumEtat.FINALISEE_INTER);
-        }
+        tache.incrementerNbFinish();
     }
     
     public String consulterTache() {
@@ -178,4 +176,11 @@ public class Intervenant {
         return prenomInterv;
     }
     
+    public String getRecuPaiement() {
+        String rp = "";
+        for (int i=0; i<this.recus.size(); i++) {
+            rp = rp + " - " + this.recus.get(i).getNomRP() + "  Montant: " + this.recus.get(i).getMontantRP() + "$";
+        }
+        return rp;
+    }
 }

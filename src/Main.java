@@ -9,9 +9,6 @@ public class Main {
         /*DB db = new DB();
         db.createConn();*/
 
- /*DB db = new DB();
-        db.createConn();*/
-        // TODO code application logic here
         Intervenant i1 = new Intervenant(1, "0603047123", "6 rue des étoiles", "Toulouse", "31000", "1836458393995747", 4.00f);
         Intervenant i2 = new Intervenant(2, "0603436734", "11 rue des lois", "Toulouse", "31000", "1836458393995747", 4.26f);
         Intervenant i3 = new Intervenant(3, "0623047123", "allée Et", "Toulouse", "31000", "1836458393995747", 3.50f);
@@ -24,9 +21,9 @@ public class Main {
 
         Client c1 = new Client("7674677267", "rue xxxx", "toulouse", "31000", "123456789056789", "gsczdddd@gmail.com", 4.26f);
 
-        TacheComplexe t1 = new TacheComplexe("Developement site web", "xxxxxxxxxxx", 4, 4000, "IT", EnumEtat.EN_COURS, "18/10/2020", "01/01/2021", c1);
+        TacheComplexe t1 = new TacheComplexe("Conception et Developement site web", "xxxxxxxxxxx", 4, 4000, "IT", EnumEtat.EN_COURS, "18/10/2020", "01/01/2021", c1);
         TacheSimple t2 = new TacheSimple("Conception site web", "xxxxxxxxxxx", 1, 1000, "IT", EnumEtat.EN_COURS, "18/10/2020", "30/10/2021", c1);
-        TacheMassive t3 = new TacheMassive("developpeurs", "xxxxxxxxxxx", 3, 3000, "IT", EnumEtat.EN_COURS, "18/10/2020", "01/01/2021", c1);
+        TacheMassive t3 = new TacheMassive("Developpement site web", "xxxxxxxxxxx", 3, 3000, "IT", EnumEtat.EN_COURS, "18/10/2020", "01/01/2021", c1);
 
         Paiement p1 = new Paiement(1, "20/10/2020", 1000.00f, t2);
         Paiement p2 = new Paiement(2, "20/10/2020", 3000.00f, t3);
@@ -38,10 +35,12 @@ public class Main {
 
         t1.addTache(t2);
         t1.addTache(t3);
+        
         t2.ajouterCompetence(comp1);
         t3.ajouterCompetence(comp2);
         t3.ajouterCompetence(comp3);
         t3.ajouterCompetence(comp4);
+        
         i1.addMesCompetences(comp1);
         i2.addMesCompetences(comp2);
         i2.addMesCompetences(comp3);
@@ -52,6 +51,9 @@ public class Main {
         i4.addMesCompetences(comp2);
         i4.addMesCompetences(comp3);
         i4.addMesCompetences(comp4);
+        
+        System.out.println("Tâche Conception état " + t2.getEtat());
+        System.out.println("Tâche Developpement état " + t3.getEtat());
 
         Affecter af2 = new Affecter(t2);
         af2.addListAllInters(i1);
@@ -101,9 +103,6 @@ public class Main {
         i3.accepterTache(t3);
         i4.accepterTache(t3);
 
-        t2.setPaiement(p1);
-        t3.setPaiement(p2);
-
         try {
             af1.affecterTache();
             //Thread.sleep(14400000); //4 heures
@@ -120,10 +119,16 @@ public class Main {
             Thread.currentThread().interrupt();
         }
         
+        System.out.println("Tâche Conception état " + t2.getEtat());
+        System.out.println("Tâche Developpement état " + t3.getEtat());
+         
+        t2.setPaiement(p1);
+        t3.setPaiement(p2);
+        
         System.out.println("paiement cllient pour conception " + t2.getPaiement());
-        System.out.println(t2.getEtat());
+        System.out.println("Tâche Conception état " + t2.getEtat());
         System.out.println("paiement cllient pour developpement " + t3.getPaiement());
-        System.out.println(t3.getEtat());
+        System.out.println("Tâche Developpement état " + t3.getEtat());
         
         System.out.println("liste finle Developpement " + af1.getIntervenants());
         System.out.println("liste finle Conception " + af2.getIntervenants());
@@ -133,8 +138,32 @@ public class Main {
         System.out.println("Intervenant3 tache: " + i3.consulterTache());
         System.out.println("Intervenant4 tache: " + i4.consulterTache());
         
+        i1.finaliser(t2);
+        i2.finaliser(t3);
+        i3.finaliser(t3);
+        i4.finaliser(t3);
         
+        t2.finaliserTacheInter();
+        t3.finaliserTacheInter();
+        
+        System.out.println("Tâche Conception état " + t2.getEtat());
+        System.out.println("Tâche Developpement état " + t3.getEtat());
 
+        c1.valider(t2);
+        c1.valider(t3);
+ 
+        System.out.println("Tâche Conception état " + t2.getEtat());
+        System.out.println("Tâche Developpement état " + t3.getEtat());
+        
+        i1.setRecuPaiement(rp1);
+        i2.setRecuPaiement(rp2);
+        i3.setRecuPaiement(rp3);
+        i4.setRecuPaiement(rp4);
+        
+        System.out.println("Reçu paiement pour intervenant 1" + i1.getRecuPaiement());
+        System.out.println("Reçu paiement pour intervenant 2" + i2.getRecuPaiement());
+        System.out.println("Reçu paiement pour intervenant 3" + i3.getRecuPaiement());
+        System.out.println("Reçu paiement pour intervenant 4" + i4.getRecuPaiement());                
     }
 
 }

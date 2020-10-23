@@ -22,6 +22,7 @@ public class Tache {
     private Paiement paiement;
     private ArrayList<RecuPaiement> listRecus;
     private ArrayList<Competence> competences;
+    private int nbFinish;  // nombre de personne qui ont fini cette tâche
 
     public Tache(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
         this.nomTache = nomTache;
@@ -149,8 +150,10 @@ public class Tache {
     }
 
     public void setPaiement(Paiement p) {
-        this.paiement = p;
-        this.etat = EnumEtat.PAYEE;
+        if (this.etat == EnumEtat.ACCEPTEE) {
+            this.etat = EnumEtat.PAYEE;
+            this.paiement = p;
+        }
     }
     
     public float getPaiement() {
@@ -181,4 +184,17 @@ public class Tache {
     public void setClientId(int id){
         clientId=id;
     }
+    
+    public void incrementerNbFinish() {
+        this.nbFinish += 1;
+    }
+    
+    public void finaliserTacheInter() {
+        if (nbFinish == nbPersonne) {
+            if (this.etat == EnumEtat.PAYEE) {
+                this.etat = EnumEtat.FINALISEE_INTER;
+            }
+        }
+    }    
+    
 }

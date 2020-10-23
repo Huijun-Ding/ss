@@ -10,8 +10,8 @@ public class Affecter {
     private ArrayList<Intervenant> intervenants;  // les intervenant qui accepte cette tâche
     private ArrayList<Intervenant> listAttende;   // liste d'intervenants qu'on a envoyer une affectation mais pas encore reçu la réponse
     private Tache tache;
-    private int nb;
-    private int nbAccept = 0;
+    private int nb; // nombre de personne nécissaire pour réaliser cette tâche
+    private int nbAccept = 0;  // nombre de personne acceptent cette tâche
 
     public Affecter(Tache t) {
         listAllInters = new ArrayList();

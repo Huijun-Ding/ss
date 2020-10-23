@@ -2,14 +2,16 @@ package Model;
 import java.util.ArrayList;
 
 public class Intervenant {
-    protected int numInterv; 
-    protected String telInterv; 
+    protected String nomInterv;
+    protected String prenomInterv;
+    protected int numInterv;
+    protected String email;
+    protected String telInterv;
     protected String rueInterv;
     protected String villeInterv;
     protected String codePostalIn;
     protected String carteBancaireIn; 
     protected String motdepasseI;
-    protected boolean reponse=false;
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
     private ArrayList<Tache> listTaches;
@@ -20,8 +22,20 @@ public class Intervenant {
         this.mesCompetences.add(c);
     }
     
+    public ArrayList<Tache> getListTaches() {
+        return this.listTaches;
+    }
+
+    public String getTacheAffectee() {  // retourner tous les tâches qui ont été affectées à cet intervenant
+        String t = "";
+        for (int i=0; i<this.listTachesRecevoir.size(); i++) {
+            t += this.listTachesRecevoir.get(i).getNomTache() + " ";
+        }
+        return t;
+    }
+
     public ArrayList<Tache> getListTachesRecevoir() {
-        return listTachesRecevoir;
+        return this.listTachesRecevoir;
     }
 
     public void etreAffecte(Tache t){
@@ -32,20 +46,21 @@ public class Intervenant {
         this.listTachesRecevoir.remove(t);
     }
     
-    public void accepterTache(Tache t){
+    public boolean accepterTache(Tache t){
         this.listTaches.add(t);
         this.listTachesRecevoir.remove(t);
-        this.reponse= true;
-    }
-    public void  refuserTache(Tache t){
-        this.listTachesRecevoir.remove(t);
-        this.reponse= false;
-    }
-    public boolean getReponse(){
-        return this.reponse;
+        return true;
     }
 
+    public boolean refuserTache(Tache t){
+        this.listTachesRecevoir.remove(t);
+        return false;
+    }
+
+    public Intervenant(){}
+
     public Intervenant(int numInterv, String telInterv, String rueInterv, String villeInterv, String codePostalIn, String carteBancaireIn, float noteIn) {
+
         this.numInterv = numInterv;
         this.telInterv = telInterv;
         this.rueInterv = rueInterv;
@@ -61,6 +76,14 @@ public class Intervenant {
     
     public ArrayList<Competence> getMesCompetences() {
         return this.mesCompetences;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getNumInterv() {
@@ -119,13 +142,13 @@ public class Intervenant {
         this.noteIn = noteIn;
     }
     
-    public void setRecuPaiement(RecuPaiement rp) {
+    public void setRecuPaiement(RecuPaiement rp) {  // quand le client a validé la tâche, la palteforme peut payer l'intervenant
         if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
             this.recus.add(rp);
         }
     } 
     
-    public void finaliser(Tache tache) {
+    public void finaliser(Tache tache) {  // terminer la tâche
         if (tache.getEtat() == EnumEtat.PAYEE) {
             tache.setEtat(EnumEtat.FINALISEE_INTER);
         }
@@ -134,7 +157,7 @@ public class Intervenant {
     public String consulterTache() {
         String mesTaches = "";
         for (int i=0; i<this.listTaches.size(); i++) {
-            mesTaches = mesTaches + " - " + this.listTaches.get(i);
+            mesTaches = mesTaches + " - " + this.listTaches.get(i).getNomTache();
         }
         return mesTaches;
     }
@@ -142,13 +165,21 @@ public class Intervenant {
     public void setMotdepasseI(String motdepasseI) {
         this.motdepasseI = motdepasseI;
     }
+
     public String getMotdepasseI(){
         return this.motdepasseI;
     }
 
-    public ArrayList<Tache> getListTaches() {
-        return listTaches;
+    public String getNomInterv() {
+        return nomInterv;
     }
+
+    public String getPrenomInterv() {
+        return prenomInterv;
+    }
+
+
+
     public void addTache(Tache t){
         this.listTaches.add(t);
     }

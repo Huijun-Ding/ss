@@ -1,18 +1,32 @@
 package Model;
 
 public class Competence {
-    protected String nomC;
+
+    protected int numP;
+    protected String nomP;
 
     public Competence(String nom) {
-        this.nomC = nom;
+        this.nomP = nom;
+    }
+
+    public Competence() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getNumP() {
+        return numP;
     }
 
     public String getNomP() {
-        return nomC;
+        return nomP;
     }
 
     public void setNomP(String nomP) {
-        this.nomC = nomP;
+        this.nomP = nomP;
+    }
+
+    public void setNumP(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

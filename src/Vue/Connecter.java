@@ -1,6 +1,7 @@
 package Vue;
 
 import Controler.ControlerInterface;
+import Model.Client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -167,15 +168,22 @@ public class Connecter {
                     switch (identifiant) {
                         case 0:
 
-                           /* if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {*/
+                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
+                               //System.out.println("hello");
+                              Client c=contoler.seekClient(strE);
+                            if (contoler.checkPasswordC(c, strPwd)) {
                                 jFrame.setVisible(false);
-                                ClientInterface cli = new ClientInterface();//contoler.seekClient(strE)
+                                ClientInterface cli = new ClientInterface(c);
+                                //ClientInterface cli = new ClientInterface();//contoler.seekClient(strE)
                                 cli.getjFrame().setVisible(true);
-                           /* } else {
+                            } else {
                                 lbIMsgI.setText("password is wrong");
-                            }*/
+                                System.out.println("wrong");
+                            }
+                            }
 
                             break;
+                            //intervennant
                         case 1:
                            /* if (contoler.checkPasswordI(contoler.seekIntervenant(strE), strPwd)) {*/
                                 jFrame.setVisible(false);
@@ -186,14 +194,16 @@ public class Connecter {
                             }*/
 
                             break;
+
+                            //particulier
                         case 2:
-                            /*if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {*/
+                            if (contoler.checkPasswordC(contoler.seekClient(strE), strPwd)) {
                                 jFrame.setVisible(false);
-                                ClientInterface pa = new ClientInterface();//contoler.seekClient(strE)
-                                pa.getjFrame().setVisible(true);
-                       /*     } else {
+                                ClientInterface cli = new ClientInterface(contoler.seekClient(strE));
+                                cli.getjFrame().setVisible(true);
+                            } else {
                                 lbIMsgI.setText("password is wrong");
-                            }*/
+                            }
 
                             break;
                     }

@@ -165,6 +165,7 @@ public class CreationTache {
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
+                    t.setClientId(client.getNumClient());
                     contoler.putTacheInBD(t);
 
                 }

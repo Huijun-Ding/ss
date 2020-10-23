@@ -22,8 +22,10 @@ public class ClientInterface {
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//creer un objet d'image
     private Font font=new Font("Arial",Font.BOLD,36);
     private JButton btnRetour = new JButton("Return");
-    public ClientInterface(){
-       // this.client=cl;Client cl
+
+    public ClientInterface(Client cl){
+        this.client=cl;
+        //System.out.println("yichuan"+client.getEmail());
 
         jFrame.setBounds(600, 200, 400, 280);
 

@@ -1,11 +1,12 @@
 package Model;
 
 import Model.Tache;
+import java.util.ArrayList;
 
 public class TacheMassive extends Tache {
     
-    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
-        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
+    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin, c);
     }
 
     public String getNomTache() {
@@ -20,7 +21,7 @@ public class TacheMassive extends Tache {
         return nbPersonne;
     }
 
-    public int getDelais() {
+    public String getDelais() {
         return delais;
     }
 
@@ -60,7 +61,7 @@ public class TacheMassive extends Tache {
         this.nbPersonne = nbPersonne;
     }
 
-    public void setDelais(int delais) {
+    public void setDelais(String delais) {
         this.delais = delais;
     }
 
@@ -87,5 +88,9 @@ public class TacheMassive extends Tache {
     public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
+    
+         
+
+    
 }
 

@@ -146,7 +146,7 @@ public class EntrepriseInscription extends JFrame {
                 String nom="Wang";
 
 
-                Entreprise en =new Entreprise(strName, siret, nom, pre,  domaine, numc, tele, rue, ville,  cp, cp, 0f);
+                Entreprise en =new Entreprise(strName, siret, nom, pre, domaine, tele, rue, ville, cp,cb,email,0f);
                 controler.putEntrepInBD(en);
                 lbIMsgC.setText("Successful");
 

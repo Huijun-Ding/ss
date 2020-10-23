@@ -17,6 +17,12 @@ public class EvaluationClient {
         this.tache = t;
         this.inter = i;
     }
+
+    public Intervenant getInter() {
+        return inter;
+    }
+    
+    
     
     public void calculerNoteC() {  
         // selon les notes des 3 critères et le note actuel de client, nous allons calculer une note final de client pour cette tache

@@ -15,6 +15,14 @@ public class RecuPaiement {  // plateforme paye le client
         this.intervenant= i;
     }
     
+    public String getNomRP() {
+        return this.nomRP;
+    }    
+    
+    public float getMontantRP() {
+        return this.montantRP;
+    }     
+    
     public Tache getTache() {
         return this.tache;
     }

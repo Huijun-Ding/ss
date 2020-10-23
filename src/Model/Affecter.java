@@ -2,9 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Affecter {
 
@@ -13,10 +10,8 @@ public class Affecter {
     private ArrayList<Intervenant> intervenants;  // les intervenant qui accepte cette tâche
     private ArrayList<Intervenant> listAttende;   // liste d'intervenants qu'on a envoyer une affectation mais pas encore reçu la réponse
     private Tache tache;
-    private int nb;
-    private int nbAccept = 0;
-    private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
-    private static Integer delay = 1000;
+    private int nb; // nombre de personne nécissaire pour réaliser cette tâche
+    private int nbAccept = 0;  // nombre de personne acceptent cette tâche
 
     public Affecter(Tache t) {
         listAllInters = new ArrayList();
@@ -62,6 +57,19 @@ public class Affecter {
 
     // affectation de cette tâche à des intervenants dans la liste de candidats
     public void affecterTache() {
+        // compter le nombre d'intervenant trouvés
+        for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
+            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
+                intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
+                nbAccept += 1; 
+            }
+        }
+        
+        // si cette tâche a trouvée tous les intervenants, modifier son état en ACCEPTEE
+        if (nb == nbAccept) {
+            this.tache.setEtat(EnumEtat.ACCEPTEE);
+        }
+        
         // pour le nombre des intervenants qu'on a pas encore trouvés
         for (int i = 0; i < nb - nbAccept; i++) {
             // envoyer une affectation à un intervenant qui est dans la liste des candidats par l'ordre croissante
@@ -70,14 +78,7 @@ public class Affecter {
         }
 
         for (int i = 0; i < nb - nbAccept; i++) {
-            listCandidats.remove(listCandidats.get(0)); // enlever ce intervenant de la liste des candidats                       
-        }
-        
-        for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
-            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
-                intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
-                nbAccept += 1; 
-            }
+            listCandidats.remove(listCandidats.get(0)); // supprimer cet intervenant de la liste des candidats                       
         }
     }
 

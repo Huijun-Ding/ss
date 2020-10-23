@@ -150,19 +150,17 @@ public class Intervenant {
     public void setNoteIn(float noteIn) {
         this.noteIn = noteIn;
     }
-
+    
     public void setRecuPaiement(RecuPaiement rp) {  // quand le client a validé la tâche, la palteforme peut payer l'intervenant
         if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
             this.recus.add(rp);
         }
-    }
-
+    } 
+    
     public void finaliser(Tache tache) {  // terminer la tâche
-        if (tache.getEtat() == EnumEtat.PAYEE) {
-            tache.setEtat(EnumEtat.FINALISEE_INTER);
-        }
+        tache.incrementerNbFinish();
     }
-
+    
     public String consulterTache() {
         String mesTaches = "";
         for (int i = 0; i < this.listTaches.size(); i++) {
@@ -174,7 +172,7 @@ public class Intervenant {
     public void setMotdepasseI(String motdepasseI) {
         this.motdepasseI = motdepasseI;
     }
-
+    
     public String getMotdepasseI(){
         return this.motdepasseI;
     }
@@ -191,5 +189,13 @@ public class Intervenant {
 
     public void addTache(Tache t){
         this.listTaches.add(t);
+    }
+
+    public String getRecuPaiement() {
+        String rp = "";
+        for (int i=0; i<this.recus.size(); i++) {
+            rp = rp + " - " + this.recus.get(i).getNomRP() + "  Montant: " + this.recus.get(i).getMontantRP() + "$";
+        }
+        return rp;
     }
 }

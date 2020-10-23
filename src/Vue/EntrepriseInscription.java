@@ -144,9 +144,21 @@ public class EntrepriseInscription extends JFrame {
                 String domaine="java";
                 String pre="Celine";
                 String nom="Wang";
-
-
-                Entreprise en =new Entreprise(strName, siret, nom, pre, domaine, tele, rue, ville, cp,cb,email,0f);
+                Entreprise en =new Entreprise();
+                en.setRaisonSocial(strName);
+                en.setNoSiret(siret);
+                en.setNomCorrespondant(nom);
+                en.setPrenomCorrespondant(pre);
+                en.setDomaine(domaine);
+                en.setTelClient(tele);
+                en.setRurClient(rue);
+                en.setVilleClient(ville);
+                en.setCodePostalC(cp);
+                en.setCarteBancaire(cb);
+                en.setEmail(email);
+                en.setNoteC(0f);
+                en.setMotdepasseC(strPwd);
+                System.out.print(en);
                 controler.putEntrepInBD(en);
                 lbIMsgC.setText("Successful");
 

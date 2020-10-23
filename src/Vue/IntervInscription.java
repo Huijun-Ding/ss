@@ -23,10 +23,10 @@ public class IntervInscription extends JFrame {
     //声明组件
     private JFrame jFrame;
     private JPanel p;
-    private JLabel lbCBI,lbNameI, lbNumI, lbTelI, lbEmailI, lbCompetenceI, lbRueI, lbVilleI, lbCPI, lblPwdI, lbRePwdI, lbIMsgI;
+    private JLabel lbCBI, lbNameI, lbNumI, lbTelI, lbEmailI, lbCompetenceI, lbRueI, lbVilleI, lbCPI, lblPwdI, lbRePwdI, lbIMsgI;
 
     //声明文本框
-    private JTextField txtNameI, txtNumI, txtTelI, txtEmailI, txtRueI, txtVilleI, txtCPI,txtCBI;
+    private JTextField txtNameI, txtNumI, txtTelI, txtEmailI, txtRueI, txtVilleI, txtCPI, txtCBI;
     //声明两个密码框
     private JPasswordField txtPwdI, txtRePwdI;
     //声明一个文本域
@@ -44,6 +44,7 @@ public class IntervInscription extends JFrame {
         super("IntervInscription");
         //创建面板，面板布局为NULL
         p = new JPanel(null);
+        ControlerInterface controler = new ControlerInterface();
         lblBackground.setIcon(icon); // 设置标签组件要显示的图标
         lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
         jFrame=this;
@@ -105,6 +106,7 @@ public class IntervInscription extends JFrame {
                 lbIMsgI.setText("");
                 //获取用户输入的用户名
                 String strName = txtNameI.getText();
+                System.out.println(strName);
                 if (strName == null || strName.equals("")) {
 
                     lbIMsgI.setText("username is empty");
@@ -130,16 +132,31 @@ public class IntervInscription extends JFrame {
                     lbIMsgI.setText("确认密码跟密码不同");
                     return;
                 }
-                String tel=txtTelI.getText();
-                String rue=txtRueI.getText();
-                String ville=txtVilleI.getText();
-                String cp=txtCPI.getText();
-                String cb=txtCBI.getText();
 
+                String email = txtEmailI.getText();
+                String nom = txtNameI.getText();
+                String prenom = txtNumI.getText();
+                String tel = txtTelI.getText();
+                String rue = txtRueI.getText();
+                String ville = txtVilleI.getText();
+                String cp = txtCPI.getText();
+                String cb = txtCBI.getText();
+                String mdp = strPwd;
+                System.out.println(strPwd);
+                System.out.println("m emal"+email);
+                System.out.println("m tel"+tel);
+                Intervenant in = new Intervenant();
+                in.setEmail(email);
+                in.setNomInterv(nom);
+                in.setPrenomInterv(prenom);
+                in.setTelInterv(tel);
+                in.setRueInterv(rue);
+                in.setVilleInterv(ville);
+                in.setCodePostalIn(cp);
+                in.setCarteBancaireIn(cb);
+                in.setMotdepasseI(mdp);
 
-
-                Intervenant in =new Intervenant(0, tel, rue,ville,cp, cb, 0) ;
-               controler.putIntervInBD(in);
+                controler.putIntervInBD(in);
                 lbIMsgI.setText("Successful");
 
             }
@@ -206,9 +223,6 @@ public class IntervInscription extends JFrame {
         comboBox.setBounds(210,300,120,25);
         lbCBI.setBounds(80,330,120,25);
         txtCBI.setBounds(210,330,120,25);
-
-
-
 
 
         // 添加到内容面板

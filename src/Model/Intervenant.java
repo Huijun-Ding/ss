@@ -10,7 +10,7 @@ public class Intervenant {
     protected String rueInterv;
     protected String villeInterv;
     protected String codePostalIn;
-    protected String carteBancaireIn; 
+    protected String carteBancaireIn;
     protected String motdepasseI;
     protected float noteIn;
     private ArrayList<Tache> listTachesRecevoir;
@@ -21,14 +21,14 @@ public class Intervenant {
     public void addMesCompetences(Competence c) {
         this.mesCompetences.add(c);
     }
-    
+
     public ArrayList<Tache> getListTaches() {
         return this.listTaches;
     }
 
     public String getTacheAffectee() {  // retourner tous les tâches qui ont été affectées à cet intervenant
         String t = "";
-        for (int i=0; i<this.listTachesRecevoir.size(); i++) {
+        for (int i = 0; i < this.listTachesRecevoir.size(); i++) {
             t += this.listTachesRecevoir.get(i).getNomTache() + " ";
         }
         return t;
@@ -38,19 +38,20 @@ public class Intervenant {
         return this.listTachesRecevoir;
     }
 
-    public void etreAffecte(Tache t){
+    public void etreAffecte(Tache t) {
         this.listTachesRecevoir.add(t);
     }
-    
-     public void supprimerAffecte(Tache t){
+
+    public void supprimerAffecte(Tache t) {
         this.listTachesRecevoir.remove(t);
     }
-    
-    public boolean accepterTache(Tache t){
+
+    public boolean accepterTache(Tache t) {
         this.listTaches.add(t);
         this.listTachesRecevoir.remove(t);
         return true;
     }
+
 
     public boolean refuserTache(Tache t){
         this.listTachesRecevoir.remove(t);
@@ -71,9 +72,17 @@ public class Intervenant {
         listTachesRecevoir = new ArrayList();
         listTaches = new ArrayList();
         recus = new ArrayList();
-        mesCompetences = new ArrayList();    
+        mesCompetences = new ArrayList();
     }
-    
+
+    public void setNomInterv(String nomInterv) {
+        this.nomInterv = nomInterv;
+    }
+
+    public void setPrenomInterv(String prenomInterv) {
+        this.prenomInterv = prenomInterv;
+    }
+
     public ArrayList<Competence> getMesCompetences() {
         return this.mesCompetences;
     }
@@ -141,22 +150,22 @@ public class Intervenant {
     public void setNoteIn(float noteIn) {
         this.noteIn = noteIn;
     }
-    
+
     public void setRecuPaiement(RecuPaiement rp) {  // quand le client a validé la tâche, la palteforme peut payer l'intervenant
         if (rp.getTache().etat == EnumEtat.VALIDEE_CLIENT) {
             this.recus.add(rp);
         }
-    } 
-    
+    }
+
     public void finaliser(Tache tache) {  // terminer la tâche
         if (tache.getEtat() == EnumEtat.PAYEE) {
             tache.setEtat(EnumEtat.FINALISEE_INTER);
         }
     }
-    
+
     public String consulterTache() {
         String mesTaches = "";
-        for (int i=0; i<this.listTaches.size(); i++) {
+        for (int i = 0; i < this.listTaches.size(); i++) {
             mesTaches = mesTaches + " - " + this.listTaches.get(i).getNomTache();
         }
         return mesTaches;

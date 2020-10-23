@@ -1,4 +1,3 @@
-
 package Vue;
 
         import Controler.ControlerInterface;
@@ -16,16 +15,16 @@ public class Intervenantface {
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
     private JButton recommande = new JButton("mes taches recommandees");
-    private Intervenant intervenant=null;
+    private Intervenant intervenant;
     private ControlerInterface controler;
     private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
     private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
     private Font font=new Font("Arial",Font.BOLD,36);
     private JButton btnRetour = new JButton("Return");
-    public Intervenantface(){
-        // this.Intervenant=cl;Intervenant cl
-        //设置窗体的位置及大小
+    public Intervenantface(Intervenant in){
+        this.intervenant=in;        //设置窗体的位置及大小
+        controler = new ControlerInterface();
         jFrame.setBounds(600, 200, 500, 280);
         //设置一层相当于桌布的东西
         c.setLayout(new BorderLayout());//布局管理器
@@ -88,6 +87,7 @@ public class Intervenantface {
             public void actionPerformed(ActionEvent e) {
                 //跳转到 suivi tache
                 jFrame.setVisible(false);
+
                 ConsulterTacheI con = new ConsulterTacheI();//client
                 con.setVisible(true);
 
@@ -113,4 +113,3 @@ public class Intervenantface {
 
 
 }
-

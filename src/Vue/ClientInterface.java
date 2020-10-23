@@ -2,12 +2,14 @@ package Vue;
 
 import Controler.ControlerInterface;
 import Model.Client;
+import Model.Tache;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ClientInterface {
     private JFrame jFrame = new JFrame("Client");
@@ -15,7 +17,7 @@ public class ClientInterface {
     private Container c = jFrame.getContentPane();
     private JButton consulterTache = new JButton("consulter mes taches");
     private JButton creerTache = new JButton("creer une tache");
-    private Client client=null;
+    private Client client;
     private ControlerInterface controler;
     private JLabel lblBackground = new JLabel();
     private URL resource = this.getClass().getResource("images/background2.jpg"); // obtenir le path de l'image
@@ -24,9 +26,13 @@ public class ClientInterface {
     private JButton btnRetour = new JButton("Return");
 
     public ClientInterface(Client cl){
+        client=new Client();
         this.client=cl;
         //System.out.println("yichuan"+client.getEmail());
 
+        controler=new ControlerInterface();
+        System.out.println("yichuan"+cl.getEmail());
+        //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
 
         c.setLayout(new BorderLayout());//gestion de mise en page
@@ -90,7 +96,14 @@ public class ClientInterface {
             public void actionPerformed(ActionEvent e) {
                 //sauter au sconsuler mes taches
                 jFrame.setVisible(false);
-                ConsulterTacheC con = new ConsulterTacheC();//client
+                 System.out.println("erchuan"+client.getEmail());
+                    ArrayList<Tache> cliTaches=controler.getArrayListClient(client);
+                     System.out.println(cliTaches);
+                    for(Tache ta: cliTaches){
+                        client.addTache(ta);
+                    }
+                System.out.println(cliTaches);
+                ConsulterTacheC con = new ConsulterTacheC(client);//client
                 con.setVisible(true);
 
             }
@@ -103,7 +116,8 @@ public class ClientInterface {
                 if(e.getSource() == creerTache){
                     jFrame.setVisible(false);
 
-                    CreationTache cre = new CreationTache();//client
+
+                    CreationTache cre = new CreationTache(client);
                     cre.getjFrame().setVisible(true);
 
                 }

@@ -41,7 +41,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
 
     private Intervenant intervenant=new Intervenant(1,"0654857410","rue du 12","Toulouse","31000","51204XXXX",0f);
     // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
-    private Tache[] choix = new Tache[2];
+     private Tache[] choix = new Tache[2];
     //int[] ns = new int[5];
     private String[] nomChoix = new String[2];
 
@@ -175,14 +175,14 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
                         btnEvaluer.setVisible(false);
                         break;
                 }
-            } /*else {
+            } else {
                 etatTac.setText("...");
                 nomTa.setText("...");
                 nbpTa.setText("...");
                 dateDT.setText("...");
                 dateFT.setText("...");
                 Descri.setText("...");
-            }*/
+            }
         }
 
 

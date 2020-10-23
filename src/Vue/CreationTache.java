@@ -12,10 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class CreationTache {
+
     private Client client;
 
     private JFrame jFrame = new JFrame("Creation de tache");
@@ -50,9 +54,10 @@ public class CreationTache {
 
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
-
-    public CreationTache() {
-        //this.client=cl;Client cl
+    public CreationTache(Client cl) {
+        client =new Client();
+        this.client = cl;
+        contoler = new ControlerInterface();
         jFrame.setBounds(600, 200, 800, 500);
         c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -147,6 +152,8 @@ public class CreationTache {
         buttonPanel.add(save);
         buttonPanel.add(cancelbtn);
         buttonPanel.add(sousbtn);
+
+
         buttonPanel.add(btnRetour);
 
 
@@ -164,16 +171,25 @@ public class CreationTache {
                     String competence = tfCompe.getText();
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
-                    Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
+                    //System.out.println("sanchuan"+client.getNumClient());
+                    Tache t = new Tache();
+                    t.setNomTache(nomT);
+                    t.setDateDeb(dateD);
+                    t.setDateFin(dateF);
+                    t.setPrix(p);
+                    t.setNbPersonne(nb);
+                    t.setDescription(descri);
+                    t.setDomanineTache(domaine);
                     t.setClientId(client.getNumClient());
-                    contoler.putTacheInBD(t);
+                    t.setEtat(EnumEtat.EN_COURS);
+                    t.setDelais("");
+
+
 
                 }
             }
 
         });
-
-
 
         sousbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -192,7 +208,7 @@ public class CreationTache {
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
                     jFrame.setVisible(false);
                     //sauter a la page suivant
-                    CreationTache sousFrame = new CreationTache();//client
+                    CreationTache sousFrame = new CreationTache(client);//
                     sousFrame.getjFrame().setVisible(true);
 
                 }
@@ -213,7 +229,6 @@ public class CreationTache {
                 tfNbP.setText("");
                 tfNomTache.setText("");
                 tfPrix.setText("");
-
 
                 //lbIMsgC.setText("");
 

@@ -35,7 +35,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private Client client;
     // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
     private Tache choix[] = {};
-    private String nomChoix[] = {"java"};
+    private String nomChoix[] = {""};
 
     JLabel etiquette = new JLabel("                   ");
 
@@ -129,7 +129,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     }
 
     public void valueChanged(ListSelectionEvent evt) {
-        etiquette.setText((String) liste.getSelectedValue());
+        //etiquette.setText((String) liste.getSelectedValue());
         //与choix中的名字相比，相同的话则在其他位置显示该任务信息
         //给其他的加 人或者任务
         for (int i = 0; i < nomChoix.length; i++) {

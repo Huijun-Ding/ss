@@ -16,9 +16,6 @@ public class Particulier extends Client {
         return motdepasseC;
     }
 
-
-
-
     public String getNomPart() {
         return nomPart;
     }

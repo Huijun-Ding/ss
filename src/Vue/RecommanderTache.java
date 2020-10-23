@@ -139,4 +139,3 @@ public class RecommanderTache {
         jFrame.setLocationRelativeTo(null);
     }
 }
-

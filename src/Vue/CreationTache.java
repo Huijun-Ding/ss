@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 //每次打开新建任务 先去数据库检测是否有记录
 public class CreationTache {
 
-    private Client client = new Client();
+    private Client client;
 
     private JFrame jFrame = new JFrame("Evaluation Via Client");
     private Container c = jFrame.getContentPane();
@@ -49,6 +49,7 @@ public class CreationTache {
     final JComboBox<String> comboBox = new JComboBox<String>(listData);
 
     public CreationTache(Client cl) {
+        client =new Client();
         this.client = cl;
         contoler = new ControlerInterface();
         jFrame.setBounds(600, 200, 800, 500);

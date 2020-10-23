@@ -18,6 +18,7 @@ public class Intervenantface {
 
     public Intervenantface(Client cl){
         this.client=cl;
+        controler = new ControlerInterface();
         //设置窗体的位置及大小
         jFrame.setBounds(600, 200, 400, 280);
         //设置一层相当于桌布的东西
@@ -59,7 +60,7 @@ public class Intervenantface {
             public void actionPerformed(ActionEvent e) {
                 //跳转到 suivi tache
                 jFrame.setVisible(false);
-                ConsulterTacheC con = new ConsulterTacheC();//client
+                ConsulterTacheC con = new ConsulterTacheC(client);//client
                 con.setVisible(true);
 
             }

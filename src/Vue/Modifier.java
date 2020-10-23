@@ -146,10 +146,8 @@ public class Modifier {
                     //enregistrer toutes les info dans BD
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
                     contoler.putTacheInBD(t);
-
                 }
             }
-
         });*/   //treeeessss complexe   du coup je l'enlve.
 
 

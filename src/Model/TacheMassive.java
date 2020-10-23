@@ -4,14 +4,11 @@ import Model.Tache;
 import java.util.ArrayList;
 
 public class TacheMassive extends Tache {
-//    private ArrayList<Intervenant> intervenants;
-//    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin) {
-//        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin);
-//        intervenants=new ArrayList<Intervenant>();
-//    }
-//    public void addIntervenant(Intervenant intervenant){
-//        intervenants.add(intervenant);
-//    }
+    
+    public TacheMassive(String nomTache, String description, int nbPersonne, float prix, String domanineTache, EnumEtat etat, String dateDeb, String dateFin, Client c) {
+        super(nomTache, description, nbPersonne, prix, domanineTache, etat, dateDeb, dateFin, c);
+    }
+
     public String getNomTache() {
         return nomTache;
     }

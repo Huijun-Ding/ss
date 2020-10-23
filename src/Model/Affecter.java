@@ -13,25 +13,12 @@ public class Affecter {
     private ArrayList<Intervenant> intervenants;  // les intervenant qui accepte cette tâche
     private ArrayList<Intervenant> listAttende;   // liste d'intervenants qu'on a envoyer une affectation mais pas encore reçu la réponse
     private Tache tache;
-
+    private int nb;
+    private int nbAccept = 0;
     private static Integer cacheTime = 14400000;  // durée pour la quelle la programme d'affectation exécute une fois.
     private static Integer delay = 1000;
-    private int nb = tache.getNbPersonne();
-    private int nbAccept=0;
 
-    public Affecter(ArrayList<Intervenant> listAllInters, ArrayList<Intervenant> listCandidats, ArrayList<Intervenant> intervenants, Tache tache) {
-        this.listAllInters = listAllInters;
-        this.listCandidats = listCandidats;
-        this.intervenants = intervenants;
-        this.tache = tache;
-        this.listAttende = new ArrayList<Intervenant>();
-    }
-   
-
-
-  
-
-    public void Affecter(Tache t) {
+    public Affecter(Tache t) {
         listAllInters = new ArrayList();
         listCandidats = new ArrayList();
         intervenants = new ArrayList();
@@ -57,7 +44,7 @@ public class Affecter {
 
     // retourner la note de client qui a déposé cette tâche
     public float getNoteClient() {
-        return tache.getClient().getNoteC();
+        return this.tache.getClient().getNoteC();
     }
 
     // pour tous les candidats potenciels, nous allons les clsser par leur note de l'order décroissante
@@ -75,31 +62,22 @@ public class Affecter {
 
     // affectation de cette tâche à des intervenants dans la liste de candidats
     public void affecterTache() {
-        Timer timer = new Timer();
-        if (nbAccept < nb) {                    // si le nombre d'intervenants qui accepte la tâche est inférieur au nombre demandé
-            timer.schedule(new TimerTask() {
-                public void run() {
-                    cacheTime = (int) (14400000 + Math.random() * 3600000);    // pour chaque 4 heures faire
+        // pour le nombre des intervenants qu'on a pas encore trouvés
+        for (int i = 0; i < nb - nbAccept; i++) {
+            // envoyer une affectation à un intervenant qui est dans la liste des candidats par l'ordre croissante
+            listCandidats.get(i).etreAffecte(tache);  // ajouter cette tâche dans listTachesRecevoir de ce intervenant
+            listAttende.add(listCandidats.get(i)); //mais l'ajouter dans liste d'attente                        
+        }
 
-                    // pour le nombre des intervenants qu'on a pas encore trouvés
-                    for (int i = 0; i < nb - nbAccept; i++) {
-                        // envoyer une affectation à un intervenant qui est dans la liste des candidats par l'ordre croissante
-                        listCandidats.get(i).etreAffecte(tache);  // ajouter cette tâche dans listTachesRecevoir de ce intervenant
-
-                    }
-                    for (int i = 0; i < nb - nbAccept; i++) {
-                        listCandidats.remove(listCandidats.get(i)); // enlever ce intervenant de la liste des candidats
-                        listAttende.add(listCandidats.get(i)); //mais l'ajouter dans liste d'attente
-                    }
-
-                    for (int i = 0; i < listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
-                        if (listCandidats.get(i).getReponse()) { // si il accepte
-                            intervenants.add(listCandidats.get(i)); // ajouter ce intervenant dans la liste finale
-                            nbAccept += 1;
-                        }
-                    }
-                }
-            }, delay, cacheTime);
+        for (int i = 0; i < nb - nbAccept; i++) {
+            listCandidats.remove(listCandidats.get(0)); // enlever ce intervenant de la liste des candidats                       
+        }
+        
+        for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
+            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
+                intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
+                nbAccept += 1; 
+            }
         }
     }
 
@@ -111,4 +89,27 @@ public class Affecter {
         }
     }
 
+    public String getListCandidats() {
+        String t = "";
+        for (int i=0; i<this.listCandidats.size(); i++) {
+            t += this.listCandidats.get(i).getNumInterv() + " ";
+        }
+        return t;
+    }
+
+    public String getListAllInter() {
+        String t = "";
+        for (int i=0; i<this.listAllInters.size(); i++) {
+            t += this.listAllInters.get(i).getNumInterv() + " ";
+        }
+        return t;
+    }
+
+    public String getIntervenants() {
+        String t = "";
+        for (int i=0; i<this.intervenants.size(); i++) {
+            t += this.intervenants.get(i).getNumInterv() + " ";
+        }
+        return t;        
+    }
 }

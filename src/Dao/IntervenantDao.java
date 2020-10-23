@@ -84,6 +84,19 @@ public IntervenantDao(){};
 
     }
     
-    
+//      public static void main(String[] args) {
+//          IntervenantDao inDao=new IntervenantDao();
+//          Intervenant in= new Intervenant();
+//        in.setEmail("hello");
+//        in.setNomInterv("j");
+//        in.setPrenomInterv("j");
+//        in.setTelInterv("h");
+//        in.setRueInterv("j");
+//        in.setVilleInterv("heu");
+//        in.setCodePostalIn("hju");
+//        in.setCarteBancaireIn("hjj");
+//        in.setMotdepasseI("cccc");
+//        inDao.addIntervenant(in);
+//      }
 
 }

@@ -1,6 +1,6 @@
 package Model;
 
-public class RecuPaiement {
+public class RecuPaiement {  // plateforme paye le client
     protected String nomRP;
     protected String dateRP;
     protected float montantRP;

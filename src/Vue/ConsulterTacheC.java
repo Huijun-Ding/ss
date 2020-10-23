@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private JPanel p;
@@ -34,18 +35,22 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
     private Client client;
    // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
-    private Tache choix[] = {};
-    private String nomChoix[] = {"java"};
+
+  private ArrayList<Tache> choix = new ArrayList<Tache>();
+    //int[] ns = new int[5];
+    private  ArrayList<String> nomChoix = new ArrayList<String>();
 
     JLabel etiquette = new JLabel("                   ");
 
-    public ConsulterTacheC() {//Client c
+    public ConsulterTacheC(Client c) {
         super("Consulter mes taches");
-        //this.client=c;
+        this.client= new Client();
+        this.client=c;
+        this.choix=c.getTaches();
         p = new JPanel(null);
-        //addChoix();
-        client= new Client();
-        liste = new JList(nomChoix);
+        addChoix();
+         String[] nomChoixShu=(String[])nomChoix.toArray();
+        liste = new JList( nomChoixShu);
         liste.addListSelectionListener(this);
         liste.setBounds(0, 0, 200, 600);
 
@@ -107,7 +112,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnPayer) {
-                    choix[courrent].setEtat(EnumEtat.PAYEE);
+                    choix.get(courrent).setEtat(EnumEtat.PAYEE);
 
                     //应该创建objet paiement 但是我没有
                 }
@@ -119,7 +124,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == btnValider) {
-                    choix[courrent].setEtat(EnumEtat.VALIDEE_CLIENT);
+                    choix.get(courrent).setEtat(EnumEtat.VALIDEE_CLIENT);
                 }
             }
         });
@@ -160,21 +165,24 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     }
 
     public void valueChanged(ListSelectionEvent evt) {
-        etiquette.setText((String) liste.getSelectedValue());
+        System.out.println("hello");
+        System.out.println("hello");
+        System.out.println("hello");
+       // etiquette.setText((String) liste.getSelectedValue());
         //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
-        for (int i = 0; i < nomChoix.length; i++) {
-            if (nomChoix[i] == choix[i].getNomTache()) {
-                courrent=i;
-                JLabel etatTac = new JLabel(choix[i].getEtat().toString());
-                JLabel nomTa = new JLabel(choix[i].getNomTache());
-                int nb = choix[i].getNbPersonne();
+         for (int i = 0; i < nomChoix.size(); i++) {
+         if (liste.getSelectedValue() == choix.get(i).getNomTache()) {
+                courrent = i;
+                etatTac.setText(choix.get(i).getEtat().toString());
+                nomTa.setText(choix.get(i).getNomTache());
+                int nb = choix.get(i).getNbPersonne();
                 String s = "" + nb;// transformer int en String
-                JLabel nbpTa = new JLabel(s);
-                JLabel dateDT = new JLabel(choix[i].getDateDeb());
-                JLabel dateFT = new JLabel(choix[i].getDateFin());
-                Descri.setText(choix[i].getDescription());
-                switch (choix[i].getEtat()){
+                nbpTa.setText(s);
+                dateDT.setText(choix.get(i).getDateDeb());
+                dateFT.setText(choix.get(i).getDateFin());
+                Descri.setText(choix.get(i).getDescription());
+                System.out.println(choix.get(i).getNomTache());
+                switch (choix.get(i).getEtat()) {
                     case VALIDEE_CLIENT:
                         btnEvaluer.setVisible(true);
                         //btnEvaluer.setContentAreaFilled(true);
@@ -203,8 +211,8 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
     public void addChoix() {
         for (int i = 0; i < client.getTaches().size(); i++) {
-            this.choix[i] = client.getTaches().get(i);
-            this.nomChoix[i] = client.getTaches().get(i).getNomTache();
+            this.choix.add (client.getTaches().get(i));
+            this.nomChoix.add( client.getTaches().get(i).getNomTache());
         }
     }
 

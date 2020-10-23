@@ -3,7 +3,7 @@ import java.util.Date;
 import Model.Client;
 import Model.Tache;
 
-public class Paiement {
+public class Paiement {  // client paye la plateforme
 
     private int numP;
     private String dateP;

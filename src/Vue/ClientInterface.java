@@ -64,7 +64,14 @@ public class ClientInterface {
             public void actionPerformed(ActionEvent e) {
                 //跳转到 suivi tache
                 jFrame.setVisible(false);
-                ConsulterTacheC con = new ConsulterTacheC();//client
+                 System.out.println("erchuan"+client.getEmail());
+                    ArrayList<Tache> cliTaches=controler.getArrayListClient(client);
+                     System.out.println(cliTaches);
+                    for(Tache ta: cliTaches){
+                        client.addTache(ta);
+                    }
+                System.out.println(cliTaches);
+                ConsulterTacheC con = new ConsulterTacheC(client);//client
                 con.setVisible(true);
 
             }
@@ -77,11 +84,7 @@ public class ClientInterface {
                 if(e.getSource() == creerTache){
                     jFrame.setVisible(false);
                     //主界面显示,如
-                    System.out.println("erchuan"+client.getEmail());
-                    ArrayList<Tache> cliTaches=controler.getArrayListClient(client);
-                    for(Tache ta: cliTaches){
-                        client.addTache(ta);
-                    }
+                   
                     CreationTache cre = new CreationTache(client);
                     cre.getjFrame().setVisible(true);
                     //不正确,则提示错误信息

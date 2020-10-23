@@ -26,7 +26,6 @@ public class Client {
         this.noteC = noteC;
     }
 
-   
     public String getEmail() {
         return email;
     }
@@ -106,7 +105,7 @@ public class Client {
         }
     }
 
-    public ArrayList<Object> getListNomTaches() {
+    public ArrayList<Object> getListNomTaches() {   // consulation d'historique de tâche
         ArrayList<Object> historiques = new ArrayList();
         for (Tache tache : this.taches) {
             if (tache instanceof TacheSimple) {
@@ -138,16 +137,9 @@ public class Client {
         }
         return historiques;
     }
-  
-    public void consulterTache(String nomTache) {
-
-    }
-
-
     
     public void addTache(Tache tache){
         this.taches.add(tache);
-        
     }
 
     public void setEmail(String email) {
@@ -157,11 +149,9 @@ public class Client {
     public void setPassword(String mdp) {
         this.motdepasseC=mdp;
     }
-   
 
     public String getMotdepasseC() {
         return motdepasseC;
     }
-
 
 }

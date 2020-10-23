@@ -73,18 +73,18 @@ public class EntrepriseInscription extends JFrame {
         btnRegC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //设置信息标签为空 清楚原来的历史信息
+                //Définissez l'étiquette d'information pour qu'elle soit vide, effacez les informations historiques d'origine
                 lbIMsgC.setText("");
                 String siret=txtNumC.getText();
                 int numc=Integer.parseInt(siret);
-                //获取用户输入的用户名
+                //Obtenez le nom d'utilisateur saisi par l'utilisateur
                 String strName = txtNameC.getText();
                 if (strName == null || strName.equals("")) {
 
                     lbIMsgC.setText("username is empty");
                     return;
                 }
-                //获取用户名密码
+                //Obtenez un nom d'utilisateur et un mot de passe
                 String strPwd = new String(txtPwdC.getPassword());
                 if (strPwd == null || strPwd.equals("")) {
 
@@ -98,7 +98,7 @@ public class EntrepriseInscription extends JFrame {
                     return;
                 }
 
-                //判断确认密码是否跟密码相同
+                //Déterminez si le mot de passe de confirmation est le même que le mot de passe
                 if (!strRePwd.equals(strPwd)) {
 
                     lbIMsgC.setText("password is false");
@@ -131,7 +131,7 @@ public class EntrepriseInscription extends JFrame {
                 }
 
 
-                //获取用户nom
+
                 String num = new String(txtNumC.getText());
                 if (num == null || num.equals("")) {
 
@@ -159,13 +159,12 @@ public class EntrepriseInscription extends JFrame {
                 jFrame.setVisible(false);
                 Connecter cn = new Connecter();
                 cn.getjFrame().setVisible(true);
-                //设置信息标签为空
-                //lbIMsgI.setText("");
+
 
             }
         });
 
-        //取消按钮的事件处理
+        //Gestion des événements du bouton d'annulation
         btnCancelC.addActionListener(new ActionListener() {
 
             @Override
@@ -181,7 +180,7 @@ public class EntrepriseInscription extends JFrame {
                 txtPwdC.setText("");
                 txtRePwdC.setText("");
                 txtCB.setText("");
-                //设置信息标签为空
+
                 lbIMsgC.setText("");
 
             }
@@ -215,7 +214,7 @@ public class EntrepriseInscription extends JFrame {
         lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
 
 
-        //添加所有组件
+        //Ajouter tous les composants
         p.add(lbNameC);
         p.add(txtNameC);
         p.add(lbNumC);
@@ -240,7 +239,7 @@ public class EntrepriseInscription extends JFrame {
         p.add(btnRegC);
         p.add(btnCancelC);
         p.add(btnRetour);
-        p.add(lblBackground); // 将组件添加到面板中
+        p.add(lblBackground);
 
         this.add(p);
         this.setSize(500, 450);

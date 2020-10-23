@@ -32,9 +32,9 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
     private JButton btnRetour = new JButton("Return");
     private JButton btnValider=new JButton("Finaliser");
     private JButton btnEvaluer=new JButton("Evaluer");
-    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
-    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
-    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
+    private JLabel lblBackground = new JLabel(); // Créer un objet de composant d'étiquette
+    private URL resource = this.getClass().getResource("images/background2.jpg");
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");//Créer un objet image
 
     private Tache t1 = new Tache("Affectation", "affecter des taches", 1, 200f, "Comptable", EnumEtat.VALIDEE_CLIENT, "05/05/2020", "01/12/2020");
     private Tache t2 = new Tache("Realisation", "realiser des taches", 3, 2000f, "Java", EnumEtat.PAYEE, "05/05/2021", "01/12/2021");
@@ -107,7 +107,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
         p.add(btnEvaluer);
 
         p.add(btnValider);
-        p.add(lblBackground); // 将组件添加到面板中
+        p.add(lblBackground);
 
         btnEvaluer.setVisible(false);
         //btnEvaluer.setContentAreaFilled(false);
@@ -153,8 +153,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
 
     public void valueChanged(ListSelectionEvent evt) {
         etiquette.setText((String) liste.getSelectedValue());
-        //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
+
         for (int i = 0; i < nomChoix.length; i++) {
             if ( liste.getSelectedValue() == choix[i].getNomTache()) {
                 courrent=i;

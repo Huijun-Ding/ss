@@ -135,7 +135,6 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
                 if (e.getSource() == btnPayer) {
                     choix[courrent].setEtat(EnumEtat.PAYEE);
 
-                    //应该创建objet paiement 但是我没有
                 }
             }
         });
@@ -186,8 +185,8 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
 
     public void valueChanged(ListSelectionEvent evt) {
        // etiquette.setText((String) liste.getSelectedValue());
-        //与choix中的名字相比，相同的话则在其他位置显示该任务信息
-        //给其他的加 人或者任务
+        //Par rapport au nom dans choix, si les mêmes mots sont les mêmes, les informations de la tâche seront affichées à d'autres endroits
+
         for (int i = 0; i < nomChoix.length; i++) {
             if (liste.getSelectedValue() == choix[i].getNomTache()) {
                 courrent = i;

@@ -86,7 +86,7 @@ public class RecommanderTache {
             lbDateDebut.setText("...");
         }
 
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setIcon(icon); // Définir l'icône à afficher par le composant d'étiquette
         lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
 
         /*输入部分--Center*/
@@ -130,7 +130,7 @@ public class RecommanderTache {
         fieldPanel.add(lblBackground);
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+        /*button--South*/
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);

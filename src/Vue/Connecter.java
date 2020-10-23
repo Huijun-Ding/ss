@@ -32,21 +32,21 @@ public class Connecter {
     private Font font=new Font("Arial",Font.BOLD,36);
     private JLabel titre = new JLabel("Connexion");
     public Connecter() {
-        //设置窗体的位置及大小
+        //Définir la position et la taille du formulaire
 
 
         titre.setFont(font);
         titre.setBounds(410,20,200,40);
         jFrame.setBounds(600, 200, 1000, 550);
-        //设置一层相当于桌布的东西
-        c.setLayout(new BorderLayout());//布局管理器
-        //设置按下右上角X号后关闭
+        //Mettre en place une couche de quelque chose d'équivalent à une nappe
+        c.setLayout(new BorderLayout());//Gestionnaire de mise en page
+        //Définir pour fermer après avoir appuyé sur le chiffre X dans le coin supérieur droit
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         jFrame.setLocationRelativeTo(null);
-        //初始化--往窗体里放其他控件
+        //Initialisation-mettre d'autres contrôles dans le formulaire
         init();
-        //设置窗体可见
+        //Définir le formulaire pour qu'il soit visible
         jFrame.setVisible(true);
     }
 
@@ -56,14 +56,14 @@ public class Connecter {
 
     public void init() {
 
-        /*输入部分--Center*/
+        /* Partie d'entrée - Centre */
         ButtonGroup btnGroup1 = new ButtonGroup();
         btnGroup1.add(radioBtn1);
         btnGroup1.add(radioBtn3);
         btnGroup1.add(radioBtn2);
 
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
-        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+        lblBackground.setIcon(icon); // Définir l'icône à afficher par le composant d'étiquette
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
 
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
@@ -97,22 +97,15 @@ public class Connecter {
         fieldPanel.add(radioBtn2);
         fieldPanel.add(radioBtn3);
         radioBtn1.setSelected(true);
-        fieldPanel.add(lblBackground); // 将组件添加到面板中
+        fieldPanel.add(lblBackground); // Ajouter des composants au panneau
 
-        //设置标签的文字是红色
+        //Définir le texte de l'étiquette en rouge
         lbIMsgI.setForeground(Color.RED);
         lbIMsgI.setBounds(500, 185, 180, 25);
         fieldPanel.add(lbIMsgI);
 
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
-        /*JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        buttonPanel.add(okbtn);
-        buttonPanel.add(cancelbtn);
-        buttonPanel.add(inscription);
-        c.add(buttonPanel, "South");*/
 
         radioBtn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -13,7 +13,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.net.URL;
 
-//每次打开新建任务 先去数据库检测是否有记录
+
 
 public class CreationTache {
     private Client client;
@@ -54,7 +54,7 @@ public class CreationTache {
     public CreationTache() {
         //this.client=cl;Client cl
         jFrame.setBounds(600, 200, 800, 500);
-        c.setLayout(new BorderLayout());//布局管理器
+        c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
@@ -71,9 +71,9 @@ public class CreationTache {
         c.add(titlePanel, "North");
 
 
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
-        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
-        /*输入部分--Center*/
+        lblBackground.setIcon(icon);
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+        /*Partie d'entrée--Center*/
         JPanel fieldPanel = new JPanel();
         fieldPanel.setLayout(null);
         lbNomTache.setBounds(100, 50, 120, 20);
@@ -82,8 +82,8 @@ public class CreationTache {
         lbPrix.setBounds(100, 130, 120, 20);
         lbNbP.setBounds(400, 130, 120, 20);
         lbDescrip.setBounds(100, 170, 120, 20);
-        lbDomaine.setBounds(100, 210, 120, 20);
-        lbCompetence.setBounds(100, 250, 150, 20);
+        lbDomaine.setBounds(100, 270, 120, 20);
+        lbCompetence.setBounds(100, 310, 150, 20);
         tfNomTache.setBounds(250, 50, 400, 20);
         tfDateD.setBounds(250, 90, 120, 20);
         tfDateF.setBounds(550, 90, 120, 20);
@@ -97,14 +97,14 @@ public class CreationTache {
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                // 只处理选中的状态
+                // Traiter uniquement l'état sélectionné
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     System.out.println("select: " + comboBox.getSelectedIndex() + " = " + comboBox.getSelectedItem());
                 }
             }
         });
 
-        // 设置默认选中的条目
+        // Définit l'élément sélectionné par défaut
         comboBox.setSelectedIndex(2);
         btnRetour.setBounds(280, 380, 100, 25);
         btnRetour.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class CreationTache {
         fieldPanel.add(lblBackground); // 将组件添加到面板中
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);

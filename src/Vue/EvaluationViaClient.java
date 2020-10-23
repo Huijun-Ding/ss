@@ -38,7 +38,7 @@ public class EvaluationViaClient {
 
     public EvaluationViaClient() {
         jFrame.setBounds(600, 200, 800, 500);
-        c.setLayout(new BorderLayout());//布局管理器
+        c.setLayout(new BorderLayout());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         init();
         jFrame.setVisible(true);
@@ -120,7 +120,7 @@ public class EvaluationViaClient {
 
         c.add(fieldPanel, "Center");
 
-        /*按钮部分--South*/
+        /*button--South*/
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(okbtn);
@@ -134,7 +134,7 @@ public class EvaluationViaClient {
                 String note2 =saveValue2;
                 String commentaire=lbCommentaire.getText();
 
-                //实例化一个evaluation 并存到BD中
+
 
 
             }

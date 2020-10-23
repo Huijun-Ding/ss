@@ -106,17 +106,17 @@ public class ParticulierInscription extends JFrame {
         btnRegC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //设置信息标签为空 清楚原来的历史信息
+                //Définissez l'étiquette d'information pour qu'elle soit vide, effacez les informations historiques d'origine
                 lbIMsgC.setText("");
                 String nom = txtNumC.getText();
-                //获取用户输入的用户名
+                //Obtenez le nom d'utilisateur saisi par l'utilisateur
                 String strName = txtNameC.getText();
                 if (strName == null || strName.equals("")) {
 
                     lbIMsgC.setText("username is empty");
                     return;
                 }
-                //获取用户名密码
+                //Obtenez un nom d'utilisateur et un mot de passe
                 String strPwd = new String(txtPwdC.getPassword());
                 if (strPwd == null || strPwd.equals("")) {
 
@@ -130,7 +130,7 @@ public class ParticulierInscription extends JFrame {
                     return;
                 }
 
-                //判断确认密码是否跟密码相同
+                //Déterminez si le mot de passe de confirmation est le même que le mot de passe
                 if (!strRePwd.equals(strPwd)) {
 
                     lbIMsgC.setText("password is false");
@@ -194,12 +194,12 @@ public class ParticulierInscription extends JFrame {
             }
         });
 
-        //取消按钮的事件处理
+        //Gestion des événements du bouton d'annulation
         btnCancelC.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //清空所有文本信息
+                //Effacer tous les messages texte
                 txtNameC.setText("");
                 txtNumC.setText("");
                 txtTelC.setText("");
@@ -210,7 +210,7 @@ public class ParticulierInscription extends JFrame {
                 txtPwdC.setText("");
                 txtRePwdC.setText("");
                 txtCB.setText("");
-                //设置信息标签为空
+                //Définir l'étiquette d'information sur vide
                 lbIMsgC.setText("");
 
             }
@@ -242,8 +242,8 @@ public class ParticulierInscription extends JFrame {
         btnCancelC.setBounds(170, 380, 100, 25);
         btnRetour.setBounds(310, 380, 100, 25);
 
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
-        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
+        lblBackground.setIcon(icon); // Définit l'icône à afficher par le composant d'étiquette
+        lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // Définit la position d'affichage et la taille du composant
 
         //添加所有组件
         p.add(lbNameC);
@@ -272,7 +272,7 @@ public class ParticulierInscription extends JFrame {
         p.add(btnRetour);
         p.add(radioBtn1);
         p.add(radioBtn2);
-        p.add(lblBackground); // 将组件添加到面板中
+        p.add(lblBackground); // ajoute le composant au panneau
 
         this.add(p);
         this.setSize(450, 450);

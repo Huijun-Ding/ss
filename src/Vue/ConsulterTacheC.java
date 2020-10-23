@@ -37,7 +37,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
     private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
     private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
 
-    private Client client = new Client(1, "0645857455", "rue du 11 Novembre", "Toulouse", "31300", "548725100XXXX", 0f);
+    private Client client ;
     private Tache t1 = new Tache("Affectation", "affecter des taches", 1, 200f, "Comptable", EnumEtat.FINALISEE_INTER, "05/05/2020", "01/12/2020");
     private Tache t2 = new Tache("Realisation", "realiser des taches", 3, 2000f, "Java", EnumEtat.ACCEPTEE, "05/05/2021", "01/12/2021");
     // private Tache t = new Tache("t1", "ed", 1, 1f, "j", EnumEtat.EN_COURS, "1", "2");
@@ -88,7 +88,7 @@ public class ConsulterTacheC extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                ClientInterface cn = new ClientInterface();
+                ClientInterface cn = new ClientInterface(client);
                 cn.getjFrame().setVisible(true);
 
             }

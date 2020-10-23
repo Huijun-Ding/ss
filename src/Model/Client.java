@@ -153,7 +153,5 @@ public class Client {
     public String getMotdepasseC() {
         return motdepasseC;
     }
-    public void addTache(Tache tache){
-        taches.add(tache);
-    }
+
 }

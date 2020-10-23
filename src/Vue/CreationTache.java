@@ -112,7 +112,7 @@ public class CreationTache {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                ClientInterface cn = new ClientInterface();
+                ClientInterface cn = new ClientInterface(client);
                 cn.getjFrame().setVisible(true);
 
             }

@@ -83,7 +83,7 @@ public class ConsulterTacheI extends JFrame implements ListSelectionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                Intervenantface in = new Intervenantface();
+                Intervenantface in = new Intervenantface(intervenant);
                 in.getjFrame().setVisible(true);
 
             }

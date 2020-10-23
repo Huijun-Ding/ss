@@ -12,7 +12,7 @@ public class Main {
         DB db = new DB();
         db.createConn();
     }
-        
+}
 
 //
 //        // TODO code application logic here

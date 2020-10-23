@@ -110,7 +110,7 @@ public class RecommanderTache {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                Intervenantface in = new Intervenantface();
+                Intervenantface in = new Intervenantface(intervenant);
                 in.getjFrame().setVisible(true);
 
             }

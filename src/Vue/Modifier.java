@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.net.URL;
-
+import java.sql.SQLException;
 
 
 public class Modifier {
@@ -98,7 +98,7 @@ public class Modifier {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.setVisible(false);
-                ConsulterTacheC cn = new ConsulterTacheC();
+                ConsulterTacheC cn = new ConsulterTacheC(client);
                 cn.setVisible(true);
 
             }
@@ -165,7 +165,11 @@ public class Modifier {
                     String domaine = (String) comboBox.getSelectedItem();
                     //enregistrer toutes les info dans BD
                     Tache t = new Tache(nomT, descri, nb, p, domaine, EnumEtat.EN_COURS, dateD, dateF);
-                    contoler.putTacheInBD(t);//更新到数据库
+                    try {
+                        contoler.putTacheInBD(t);//更新到数据库
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
 
                 }
             }

@@ -35,7 +35,7 @@ public class TacheDao {
     ArrayList<Competence> lstcompetence;
 
     public ArrayList<Tache> tacheclient(Client client) {
-        String sqltache = "select * from tache where Code_client=? "; //Tout le tache d'un client
+        String sqltache = "select * from tache where Code_client=? "; // recherche tous les taches d'un client
         Query(); //connect
         parameter.add(client.getNumClient());
         afferentSQL(sqltache);
@@ -85,10 +85,11 @@ public class TacheDao {
     }
 
     public void createTache(Tache tache) throws SQLException {
+        // concentrer l'ordre d'Insertion ,et et La première valeur est le code tache et il sera généré automatiquement
         String sql = "insert into tache (Nom_tache,Description,Nb_personne,Delais,Prix,Domaine_tache,Etat_Tache,Date_deb ,Date_fin, Code_client) values (?,?,?,?,?,?,?,?,?,?)";
         Query q = new Query(sql);
         //q.afferentSQL(sql);
-        parameter.add(tache.getNomTache());
+        parameter.add(tache.getNomTache()); //Remplacez les paramètres dans l'ordre
         parameter.add(tache.getDescription());
         parameter.add(tache.getNbPersonne());
         parameter.add(tache.getDelais());

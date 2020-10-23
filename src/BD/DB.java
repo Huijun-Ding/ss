@@ -21,7 +21,7 @@ public class DB {
      *
      */
     static {
-        String path = "BD//db.properties";
+        String path = "BD//db.properties";  // Réaliser la connexion avec la base de données
         Properties pros = new Properties();
         try {
             pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(path));
@@ -42,6 +42,7 @@ public class DB {
      *
      * @return
      */
+    // Pour économiser des ressources, fermez la base de données
     public static Connection createConn() {
         try {
             Class.forName(conf.getDriver());

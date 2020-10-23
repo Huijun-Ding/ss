@@ -20,6 +20,13 @@ import java.util.Map;
  *
  * @author leonl
  */
+
+/*Nous avons testé avec succès la connexion  et l'inscription des utilisateurs,
+consulter des taches des utilisateurs et la création de nouvelles tâches,
+ces méthodes peuvent réaliser l'interaction entre l’interfase et la base de données.
+Par contres les autres ne sont pas encore réalisées. Mais chaque méthode impliquant SQL peut réussir à réaliser l'interaction avec la BD,
+seulement l'interaction avec l'interaction n'a pas encore été réalisée.
+Et l'interface peut foncitionner entièrement indépendamment en fonction de chaque instance dans "main".*/
 public class ClientDao {
         public ClientDao(){};
      public Client login(String email) {
@@ -27,19 +34,19 @@ public class ClientDao {
         String sqlclient = "select * from client where EmailC=?";
         Client clientres = null;
         Query();
-        parameter.add(email);
+        parameter.add(email);//Remplacez les paramètres donc le "?"
         afferentSQL(sqlclient);
-        List<Object> objs = Select();
+        List<Object> objs = Select();//Ensemble de résultats
 
         if(objs.size()==0){
             System.out.println("suibian ");
             return null;
         }
         //Ensemble de résultats
-        Map<String, Object> rowData = (Map<String, Object>) objs.get(0);
+        Map<String, Object> rowData = (Map<String, Object>) objs.get(0);//tirer le premier ligne parceque y a qu'un
        
             clientres = new Client();
-            clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire"));
+            clientres.setCarteBancaire((String) rowData.get("NumCarteBancaire")); //Obtenir toutes les informations
             clientres.setCodePostalC((String) rowData.get("CodePostal"));
             clientres.setEmail(email);
             clientres.setNoteC((float) rowData.get("NoteC"));
@@ -56,7 +63,7 @@ public class ClientDao {
     }
      
       public void addEntreprise(Entreprise entreprise){
-        String sql="insert into client values(null,'E',null,null,?,?,?,?,?,?,?,null,?,?,?,?,?)";
+        String sql="insert into client values(null,'E',null,null,?,?,?,?,?,?,?,null,?,?,?,?,?)";// Inserer la position correspondante
         Query();
         afferentSQL(sql);
         parameter.add(entreprise.getTelClient());

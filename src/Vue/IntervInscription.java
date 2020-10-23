@@ -12,9 +12,9 @@ import java.awt.event.ItemListener;
 import java.net.URL;
 
 public class IntervInscription extends JFrame {
-    private JLabel lblBackground = new JLabel(); // 创建一个标签组件对象
-    private URL resource = this.getClass().getResource("images/background2.jpg"); // 获取背景图片路径
-    private ImageIcon icon = new ImageIcon("images/background2.jpg");//创建图片对象
+    private JLabel lblBackground = new JLabel();
+    private URL resource = this.getClass().getResource("images/background2.jpg");
+    private ImageIcon icon = new ImageIcon("images/background2.jpg");
 
     private Font font=new Font("Arial",Font.BOLD,36);
     private JLabel titre = new JLabel("Connexion");
@@ -45,10 +45,10 @@ public class IntervInscription extends JFrame {
         //创建面板，面板布局为NULL
         p = new JPanel(null);
         ControlerInterface controler = new ControlerInterface();
-        lblBackground.setIcon(icon); // 设置标签组件要显示的图标
+        lblBackground.setIcon(icon);
         lblBackground.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight()); // 设置组件的显示位置及大小
         jFrame=this;
-        // 添加条目选中状态改变的监听器
+
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -59,9 +59,9 @@ public class IntervInscription extends JFrame {
             }
         });
 
-        // 设置默认选中的条目
+
         comboBox.setSelectedIndex(2);
-        //实例化5个标签
+
         lbNameI = new JLabel("Nom");
         lbCBI = new JLabel("Carde Bancaire");
         lbNumI = new JLabel("Prenom");
@@ -73,11 +73,11 @@ public class IntervInscription extends JFrame {
         lblPwdI = new JLabel("password");
         lbRePwdI = new JLabel("check password");
         lbCompetenceI = new JLabel("competence");
-        //显示信息的标签
+
         lbIMsgI = new JLabel();
-        //设置标签的文字是红色
+
         lbIMsgI.setForeground(Color.RED);
-        //创建一个长度为20 的文本框
+
         txtNameI = new JTextField(20);
         txtNumI = new JTextField(30);
         txtCBI = new JTextField(30);
@@ -86,15 +86,12 @@ public class IntervInscription extends JFrame {
         txtRueI = new JTextField(20);
         txtVilleI = new JTextField(20);
         txtCPI = new JTextField(20);
-        //创建两个密码框长度为20
+
         txtPwdI = new JPasswordField(20);
         txtRePwdI = new JPasswordField(20);
-        //设置密码框显示的字符为*
+
         txtPwdI.setEchoChar('*');
         txtRePwdI.setEchoChar('*');
-        //创建一个文本域  20,2
-
-        //创建两个按钮
         btnRegI = new JButton("OK");
         btnCancelI = new JButton("Reset");
         btnRetour = new JButton("Return");
@@ -102,9 +99,9 @@ public class IntervInscription extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //设置信息标签为空 清楚原来的历史信息
+
                 lbIMsgI.setText("");
-                //获取用户输入的用户名
+
                 String strName = txtNameI.getText();
                 System.out.println(strName);
                 if (strName == null || strName.equals("")) {
@@ -112,7 +109,7 @@ public class IntervInscription extends JFrame {
                     lbIMsgI.setText("username is empty");
                     return;
                 }
-                //获取用户名密码
+
                 String strPwd = new String(txtPwdI.getPassword());
                 if (strPwd == null || strPwd.equals("")) {
 
@@ -126,7 +123,7 @@ public class IntervInscription extends JFrame {
                     return;
                 }
 
-                //判断确认密码是否跟密码相同
+
                 if (!strRePwd.equals(strPwd)) {
 
                     lbIMsgI.setText("确认密码跟密码不同");
@@ -162,12 +159,12 @@ public class IntervInscription extends JFrame {
             }
         });
 
-        //取消按钮的事件处理
+
         btnCancelI.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //清空所有文本信息
+
                 txtNameI.setText("");
                 txtNumI.setText("");
                 txtTelI.setText("");
@@ -179,7 +176,7 @@ public class IntervInscription extends JFrame {
                 txtRePwdI.setText("");
                 txtCBI.setText("");
 
-                //设置信息标签为空
+
                 lbIMsgI.setText("");
 
             }
@@ -192,7 +189,7 @@ public class IntervInscription extends JFrame {
                 jFrame.setVisible(false);
                 Connecter cn = new Connecter();
                 cn.getjFrame().setVisible(true);
-                //设置信息标签为空
+
                 lbIMsgI.setText("");
 
             }
@@ -225,11 +222,11 @@ public class IntervInscription extends JFrame {
         txtCBI.setBounds(210,330,120,25);
 
 
-        // 添加到内容面板
+
         p.add(comboBox);
 
 
-        //添加所有组件
+
         p.add(lbNameI);
         p.add(txtNameI);
         p.add(lbNumI);
@@ -255,7 +252,7 @@ public class IntervInscription extends JFrame {
         p.add(btnRetour);
         p.add(lbCBI);
         p.add(txtCBI);
-        p.add(lblBackground); // 将组件添加到面板中
+        p.add(lblBackground);
 
 
 

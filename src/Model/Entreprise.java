@@ -65,6 +65,7 @@ public class Entreprise extends Client{
         this.taches = taches;
     }
 
+
     public int getNumClient() {
         return numClient;
     }

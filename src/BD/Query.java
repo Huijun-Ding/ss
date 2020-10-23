@@ -24,11 +24,12 @@ public class Query {
         conn=DB.createConn();
         //System.out.println("hello");
     }
+    // Préparez une requete
     public Query(String Sqlsentence) throws SQLException{
          conn=DB.createConn();
          ps = conn.prepareStatement(Sqlsentence, Statement.RETURN_GENERATED_KEYS);
     }
-
+    // Appliqué à toutes les méthodes SQL pouvant mettre à jour le contenu de la base de données
     public static void afferentSQL(String Sqlsentence) {
         try {
             SQLsen = Sqlsentence;
@@ -77,6 +78,8 @@ public class Query {
         return a;
     }
 
+    //Appliqué à toutes les méthodes SQL qui peuvent interroger le contenu de la base de données
+//Récupérez les résultats de la requête ligne par ligne et mettez-les dans une liste
     public static List<Object> Select() {
         //return list
         List<Object> users = new ArrayList<Object>();

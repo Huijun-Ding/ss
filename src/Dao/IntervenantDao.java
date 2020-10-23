@@ -27,8 +27,8 @@ public IntervenantDao(){};
         Query();
         parameter.add(email);
         afferentSQL(sqlinter);
-        List<Object> objs = Select();
-        System.out.println(objs.get(0));
+        List<Object> objs = Select(); //Ensemble de résultats
+        System.out.println(objs.get(0));//Si la valeur d'entrée peut être trouvée dans la base de données, au moins une ligne peut être renvoyée
        if(objs.size()==0){
             System.out.println(" La connexion de intervenant a échoué");
             return null;
@@ -74,7 +74,7 @@ public IntervenantDao(){};
             System.out.println("succcess");
         };  
         
-        for(Competence comp: intervenant.getMesCompetences()){
+        for(Competence comp: intervenant.getMesCompetences()){  //Outre la mise à jour de la table des intervenants, une autre table associée à codeintervenant doit être mise à jour.
             String newsql="insert into avoir values(?,?)";
             parameter.add(intervenant.getNumInterv());
             parameter.add(comp.getNumP());

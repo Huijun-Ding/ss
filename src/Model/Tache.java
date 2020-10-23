@@ -150,8 +150,13 @@ public class Tache {
 
     public void setPaiement(Paiement p) {
         this.paiement = p;
+        this.etat = EnumEtat.PAYEE;
     }
-
+    
+    public float getPaiement() {
+        return this.paiement.getMontantP();
+    }
+    
     public void setRecuPaiement(RecuPaiement rp) {
         if (this.etat == EnumEtat.VALIDEE_CLIENT) {
             this.listRecus.add(rp);

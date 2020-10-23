@@ -57,6 +57,19 @@ public class Affecter {
 
     // affectation de cette tâche à des intervenants dans la liste de candidats
     public void affecterTache() {
+        // compter le nombre d'intervenant trouvés
+        for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
+            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
+                intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
+                nbAccept += 1; 
+            }
+        }
+        
+        // si cette tâche a trouvée tous les intervenants, modifier son état en ACCEPTEE
+        if (nb == nbAccept) {
+            this.tache.setEtat(EnumEtat.ACCEPTEE);
+        }
+        
         // pour le nombre des intervenants qu'on a pas encore trouvés
         for (int i = 0; i < nb - nbAccept; i++) {
             // envoyer une affectation à un intervenant qui est dans la liste des candidats par l'ordre croissante
@@ -65,14 +78,7 @@ public class Affecter {
         }
 
         for (int i = 0; i < nb - nbAccept; i++) {
-            listCandidats.remove(listCandidats.get(0)); // enlever ce intervenant de la liste des candidats                       
-        }
-        
-        for (int i = 0; i < this.listAttende.size(); i++) { // pour tous les intervenants dans liste d'attente (de réponse)
-            if (listAttende.get(i).getListTaches().contains(tache)) { // si il accepte
-                intervenants.add(listAttende.get(i)); // ajouter ce intervenant dans la liste finale
-                nbAccept += 1; 
-            }
+            listCandidats.remove(listCandidats.get(0)); // supprimer cet intervenant de la liste des candidats                       
         }
     }
 
